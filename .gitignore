@@ -2,3 +2,5 @@
 *_old.html
 *_0.mp3
 .claude/
+node_modules/
+dist/

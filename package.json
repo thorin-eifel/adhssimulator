@@ -1,0 +1,36 @@
+{
+  "name": "adhs-simulator",
+  "version": "1.0.0",
+  "description": "Interaktives Empathie-Werkzeug — ADHS im Schulalltag erleben",
+  "main": "main.js",
+  "author": "thorin-eifel",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build": "electron-builder --mac --win"
+  },
+  "build": {
+    "appId": "de.adhssimulator.app",
+    "productName": "ADHS Simulator",
+    "asar": true,
+    "asarUnpack": ["**/*.mp3"],
+    "files": [
+      "**/*",
+      "!{.git,.gitignore,README.md,TECHNICAL.md}",
+      "!node_modules/.cache"
+    ],
+    "mac": {
+      "category": "public.app-category.education",
+      "target": [{ "target": "dmg", "arch": ["arm64", "x64"] }]
+    },
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }]
+    }
+  },
+  "devDependencies": {
+    "electron": "^36.0.0",
+    "electron-builder": "^26.0.0"
+  }
+}
