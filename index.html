@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ADHS verstehen — Unterrichtsmaterial für Klasse 3/4: interaktive Simulation für Kinder, ausführliche Version für Erwachsene und didaktische Dokumentation.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<title>ADHS verstehen — Übersicht</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:oklch(0.97 0.008 215);
+    --text:oklch(0.28 0.04 215);
+    --muted:oklch(0.52 0.04 210);
+    --ctw-900:oklch(0.30 0.045 210);
+    --ctw-700:oklch(0.42 0.055 210);
+    --ctw-500:oklch(0.52 0.04 210);
+    --orb-a:oklch(.78 .08 210);
+    --orb-b:oklch(.85 .06 35);
+    --r-lg:28px;--r-pill:999px;
+    --shadow-glass:0 1px 0 0 rgba(255,255,255,.7) inset,0 -1px 0 0 rgba(13,62,71,.04) inset,0 20px 40px -20px rgba(13,62,71,.25),0 8px 24px -12px rgba(13,62,71,.18);
+    --shadow-glass-lifted:0 1px 0 0 rgba(255,255,255,.85) inset,0 -1px 0 0 rgba(13,62,71,.05) inset,0 30px 60px -20px rgba(13,62,71,.32),0 12px 30px -10px rgba(13,62,71,.22);
+  }
+  body{
+    font-family:'Nunito Sans','Avenir Next',sans-serif;color:var(--text);
+    min-height:100vh;position:relative;overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    background: linear-gradient(160deg, #edf5f7 0%, #fdfbf8 50%, #f3f6f1 100%);
+    display:flex;flex-direction:column;align-items:center;
+    padding:clamp(28px,6vw,72px) 20px 56px;
+  }
+  /* Very subtle background orbs */
+  .orb{position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none}
+  .orb-1{width:46vw;height:46vw;background:var(--orb-a);opacity:.08;top:-12vw;left:-10vw}
+  .orb-2{width:38vw;height:38vw;background:var(--orb-b);opacity:.06;bottom:-14vw;right:-8vw}
+
+  .wrap{position:relative;z-index:1;width:100%;max-width:980px;display:flex;flex-direction:column;align-items:center}
+
+  .hero-icon{font-size:clamp(48px,9vw,72px);line-height:1;filter:drop-shadow(0 8px 16px rgba(13,62,71,.18));margin-bottom:14px}
+  h1{font-family:'Merriweather',Georgia,serif;font-weight:900;color:var(--ctw-900);
+     font-size:clamp(2rem,5.5vw,3.1rem);text-align:center;letter-spacing:-.01em;line-height:1.08}
+  h1 em{font-style:italic;font-weight:400;color:var(--ctw-700)}
+  .sub{font-family:'Merriweather',Georgia,serif;font-style:italic;color:var(--muted);
+       font-size:clamp(1rem,2.4vw,1.25rem);text-align:center;margin-top:10px;max-width:46ch}
+
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;
+         width:100%;margin-top:clamp(32px,6vw,52px)}
+  @media(max-width:560px){.cards{grid-template-columns:1fr}}
+
+  .card{
+    position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;
+    background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.52));
+    backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
+    border:1px solid rgba(255,255,255,.7);border-radius:var(--r-lg);
+    padding:28px 24px 24px;box-shadow:var(--shadow-glass);
+    transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s;
+    min-height:100%;
+  }
+  .card:hover,.card:focus-visible{transform:translateY(-4px);box-shadow:var(--shadow-glass-lifted);outline:none}
+  .card:focus-visible{box-shadow:var(--shadow-glass-lifted),0 0 0 3px rgba(255,255,255,.9),0 0 0 5px var(--ctw-700)}
+
+  .card-ico{font-size:2.4rem;line-height:1;margin-bottom:14px}
+  .badge{align-self:flex-start;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;
+         color:var(--ctw-700);background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.7);
+         padding:4px 10px;border-radius:var(--r-pill);margin-bottom:12px}
+  .card h2{font-family:'Merriweather',Georgia,serif;font-weight:700;color:var(--ctw-900);
+           font-size:1.22rem;line-height:1.2;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.92rem;line-height:1.5;flex:1}
+  .card .go{margin-top:18px;font-weight:800;font-size:.9rem;color:var(--ctw-700);display:inline-flex;align-items:center;gap:6px}
+  .card .go .arrow{transition:transform .22s}
+  .card:hover .go .arrow,.card:focus-visible .go .arrow{transform:translateX(4px)}
+
+  footer{position:relative;z-index:1;margin-top:clamp(36px,7vw,56px);text-align:center;color:var(--muted);font-size:.82rem;max-width:54ch;line-height:1.5}
+  .dy-btn{position:fixed;top:14px;right:16px;z-index:50;
+    background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);
+    border-radius:999px;padding:5px 14px;height:32px;
+    display:inline-flex;align-items:center;gap:5px;cursor:pointer;
+    font-size:.78rem;font-family:inherit;font-weight:700;color:var(--ctw-700);
+    box-shadow:0 2px 8px rgba(13,62,71,.12);transition:all .15s;backdrop-filter:blur(8px);}
+  .dy-btn:hover{background:rgba(255,255,255,.8);}
+  .dy-btn.active{background:oklch(.88 .04 210/.6);border-color:oklch(.7 .06 210);}
+  body.dyslexic,body.dyslexic *{font-family:'OpenDyslexic',sans-serif!important;}
+
+  .intro{
+    width:100%;max-width:720px;margin-top:clamp(28px,5vw,44px);
+    background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.48));
+    backdrop-filter:blur(24px) saturate(160%);-webkit-backdrop-filter:blur(24px) saturate(160%);
+    border:1px solid rgba(255,255,255,.7);border-radius:var(--r-lg);
+    padding:clamp(24px,4vw,36px) clamp(24px,4vw,40px);
+    box-shadow:var(--shadow-glass);
+  }
+  .intro p{font-size:clamp(.9rem,2vw,1rem);line-height:1.75;color:var(--text);margin-bottom:14px}
+  .intro p:last-child{margin-bottom:0}
+  .intro strong{color:var(--ctw-900)}
+  .intro-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .intro-pill{font-size:.78rem;font-weight:700;padding:5px 13px;border-radius:var(--r-pill);
+              background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);
+              color:var(--ctw-700);white-space:nowrap}
+</style>
+</head>
+<body>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <button class="dy-btn" id="dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+
+  <div class="wrap">
+    <div class="hero-icon">🧠</div>
+    <h1>ADHS <em>verstehen</em></h1>
+    <p class="sub">Eine Sammlung zum Erleben, Vermitteln und Nachschlagen — wie sich ADHS im Schulalltag anfühlt.</p>
+
+    <div class="intro">
+      <p><strong>ADHS</strong> — Aufmerksamkeits-Defizit-Hyperaktivitäts-Störung — ist eine der häufigsten neurobiologischen Besonderheiten im Schulalter: Etwa jedes zwanzigste Kind ist betroffen. Trotzdem bleibt sie oft unsichtbar — für Mitschülerinnen, manchmal für Lehrkräfte, manchmal sogar für die betroffenen Kinder selbst.</p>
+      <p>Was von außen wie Faulheit, Träumerei oder schlechtes Benehmen aussieht, ist für viele Kinder mit ADHS der ganz normale Alltag: Ein Gehirn, das Ablenkungen nicht herausfiltern kann. Das den Anfang einer Aufgabe nicht findet. Das die Zeit falsch wahrnimmt. Das impulsiv reagiert, bevor der Gedanke fertig ist — und das sich dafür schämt.</p>
+      <p>Diese Sammlung macht erfahrbar, was sich schwer erklären lässt. Die <strong>Simulatoren</strong> lassen Schülerinnen, Eltern und Lehrkräfte selbst spüren, wie sich eine Schulstunde — oder ein Arbeitstag — mit ADHS-Symptomen anfühlt. Die <strong>Lehrer-Präsentation</strong> bietet fertiges Unterrichtsmaterial für das Klassengespräch. Die <strong>Dokumentation</strong> erklärt den Aufbau, gibt didaktische Hinweise und verweist auf seriöse Anlaufstellen im deutschsprachigen Raum.</p>
+      <p>Ziel ist keine Diagnose und keine Vereinfachung — sondern ein Moment des Verstehens. ADHS ist bei jedem Menschen anders. Aber Empathie fängt damit an, es einmal selbst versucht zu haben.</p>
+      <div class="intro-pills">
+        <span class="intro-pill">🎒 Für Klasse 3/4</span>
+        <span class="intro-pill">🧑‍💼 Für Erwachsene &amp; Eltern</span>
+        <span class="intro-pill">🧑‍🏫 Für Lehrkräfte</span>
+        <span class="intro-pill">🔒 Läuft komplett im Browser</span>
+        <span class="intro-pill">✅ Kostenlos &amp; ohne Anmeldung</span>
+      </div>
+    </div>
+
+    <div class="cards">
+      <a class="card" href="adhs-simulator-kinder.html">
+        <div class="card-ico">🎒</div>
+        <span class="badge">Interaktiv · Klasse 3/4</span>
+        <h2>Kinder-Simulator</h2>
+        <p>Erlebe eine Schulstunde mit ADHS — mit echten Aufgaben, Ablenkungen, Gedanken und einer Auswertung fürs Klassengespräch.</p>
+        <span class="go">Simulation starten <span class="arrow">→</span></span>
+      </a>
+
+      <a class="card" href="adhd-simulator.html">
+        <div class="card-ico">🧑‍💼</div>
+        <span class="badge">Für Erwachsene</span>
+        <h2>ADHD Simulator</h2>
+        <p>Die ausführliche Version für Jugendliche und Erwachsene — eine intensivere, umfassendere Erfahrung.</p>
+        <span class="go">Zur Simulation <span class="arrow">→</span></span>
+      </a>
+
+      <a class="card" href="adhs-praesentation.html">
+        <div class="card-ico">🧑‍🏫</div>
+        <span class="badge">Für den Unterricht</span>
+        <h2>Lehrer-Präsentation</h2>
+        <p>Fertiges Unterrichtsmaterial für Klasse 3/4 — zum gemeinsamen Durchgehen an der Tafel oder am Beamer.</p>
+        <span class="go">Präsentation öffnen <span class="arrow">→</span></span>
+      </a>
+
+      <a class="card" href="dokumentation.html">
+        <div class="card-ico">📖</div>
+        <span class="badge">Hintergrund</span>
+        <h2>Dokumentation</h2>
+        <p>Pädagogischer Aufbau, didaktische Hinweise und Hintergründe zur Simulation für Lehrkräfte.</p>
+        <span class="go">Dokumentation öffnen <span class="arrow">→</span></span>
+      </a>
+    </div>
+
+    <footer>
+      ⚠️ Die Simulationen zeigen einen kleinen Ausschnitt davon, wie ADHS sich anfühlen kann — ADHS ist bei jedem Menschen anders. Begegnet euch respektvoll.
+    </footer>
+  </div>
+<script>
+(function(){
+  let on=false;try{on=localStorage.getItem('adhs_dyslexic')==='1';}catch{}
+  function apply(){
+    document.body.classList.toggle('dyslexic',on);
+    if(on&&!document.getElementById('od-font')){
+      var l=document.createElement('link');l.id='od-font';l.rel='stylesheet';
+      l.href='https://fonts.cdnfonts.com/css/opendyslexic';document.head.appendChild(l);}
+    var b=document.getElementById('dy-btn');
+    if(b){b.classList.toggle('active',on);b.title=on?'Standardschrift':'OpenDyslexic-Lesehilfe';}
+  }
+  window.toggleDyslexia=function(){on=!on;try{localStorage.setItem('adhs_dyslexic',on?'1':'0');}catch{}apply();};
+  if(on)apply();
+})();
+</script>
+</body>
+</html>

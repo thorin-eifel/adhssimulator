@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Anleitung zum ADHD Simulator für Jugendliche und Erwachsene: 20-minütige Alltags- und Arbeitssimulation mit Kalibrierung, Lesehilfe und Fokus-Verlauf.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧑‍💼</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<title>Dokumentation — Erwachsenen-Simulator</title>
+<link rel="stylesheet" href="doku.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <span class="topbar-label">🧑‍💼 Erwachsenen-Simulator</span>
+    <div class="topbar-right">
+    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+    <a href="dokumentation.html" class="topbar-back">← Dokumentation</a>
+  </div>
+</nav>
+<script src="doku.js"></script>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-icon">🧑‍💼</div>
+    <h1>ADHD Simulator<br><em>für Erwachsene</em></h1>
+    <p>Eine rund 20-minütige Erfahrung, wie sich ADHS im Alltag und am Arbeitsplatz anfühlt — ausführlicher und intensiver als die Kinder-Version.</p>
+  </div>
+
+  <div class="toc">
+    <h2>Inhalt</h2>
+    <ol>
+      <li><a href="#was"><span class="toc-num">1</span> Was ist diese Version?</a></li>
+      <li><a href="#ablauf"><span class="toc-num">2</span> Ablauf & Kalibrierung</a></li>
+      <li><a href="#simuliert"><span class="toc-num">3</span> Was simuliert wird</a></li>
+      <li><a href="#einstellungen"><span class="toc-num">4</span> Einstellungen & Lesehilfe</a></li>
+      <li><a href="#auswertung"><span class="toc-num">5</span> Auswertung</a></li>
+      <li><a href="#unterschiede"><span class="toc-num">6</span> Unterschiede zur Kinder-Version</a></li>
+      <li><a href="#hinweise"><span class="toc-num">7</span> Hinweise & Quellen</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section id="was">
+    <div class="section-header"><span class="section-num">1</span><h2>Was ist diese Version?</h2></div>
+    <div class="card">
+      <p>Der <strong>ADHD Simulator</strong> richtet sich an <strong>Jugendliche und Erwachsene</strong>. Statt des Klassenzimmers spielt er im Alltag und am Arbeitsplatz: To-do-Listen, ein voller Posteingang, Gruppenchats und Kolleg·innen, die ständig unterbrechen.</p>
+      <p>Er macht erfahrbar, was hinter ADHS oft nicht sichtbar ist: <strong>exekutive Dysfunktion</strong> („Eine Aufgabe wird zu zehn — den Anfang zu finden ist das Schwerste"), <strong>verzerrte Zeitwahrnehmung</strong>, ein überlastetes Arbeitsgedächtnis und der Wechsel zwischen Ablenkung und Hyperfokus.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card"><h3>🎯 Zielgruppe</h3><p>Jugendliche und Erwachsene — für Selbsterfahrung, Angehörige, Fortbildungen und Teams.</p></div>
+      <div class="card"><h3>⏱ Dauer</h3><p>Rund 20 Minuten Simulation plus Kalibrierung und Auswertung.</p></div>
+      <div class="card"><h3>🌐 Sprache</h3><p>Umschaltbar zwischen <strong>Deutsch</strong> und <strong>Englisch</strong>.</p></div>
+      <div class="card"><h3>🔒 Datenschutz</h3><p>Läuft vollständig im Browser. Keine Anmeldung, keine Datenübertragung.</p></div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="ablauf">
+    <div class="section-header"><span class="section-num">2</span><h2>Ablauf & Kalibrierung</h2></div>
+    <p>Die Erfahrung beginnt mit einer <strong>Kalibrierung</strong>: eine kurze, ruhige Phase ohne Ablenkungen („Kalibrierung — ruhig lesen…"). Sie liefert den persönlichen Vergleichswert — wie konzentriert man <em>ohne</em> ADHS-Symptome arbeitet.</p>
+    <p>Danach beginnt die eigentliche Simulation, in der Ablenkungen, Unterbrechungen und innere Impulse schrittweise zunehmen — bis hin zu Phasen der Reizüberflutung und gelegentlichem Hyperfokus, in dem die Zeit „verschwindet".</p>
+    <div class="tip"><strong>Vergleich:</strong> Am Ende stellt die App die geschätzte Leistung „ohne Ablenker" der tatsächlichen Leistung mit Simulation gegenüber — der Aha-Moment der Erfahrung.</div>
+  </section>
+
+  <!-- 3 -->
+  <section id="simuliert">
+    <div class="section-header"><span class="section-num">3</span><h2>Was simuliert wird</h2></div>
+    <div class="card-grid">
+      <div class="card"><h3>✅ To-do-Aufgaben</h3><p>Echte Alltagsaufgaben („Bug von Montag beheben", „Geburtstagskarte kaufen", „Wäsche — 3 Tage überfällig"). Den Anfang zu finden ist Teil der Herausforderung.</p></div>
+      <div class="card"><h3>📨 Reizflut</h3><p>„47 ungelesene E-Mails", Gruppenchats und Benachrichtigungen, die ständig die Aufmerksamkeit ziehen.</p></div>
+      <div class="card"><h3>🗣 Kollegen-Interrupts</h3><p>Unterbrechungen von außen, die den Faden reißen lassen — und das mühsame Zurückfinden danach.</p></div>
+      <div class="card"><h3>💭 Aufdringliche Gedanken</h3><p>Ideen und Impulse, die die Konzentration ständig kapern.</p></div>
+      <div class="card"><h3>⏳ Zeitwahrnehmung</h3><p>„Minuten fühlen sich wie Sekunden an — oder Stunden verschwinden einfach."</p></div>
+      <div class="card"><h3>⚡ Hyperfokus</h3><p>Das Gegenstück: völliges Versinken in einer Sache, während alles andere ausgeblendet wird.</p></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="einstellungen">
+    <div class="section-header"><span class="section-num">4</span><h2>Einstellungen & Lesehilfe</h2></div>
+    <div class="card">
+      <div class="setting-row" style="padding-top:0;"><div class="setting-icon">⚡</div><div class="setting-body">
+        <strong>Schwierigkeit</strong>
+        <span>Bestimmt Häufigkeit und Stärke der Ablenkungen sowie das Tempo der Eskalation.</span>
+        <div class="setting-opts"><span class="chip">🟢 Leicht</span><span class="chip">🟡 Mittel</span><span class="chip">🔴 Voll</span></div>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">🔤</div><div class="setting-body">
+        <strong>OpenDyslexic-Schrift</strong>
+        <span>Eine Lesehilfe-Schrift, die das Lesen mit Legasthenie erleichtern kann — direkt umschaltbar, da ADHS und Lese-Rechtschreib-Schwierigkeiten häufig gemeinsam auftreten.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">🌐</div><div class="setting-body">
+        <strong>Sprache</strong>
+        <span>Deutsch oder Englisch, jederzeit umschaltbar.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">💊</div><div class="setting-body">
+        <strong>Medikamenten-Modus</strong>
+        <span>Dämpft die Symptome und zeigt, wie sich ein ruhigerer, strukturierterer Tag anfühlen kann.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body">
+        <strong>Ton & Fidget</strong>
+        <span>Geräuschkulisse stummschaltbar; ein Fidget-Element steht zur Verfügung.</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="auswertung">
+    <div class="section-header"><span class="section-num">5</span><h2>Auswertung</h2></div>
+    <div class="card">
+      <p>Am Ende fasst die App die Erfahrung zusammen:</p>
+      <ul>
+        <li><strong>Fokus-Verlauf über 20 Minuten</strong> — grafische Darstellung, wie die Konzentration über die Zeit schwankt</li>
+        <li><strong>Vergleich</strong> — Leistung „ohne Ablenker" (Kalibrierung/Schätzung) gegenüber der tatsächlichen Leistung</li>
+        <li><strong>Einordnung & Anekdoten</strong> — kurze Erläuterungen, die das Erlebte mit dem Alltag von Menschen mit ADHS verbinden</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="unterschiede">
+    <div class="section-header"><span class="section-num">6</span><h2>Unterschiede zur Kinder-Version</h2></div>
+    <div class="card">
+      <table>
+        <thead><tr><th></th><th>Kinder (Klasse 3/4)</th><th>Erwachsene</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Kontext</strong></td><td>Klassenzimmer, Schulstunde</td><td>Alltag & Arbeitsplatz</td></tr>
+          <tr><td><strong>Dauer</strong></td><td>8 / 12 / 16 Min.</td><td>ca. 20 Min.</td></tr>
+          <tr><td><strong>Vergleichsphase</strong></td><td>Baseline (90 Sek.)</td><td>Kalibrierung</td></tr>
+          <tr><td><strong>Aufgaben</strong></td><td>Schulfächer (Mathe, Lesen …)</td><td>To-do-Liste, E-Mails, Chats</td></tr>
+          <tr><td><strong>Sprache</strong></td><td>Deutsch</td><td>Deutsch / Englisch</td></tr>
+          <tr><td><strong>Besonderheit</strong></td><td>kindgerecht, Klassen-Auswertung</td><td>Lesehilfe, exekutive Dysfunktion</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tip">Für den Einsatz mit Kindern ist die <a href="doku-kinder.html">Kinder-Version</a> die bessere Wahl. Diese Version eignet sich für Selbsterfahrung, Angehörige, Teams und Fortbildungen.</div>
+  </section>
+
+  <!-- 7 -->
+  <section id="hinweise">
+    <div class="section-header"><span class="section-num">7</span><h2>Hinweise & Quellen</h2></div>
+    <div class="note"><strong>Keine Diagnose:</strong> Die Simulation bildet subjektiv erlebte Phänomene nach. Sie ist kein Diagnose- oder Therapieinstrument und ersetzt keine fachliche Abklärung.</div>
+    <div class="card">
+      <p>Seriöse Anlaufstellen, Beratungsangebote und weiterführende Quellen für Deutschland, Österreich und die Schweiz findest du gebündelt im Bereich <a href="doku-info.html"><strong>Information &amp; Anlaufstellen</strong></a>.</p>
+    </div>
+  </section>
+
+  <hr>
+  <footer>
+    ADHD Simulator · Erlebnisorientierte Sensibilisierung · Keine Haftung für medizinische Aussagen
+  </footer>
+
+</div>
+</body>
+</html>

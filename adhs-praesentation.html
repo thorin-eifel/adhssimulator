@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<title>ADHS verstehen — Unterrichtsmaterial Klasse 3 / 4</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+
+:root{
+  --r-sm:10px;--r-md:18px;--r-lg:26px;--r-xl:34px;--r-pill:999px;
+  --ctw-900:oklch(.30 .045 210);--ctw-800:oklch(.35 .05 210);
+  --ctw-700:oklch(.42 .055 210);--ctw-600:oklch(.48 .05 210);
+  --ctw-500:oklch(.52 .04 210);--ctw-300:oklch(.72 .03 210);
+  --ctw-100:oklch(.91 .02 210);--ctw-50:oklch(.965 .012 210);
+  --text:oklch(.28 .04 215);
+  --glass-strong:rgba(255,255,255,.70);--glass-mid:rgba(255,255,255,.52);
+  --glass-border:rgba(255,255,255,.62);
+  --shadow-glass:0 1px 0 0 rgba(255,255,255,.72) inset,0 -1px 0 0 rgba(13,62,71,.04) inset,0 22px 48px -20px rgba(13,62,71,.28),0 8px 22px -10px rgba(13,62,71,.18);
+  --shadow-lifted:0 1px 0 0 rgba(255,255,255,.85) inset,0 32px 72px -20px rgba(13,62,71,.36),0 14px 36px -12px rgba(13,62,71,.26);
+  --amber-bg:rgba(254,249,236,.88);--amber-border:rgba(217,119,6,.35);
+  --amber-acc:oklch(.62 .18 75);--amber-text:oklch(.36 .12 60);
+  --green:oklch(.55 .16 145);--red:oklch(.55 .2 25);
+}
+
+/* ── BODY / BACKGROUND ─────────────────────────────────── */
+body{
+  font-family:'Nunito Sans',sans-serif;
+  color:var(--text);
+  background: linear-gradient(160deg, #edf5f7 0%, #fdfbf8 50%, #f3f6f1 100%);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── CONTROLS BAR ───────────────────────────────────────── */
+#ctrl{
+  position:fixed;top:0;left:0;right:0;height:50px;z-index:200;
+  background:linear-gradient(180deg,oklch(.32 .04 215),oklch(.26 .04 215));
+  border-bottom:1px solid oklch(.4 .04 215);
+  box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 4px 14px -6px rgba(0,0,0,.4);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;gap:8px;
+}
+.ctrl-group{display:flex;align-items:center;gap:8px}
+.ctrl-btn{
+  padding:5px 13px;height:32px;
+  border-radius:var(--r-pill);border:1px solid rgba(255,255,255,.25);
+  background:rgba(255,255,255,.08);color:#fff;
+  font-family:inherit;font-size:.72rem;font-weight:700;
+  cursor:pointer;transition:all .15s;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:5px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12)
+}
+.ctrl-btn:hover{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4)}
+.ctrl-btn.active{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.55)}
+.ctrl-nav{display:flex;align-items:center;gap:4px}
+.ctrl-nav button{
+  width:32px;height:32px;border-radius:var(--r-sm);
+  border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);
+  color:#fff;font-size:1.2rem;cursor:pointer;transition:all .15s;
+  display:flex;align-items:center;justify-content:center;
+}
+.ctrl-nav button:hover{background:rgba(255,255,255,.2)}
+.ctrl-nav button:disabled{opacity:.3;cursor:default}
+#slide-num{
+  font-family:'SFMono-Regular',monospace;font-size:.8rem;font-weight:700;
+  color:rgba(255,255,255,.7);min-width:56px;text-align:center;
+}
+
+/* ── PROGRESS ───────────────────────────────────────────── */
+#progress{position:fixed;top:50px;left:0;right:0;height:3px;z-index:199;background:rgba(255,255,255,.1)}
+#prog-bar{height:100%;background:oklch(.7 .14 145);transition:width .4s ease}
+
+/* ── SLIDE DECK ─────────────────────────────────────────── */
+#deck{position:fixed;top:53px;bottom:0;left:0;right:0;overflow:hidden}
+
+/* ── SINGLE SLIDE ───────────────────────────────────────── */
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  padding:20px 52px 16px;
+  overflow-y:auto;
+  opacity:0;pointer-events:none;
+  transition:opacity .38s ease;
+}
+.slide.active{opacity:1;pointer-events:auto}
+.slide-inner{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  max-width:1540px;margin:0 auto;width:100%;
+}
+
+/* ── SLIDE CHROME (eyebrow + nav hint) ──────────────────── */
+.slide-section{
+  font-size:.75rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:2px;color:var(--ctw-500);margin-bottom:14px;
+}
+.slide-icon{font-size:clamp(2.5rem,6vw,4.8rem);display:block;margin-bottom:16px;line-height:1}
+
+/* ── TYPOGRAPHY ─────────────────────────────────────────── */
+.s-title{
+  font-size:clamp(2.4rem,4.2vw,5rem);font-weight:900;
+  line-height:1.05;letter-spacing:-.03em;color:var(--ctw-900);
+  margin-bottom:14px;
+}
+/* Hero-only variant: Titelfolie darf etwas größer sein */
+.s-title--hero{
+  font-size:clamp(3rem,5.2vw,6.2rem);
+}
+/* Reset browser-default italic on ALL em/i in the presentation */
+em, i { font-style: normal }
+
+.s-title em,.s-title i{
+  color:var(--ctw-700);font-weight:800;
+}
+/* Sub-card heading — kleiner als s-title, größer als s-body */
+.s-card-head{
+  font-size:clamp(1.2rem,1.8vw,1.8rem);font-weight:800;
+  color:var(--ctw-900);margin-bottom:8px;line-height:1.3;
+}
+/* Abschnittslabel innerhalb einer Folie (z. B. "Als Mitschüler") */
+.s-col-label{
+  font-size:.85rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:2px;margin-bottom:12px;display:block;
+}
+.s-col-label.green { color:var(--green)  }
+.s-col-label.teal  { color:var(--ctw-700)}
+.s-sub{
+  font-size:clamp(1.2rem,2vw,2.2rem);color:var(--ctw-500);
+  margin-bottom:24px;line-height:1.5;font-weight:400;
+  font-family:'Merriweather',serif;
+}
+.s-lead{
+  font-size:clamp(1.2rem,1.9vw,2rem);font-weight:700;
+  color:var(--ctw-900);line-height:1.5;margin-bottom:16px;
+  font-family:'Merriweather',serif;
+}
+.s-body{
+  font-size:clamp(1.1rem,1.7vw,1.9rem);line-height:1.75;color:var(--text);
+  font-family:'Merriweather',serif;
+}
+
+/* ── GLASS CARD ─────────────────────────────────────────── */
+.glass{
+  background:linear-gradient(180deg,var(--glass-strong),var(--glass-mid));
+  backdrop-filter:blur(28px) saturate(180%);
+  -webkit-backdrop-filter:blur(28px) saturate(180%);
+  border:1px solid var(--glass-border);border-radius:var(--r-lg);
+  padding:28px 36px;box-shadow:var(--shadow-glass);
+  position:relative;
+}
+.glass::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;
+  background:linear-gradient(180deg,rgba(255,255,255,.55),transparent 38%);
+  pointer-events:none;opacity:.88;
+}
+.glass>*{position:relative;z-index:1}
+
+/* ── GRID LAYOUTS ───────────────────────────────────────── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+
+/* ── FACT CARDS ─────────────────────────────────────────── */
+.fact-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.5));
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.62);border-radius:var(--r-md);
+  padding:24px 28px;box-shadow:var(--shadow-glass);
+}
+.fact-card .fi{font-size:clamp(1.8rem,2.8vw,3rem);margin-bottom:12px;display:block}
+.fact-card strong{font-size:clamp(1.05rem,1.4vw,1.55rem);font-weight:800;color:var(--ctw-900);display:block;margin-bottom:8px}
+.fact-card p,.fact-card span{font-size:clamp(1rem,1.2vw,1.3rem);color:var(--ctw-500);line-height:1.65;font-family:'Merriweather',serif}
+
+/* Amber/super variant */
+.fact-card.amber{
+  background:linear-gradient(180deg,rgba(255,251,235,.85),rgba(254,243,199,.65));
+  border-color:rgba(217,119,6,.3);
+}
+.fact-card.amber strong{color:oklch(.36 .12 60)}
+.fact-card.amber p{color:oklch(.44 .1 65)}
+
+/* Green/tip variant */
+.fact-card.tip{
+  background:linear-gradient(180deg,rgba(240,253,244,.85),rgba(220,252,231,.65));
+  border-color:rgba(21,128,61,.25);
+}
+.fact-card.tip strong{color:oklch(.32 .1 145)}
+.fact-card.tip p{color:oklch(.38 .08 145)}
+
+/* Red/myth variant */
+.fact-card.myth{
+  background:linear-gradient(180deg,rgba(254,242,242,.85),rgba(254,226,226,.65));
+  border-color:rgba(185,28,28,.2);
+}
+.fact-card.myth strong{color:oklch(.38 .15 25)}
+.fact-card.myth p{color:oklch(.45 .12 25)}
+
+/* ── ADHS ACRONYM ───────────────────────────────────────── */
+.acro-row{display:flex;align-items:flex-start;gap:22px;padding:16px 0;border-bottom:1px solid rgba(13,62,71,.08)}
+.acro-row:last-child{border-bottom:none}
+.acro-letter{
+  width:clamp(52px,4.5vw,72px);height:clamp(52px,4.5vw,72px);border-radius:var(--r-md);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:clamp(1.8rem,2.5vw,2.8rem);font-weight:900;color:#fff;
+  background:linear-gradient(180deg,oklch(.55 .07 210),oklch(.42 .055 210));
+  box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 4px 12px -4px rgba(13,62,71,.35);
+}
+.acro-word{font-size:clamp(1.2rem,1.7vw,1.9rem);font-weight:800;color:var(--ctw-900);margin-bottom:6px}
+.acro-desc{font-size:clamp(1rem,1.3vw,1.45rem);color:var(--ctw-500);line-height:1.65;font-family:'Merriweather',serif}
+
+/* ── MYTH / FACT PAIR ───────────────────────────────────── */
+.mf-pair{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-radius:var(--r-md);overflow:hidden;
+  border:1px solid rgba(255,255,255,.6);box-shadow:var(--shadow-glass);
+  margin-bottom:12px;
+}
+.mf-myth,.mf-fact{padding:18px 24px;font-size:clamp(1rem,1.3vw,1.45rem);font-family:'Merriweather',serif}
+.mf-myth{background:rgba(254,226,226,.7);color:oklch(.38 .15 25)}
+.mf-fact{background:rgba(220,252,231,.7);color:oklch(.32 .1 145)}
+.mf-tag{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;opacity:.6;display:block;margin-bottom:5px;font-family:'Nunito Sans',sans-serif}
+.mf-text{font-weight:700;line-height:1.5}
+
+/* ── DOT VISUALISATION (Klassenanteil) ──────────────────── */
+.dot-grid{display:flex;flex-wrap:wrap;gap:7px;padding:8px 0}
+.dot{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(13,62,71,.1);border:1.5px solid rgba(13,62,71,.12);
+  transition:all .3s;
+}
+.dot.highlight{
+  background:linear-gradient(180deg,oklch(.7 .14 210),oklch(.55 .12 210));
+  border-color:oklch(.55 .12 210);
+  box-shadow:0 0 0 3px rgba(26,92,107,.2),0 2px 8px rgba(13,62,71,.3);
+}
+
+/* ── THOUGHT BUBBLES (decorative) ──────────────────────── */
+.thought-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.thought-bubble{
+  background:linear-gradient(180deg,rgba(250,245,255,.88),rgba(243,232,255,.72));
+  border:1px solid rgba(167,139,250,.4);border-radius:var(--r-md);
+  padding:12px 20px;font-size:clamp(1rem,1.3vw,1.45rem);color:var(--ctw-900);
+  box-shadow:0 4px 12px -4px rgba(124,58,237,.2);
+  font-family:'Merriweather',serif;
+}
+.thought-bubble::before{content:'💭 '}
+
+/* ── TIMELINE/STORY ─────────────────────────────────────── */
+.story-step{
+  display:flex;gap:14px;padding:12px 0;
+  border-bottom:1px solid rgba(13,62,71,.07);align-items:flex-start;
+}
+.story-step:last-child{border-bottom:none}
+.story-num{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(180deg,oklch(.7 .12 210),oklch(.55 .1 210));
+  color:#fff;font-weight:800;font-size:.82rem;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 6px rgba(13,62,71,.25);
+}
+.story-text{font-size:clamp(1.05rem,1.4vw,1.55rem);line-height:1.75;color:var(--text);padding-top:4px;font-family:'Merriweather',serif}
+
+/* ── VEREINBARUNG TEMPLATE ──────────────────────────────── */
+.vereinbarung{
+  background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.55));
+  border:2px dashed rgba(13,62,71,.2);border-radius:var(--r-lg);
+  padding:28px 36px;
+}
+.vereinbarung h3{font-size:1.2rem;font-weight:800;color:var(--ctw-700);margin-bottom:16px}
+.vereinbarung-item{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 0;border-bottom:1px solid rgba(13,62,71,.08);
+  font-size:clamp(1.1rem,1.5vw,1.65rem);font-weight:600;color:var(--ctw-900);line-height:1.5;
+  font-family:'Merriweather',serif;
+}
+.vereinbarung-item:last-child{border-bottom:none}
+.vereinbarung-item .check{
+  width:24px;height:24px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(180deg,oklch(.7 .14 145),oklch(.55 .16 145));
+  color:#fff;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.vereinbarung-blank{
+  border:none;border-bottom:2px solid rgba(13,62,71,.12);
+  background:transparent;font-family:inherit;font-size:1rem;font-weight:600;
+  color:var(--ctw-700);padding:10px 0;width:100%;cursor:default;
+}
+
+/* ── BIG STAT ───────────────────────────────────────────── */
+.big-stat{text-align:center;padding:12px}
+.big-stat .num{
+  font-size:clamp(4rem,9vw,9rem);font-weight:900;
+  color:var(--ctw-900);letter-spacing:-.04em;line-height:1;
+  display:block;margin-bottom:10px;
+}
+.big-stat .lbl{font-size:clamp(1.1rem,1.5vw,1.6rem);color:var(--ctw-500);font-weight:700;font-family:'Merriweather',serif}
+
+/* ── TAKEAWAY CARD ──────────────────────────────────────── */
+.takeaway{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:14px 18px;border-radius:var(--r-md);
+  background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(255,255,255,.5));
+  border:1px solid rgba(255,255,255,.65);
+  box-shadow:var(--shadow-glass);margin-bottom:10px;
+}
+.takeaway .ti{font-size:1.4rem;flex-shrink:0;padding-top:1px}
+.takeaway strong{display:block;font-size:clamp(1.05rem,1.4vw,1.5rem);font-weight:800;color:var(--ctw-900);margin-bottom:5px}
+.takeaway span{font-size:clamp(1rem,1.25vw,1.35rem);color:var(--ctw-500);line-height:1.65;font-family:'Merriweather',serif}
+
+/* ── TEACHER NOTES ──────────────────────────────────────── */
+.t-notes{
+  display:none;
+  background:var(--amber-bg);
+  border:1px solid var(--amber-border);
+  border-left:3px solid var(--amber-acc);
+  border-radius:var(--r-md);
+  padding:16px 22px;margin-top:18px;flex-shrink:0;
+}
+.notes-on .t-notes{display:block}
+.tn-head{
+  font-size:.62rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:2px;color:var(--amber-acc);margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.tn-body{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;
+}
+.tn-col h4{font-size:.75rem;font-weight:800;color:var(--amber-text);margin-bottom:6px;text-transform:uppercase;letter-spacing:.8px}
+.tn-col p,.tn-col li{font-size:.82rem;color:oklch(.42 .1 65);line-height:1.6;margin-bottom:4px}
+.tn-col ul{padding-left:1.2em}
+.tn-tip{
+  display:inline-block;padding:2px 8px;border-radius:var(--r-pill);
+  background:rgba(217,119,6,.12);color:oklch(.42 .14 65);
+  font-size:.72rem;font-weight:700;margin-top:4px;
+}
+
+/* ── TEACHER PLAN OVERLAY ───────────────────────────────── */
+#plan-overlay{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(13,62,71,.55);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  display:none;align-items:center;justify-content:center;padding:20px;
+  overflow-y:auto;
+}
+#plan-overlay.show{display:flex}
+#plan-card{
+  background:linear-gradient(180deg,rgba(255,255,255,.93),rgba(255,255,255,.82));
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border:1px solid rgba(255,255,255,.7);border-radius:var(--r-xl);
+  padding:36px 44px;max-width:820px;width:100%;
+  box-shadow:var(--shadow-lifted);max-height:90vh;overflow-y:auto;
+}
+#plan-card h2{font-size:1.6rem;font-weight:900;color:var(--ctw-900);margin-bottom:6px;letter-spacing:-.025em}
+#plan-card h2 em{color:var(--ctw-700);font-weight:800}
+#plan-card .plan-sub{color:var(--ctw-500);margin-bottom:24px}
+.plan-phase{
+  border-left:3px solid var(--ctw-300);
+  padding:14px 0 14px 18px;margin-bottom:12px;
+}
+.plan-phase .ph-time{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--ctw-500);margin-bottom:4px}
+.plan-phase .ph-title{font-size:1rem;font-weight:800;color:var(--ctw-900);margin-bottom:4px}
+.plan-phase .ph-text{font-size:.88rem;color:var(--text);line-height:1.6}
+.plan-section{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--ctw-700);margin:20px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--ctw-100)}
+.plan-close{
+  margin-top:24px;padding:12px 28px;
+  background:linear-gradient(180deg,oklch(.55 .07 210),oklch(.42 .055 210));
+  color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:var(--r-pill);
+  font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer;
+  box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 4px 14px -4px rgba(13,62,71,.3);
+}
+
+/* ── SECTION COLOR ACCENTS ──────────────────────────────── */
+.slide[data-s="empathy"] .slide-section{color:oklch(.48 .15 290)}
+.slide[data-s="activity"] .slide-section{color:var(--amber-acc)}
+.slide[data-s="action"]   .slide-section{color:var(--green)}
+.slide[data-s="close"]    .slide-section{color:var(--ctw-700)}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:700px){
+  .slide{padding:20px 20px 16px}
+  .grid-2,.grid-3,.grid-auto{grid-template-columns:1fr}
+  .mf-pair{grid-template-columns:1fr}
+  .tn-body{grid-template-columns:1fr}
+  .glass{padding:20px 24px}
+  #plan-card{padding:24px 22px}
+}
+@media(min-width:1400px){
+  /* vw-basierte Werte skalieren automatisch — hier nur Caps für sehr große Bildschirme */
+  .s-title{font-size:clamp(3rem,4.2vw,5.5rem)}
+  .s-title--hero{font-size:clamp(3.5rem,5.2vw,7rem)}
+}
+
+/* ── KEY NAVIGATION HINT ────────────────────────────────── */
+.key-hint{
+  position:fixed;bottom:12px;right:12px;
+  font-size:.62rem;color:rgba(255,255,255,.35);
+  letter-spacing:.04em;pointer-events:none;z-index:50;
+}
+.key-hint kbd{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
+  border-radius:3px;padding:1px 5px;font-family:monospace;
+}
+
+/* ── OPENDYSLEXIC ───────────────────────────────────────── */
+body.dyslexic,body.dyslexic *:not(.slide-num):not(#timer){font-family:'OpenDyslexic',sans-serif!important;}
+body.dyslexic #btn-dy{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.55);}
+
+/* ── PRINT STYLES ───────────────────────────────────────── */
+@media print{
+  html,body{height:auto;overflow:visible}
+  #ctrl,#progress,.key-hint{display:none!important}
+  #deck{position:static;height:auto;overflow:visible}
+  .slide{
+    position:static;opacity:1;pointer-events:auto;
+    page-break-after:always;height:auto;
+    padding:32px 40px;display:flex!important;
+  }
+  .slide-inner{flex:1}
+  .t-notes{display:block!important;margin-top:16px}
+  .glass{box-shadow:none;border:1px solid #ddd}
+  body{background:white!important}
+  #plan-overlay{display:none!important}
+  .mf-myth{background:#fde8e8}
+  .mf-fact{background:#d1fae5}
+  #overview,#ov-head{display:none!important}
+}
+
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ── TIMER ──────────────────────────────────────────────── */
+#timer{
+  font-family:'SFMono-Regular',Consolas,monospace;font-size:.82rem;font-weight:700;
+  color:rgba(255,255,255,.7);padding:4px 10px;
+  border-radius:var(--r-sm);
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  cursor:pointer;transition:all .15s;user-select:none;letter-spacing:.06em;
+  min-width:54px;text-align:center;
+}
+#timer:hover{background:rgba(255,255,255,.16)}
+#timer.running{color:oklch(.78 .17 145)}
+#timer.warn{color:oklch(.82 .22 40);animation:pulse-warn 1s ease-in-out infinite}
+@keyframes pulse-warn{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ── OVERVIEW ───────────────────────────────────────────── */
+#overview{
+  position:fixed;inset:0;z-index:300;
+  background:rgba(8,38,44,.78);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  display:none;overflow-y:auto;padding-top:58px;
+}
+#overview.show{display:block}
+#ov-head{
+  position:fixed;top:0;left:0;right:0;height:54px;z-index:310;
+  background:rgba(13,62,71,.85);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  display:flex;align-items:center;justify-content:space-between;padding:0 22px;
+}
+#ov-head-lbl{font-size:.66rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.6)}
+.ov-close-btn{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;border-radius:var(--r-pill);padding:5px 16px;
+  font-family:inherit;font-size:.72rem;font-weight:700;cursor:pointer;transition:all .15s;
+}
+.ov-close-btn:hover{background:rgba(255,255,255,.2)}
+.ov-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:14px;padding:24px;max-width:1300px;margin:0 auto;
+}
+.ov-thumb{
+  background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.72));
+  border:2px solid rgba(255,255,255,.35);border-radius:var(--r-md);
+  padding:18px 16px;cursor:pointer;transition:all .18s;
+}
+.ov-thumb:hover{transform:translateY(-4px) scale(1.02);border-color:rgba(255,255,255,.75);box-shadow:0 14px 36px rgba(0,0,0,.32)}
+.ov-thumb.cur{border-color:oklch(.65 .16 145);box-shadow:0 0 0 3px rgba(21,128,61,.25),0 8px 24px rgba(0,0,0,.22)}
+.ov-num{font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:var(--ctw-500);margin-bottom:4px}
+.ov-sec{font-size:.58rem;color:var(--ctw-300);margin-bottom:7px;display:block}
+.ov-ttl{font-size:.82rem;font-weight:700;color:var(--ctw-900);line-height:1.35}
+
+/* ── LASER POINTER ──────────────────────────────────────── */
+#laser{
+  position:fixed;width:18px;height:18px;border-radius:50%;
+  pointer-events:none;z-index:500;display:none;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(255,30,30,.96) 20%,rgba(255,30,30,0) 70%);
+  box-shadow:0 0 10px 4px rgba(255,30,30,.5),0 0 22px 8px rgba(255,30,30,.2);
+}
+body.laser-on #laser{display:block}
+body.laser-on *{cursor:crosshair!important}
+.sim-start-btn{
+  display:inline-flex;align-items:center;gap:7px;margin-top:10px;
+  padding:10px 22px;background:var(--ctw-900);color:#fff;text-decoration:none;
+  border-radius:999px;font-size:.88em;font-weight:800;letter-spacing:.02em;
+  box-shadow:0 4px 14px rgba(13,62,71,.28);transition:background .18s,transform .18s;
+}
+.sim-start-btn:hover{background:var(--ctw-700);transform:translateY(-2px);}
+</style>
+</head>
+<body>
+
+<div id="laser" aria-hidden="true"></div>
+
+<!-- ── CONTROLS ───────────────────────────────────────── -->
+<nav id="ctrl">
+  <div class="ctrl-group">
+    <button class="ctrl-btn" id="btn-plan" onclick="togglePlan()">📋 Plan</button>
+    <button class="ctrl-btn" id="btn-notes" onclick="toggleNotes()">📝 Notizen</button>
+    <button class="ctrl-btn" id="btn-ov" onclick="toggleOverview()">☷ Übersicht</button>
+    <button class="ctrl-btn" id="btn-print" onclick="window.print()">🖨</button>
+    <button class="ctrl-btn" id="btn-dy" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+  </div>
+  <div class="ctrl-nav">
+    <button id="btn-prev" onclick="go(cur-1)">‹</button>
+    <span id="slide-num">1 / 15</span>
+    <button id="btn-next" onclick="go(cur+1)">›</button>
+  </div>
+  <div class="ctrl-group">
+    <span id="timer" title="Klick: Start/Stopp · Doppelklick: Reset">00:00</span>
+    <button class="ctrl-btn" id="btn-laser" onclick="toggleLaser()">🔴 Laser</button>
+    <button class="ctrl-btn" id="btn-fs" onclick="toggleFS()">⛶ Vollbild</button>
+    <button class="ctrl-btn" onclick="go(0)" title="Zur ersten Folie">⌂</button>
+  </div>
+</nav>
+<div id="progress"><div id="prog-bar"></div></div>
+<div class="key-hint">← → Pfeiltasten &nbsp;|&nbsp; <kbd>O</kbd> Übersicht &nbsp;|&nbsp; <kbd>L</kbd> Laser &nbsp;|&nbsp; <kbd>F</kbd> Vollbild &nbsp;|&nbsp; <kbd>N</kbd> Notizen</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 1 — TITEL
+════════════════════════════════════════════════════════ -->
+<div id="deck">
+<div class="slide active" data-n="1" data-s="intro">
+<div class="slide-inner" style="text-align:center;align-items:center">
+  <span class="slide-icon" style="animation:bob 3s ease-in-out infinite">🧠</span>
+  <div class="slide-section">Unterrichtsmaterial · Klasse 3 / 4</div>
+  <h1 class="s-title s-title--hero">Was ist <em>ADHS</em>?</h1>
+  <p class="s-sub">Gemeinsam verstehen — füreinander da sein</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+    <span style="padding:7px 18px;border-radius:var(--r-pill);background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7);font-size:.8rem;font-weight:700;color:var(--ctw-700)">⏱ 60–90 Minuten</span>
+    <span style="padding:7px 18px;border-radius:var(--r-pill);background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7);font-size:.8rem;font-weight:700;color:var(--ctw-700)">🎯 Empathie &amp; Inklusion</span>
+    <span style="padding:7px 18px;border-radius:var(--r-pill);background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.7);font-size:.8rem;font-weight:700;color:var(--ctw-700)">🖥 inkl. Simulator-Aktivität</span>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Lehrerhinweise zur Vorbereitung</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Materialien</h4>
+      <ul><li>Diese Präsentation (Beamer)</li><li>ADHS-Simulator <em>adhs-simulator-kinder.html</em> — auf jedem Gerät oder gemeinsam am Beamer</li><li>Optional: Arbeitsblatt „Unsere Klassenvereinbarung"</li></ul>
+    </div>
+    <div class="tn-col">
+      <h4>Sensible Situation</h4>
+      <p>Falls ein Kind mit ADHS in der Klasse ist: Sprechen Sie vorher mit den Eltern. Fragen Sie das Kind, ob es möchte, dass die Klasse weiß, dass es ADHS hat. Nie zwingen. Ziel ist Empathie, keine Vorführung.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Zeitplanung</h4>
+      <ul><li><strong>Teil 1 (45 Min):</strong> Folien 1–10 — Was ist ADHS?</li><li><strong>Teil 2 (45 Min):</strong> Simulator + Folien 11–15</li><li>Alternativ: über zwei Schulstunden verteilen</li></ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 2 — LERNZIELE
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="2" data-s="intro">
+<div class="slide-inner">
+  <div class="slide-section">Einleitung</div>
+  <h2 class="s-title">Heute <em>lernst du...</em></h2>
+  <div class="grid-2" style="margin-top:8px">
+    <div class="fact-card">
+      <span class="fi">🔬</span>
+      <strong>Was ADHS wirklich ist</strong>
+      <p>Das ist kein Fehler. Das Gehirn arbeitet einfach anders.</p>
+    </div>
+    <div class="fact-card">
+      <span class="fi">🎭</span>
+      <strong>Wie sich ADHS anfühlt</strong>
+      <p>Du kannst es selbst kurz ausprobieren.</p>
+    </div>
+    <div class="fact-card">
+      <span class="fi">👫</span>
+      <strong>Wie du helfen kannst</strong>
+      <p>Kleine Dinge, die du für andere tun kannst.</p>
+    </div>
+    <div class="fact-card">
+      <span class="fi">💪</span>
+      <strong>Dass anders nicht schlechter ist</strong>
+      <p>ADHS hat auch echte Stärken. Die schauen wir uns an.</p>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Einstieg aktivieren</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Warm-up-Frage (5 Min)</h4>
+      <p>„Hat jemand schon mal das Wort ADHS gehört? Was wisst ihr darüber?" — Antworten ohne Bewertung an der Tafel sammeln. Fehlannahmen werden in Folie 7 korrigiert.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Lernziele kindgerecht</h4>
+      <p>Lesen Sie die vier Punkte gemeinsam vor. Fragen Sie: „Welcher Punkt interessiert euch am meisten?" — erzeugt Motivation.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 3 — REGELN
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="3" data-s="intro">
+<div class="slide-inner">
+  <div class="slide-section">Einleitung</div>
+  <h2 class="s-title">Erst die <em>Spielregeln</em></h2>
+  <p class="s-sub">Damit sich alle wohl fühlen können.</p>
+  <div class="glass" style="margin-top:4px">
+    <div class="story-step">
+      <div class="story-num">1</div>
+      <div class="story-text"><strong>Kein Auslachen.</strong> Wir reden über echte Menschen. Vielleicht über jemanden, den du kennst.</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num">2</div>
+      <div class="story-text"><strong>Jede Frage ist erlaubt.</strong> Es gibt keine dummen Fragen.</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num">3</div>
+      <div class="story-text"><strong>Jeder darf, niemand muss.</strong> Wer nicht reden will, muss nicht. Zuhören ist auch gut.</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num">4</div>
+      <div class="story-text"><strong>Wir sind nett zueinander.</strong> Auch wenn wir eine andere Meinung haben.</div>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Sicherheit schaffen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Warum diese Folie wichtig ist</h4>
+      <p>Kinder testen in solchen Stunden Grenzen. Klare Regeln schützen auch Kinder, die selbst ADHS haben oder nahe Angehörige mit ADHS.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Interaktion</h4>
+      <p>Lassen Sie die Klasse die Regeln laut bestätigen: „Können wir das alle so machen?" — ein gemeinsames Ja gibt der Stunde eine gute Grundlage.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 4 — WAS IST ADHS?
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="4" data-s="info">
+<div class="slide-inner">
+  <div class="slide-section">Was ist ADHS?</div>
+  <h2 class="s-title">A · D · H · <em>S</em></h2>
+  <p class="s-sub" style="margin-bottom:16px">Was bedeuten diese vier Buchstaben?</p>
+  <div class="glass">
+    <div class="acro-row">
+      <div class="acro-letter">A</div>
+      <div><div class="acro-word">Aufmerksamkeit</div><div class="acro-desc">Bei ADHS fällt es schwerer, bei einer Sache zu bleiben. Das gilt besonders, wenn etwas langweilig ist.</div></div>
+    </div>
+    <div class="acro-row">
+      <div class="acro-letter" style="background:linear-gradient(180deg,oklch(.55 .07 230),oklch(.42 .065 230))">D</div>
+      <div><div class="acro-word">Defizit</div><div class="acro-desc">Es fällt ein bisschen schwerer als bei anderen. Das ist kein Fehler und keine Absicht.</div></div>
+    </div>
+    <div class="acro-row">
+      <div class="acro-letter" style="background:linear-gradient(180deg,oklch(.55 .07 250),oklch(.42 .065 250))">H</div>
+      <div><div class="acro-word">Hyperaktivität</div><div class="acro-desc">Der Körper hat sehr viel Energie. Er will sich bewegen. Auch wenn man gerade stillsitzen soll.</div></div>
+    </div>
+    <div class="acro-row" style="border-bottom:none">
+      <div class="acro-letter" style="background:linear-gradient(180deg,oklch(.55 .07 270),oklch(.42 .065 270))">S</div>
+      <div><div class="acro-word">Störung — aber anders gedacht</div><div class="acro-desc">Ärzte nennen es „Störung". Das klingt schlimm. Aber es heißt nur: Das Gehirn arbeitet anders. Anders ist nicht falsch.</div></div>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Hintergrundwissen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Vollständiger Name</h4>
+      <p>ADHS steht für <em>Aufmerksamkeitsdefizit-Hyperaktivitätsstörung</em>. Manche sagen auch ADS (ohne Hyperaktivität). Wichtig: Es gibt verschiedene Erscheinungsformen.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Das Wort „Störung"</h4>
+      <p>Erklären Sie: „Störung" klingt schlimm, bedeutet aber in der Medizin nur, dass etwas anders funktioniert als üblich. Es ist keine Beleidigung und kein Urteil.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Typen von ADHS</h4>
+      <p>Es gibt drei Typen: 1) Vor allem unaufmerksam (oft stilles Träumen), 2) Vor allem hyperaktiv, 3) Kombiniert. Mädchen haben oft Typ 1 und werden daher seltener erkannt.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 5 — DAS ADHS-GEHIRN
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="5" data-s="info">
+<div class="slide-inner">
+  <div class="slide-section">Was ist ADHS?</div>
+  <h2 class="s-title">Das <em>ADHS-Gehirn</em></h2>
+  <div class="grid-2" style="margin-top:8px;align-items:start">
+    <div class="glass">
+      <div style="font-size:1.8rem;margin-bottom:12px">📻</div>
+      <p class="s-card-head">Gehirn ohne ADHS</p>
+      <p class="s-body">Stell dir ein Radio vor. Es hat einen Sender. Du hörst die Lehrerin klar. Andere Geräusche sind leise.</p>
+      <div style="margin-top:14px;padding:10px 14px;border-radius:var(--r-sm);background:rgba(13,62,71,.06);font-size:.88rem;color:var(--ctw-500)">„...und die Antwort ist 41."</div>
+    </div>
+    <div class="glass" style="border-color:rgba(167,139,250,.4);background:linear-gradient(180deg,rgba(250,245,255,.82),rgba(243,232,255,.65))">
+      <div style="font-size:1.8rem;margin-bottom:12px">📻📻📻📻📻</div>
+      <p class="s-card-head" style="color:oklch(.35 .12 290)">Gehirn mit ADHS</p>
+      <p class="s-body">Stell dir fünf Radios vor. Alle spielen gleichzeitig. Man will die Lehrerin hören. Aber es ist viel zu laut.</p>
+      <div class="thought-row" style="margin-top:14px">
+        <span class="thought-bubble" style="font-size:.78rem">Pommes heute?</span>
+        <span class="thought-bubble" style="font-size:.78rem">Bleistift spitzen</span>
+        <span class="thought-bubble" style="font-size:.78rem">Mama anrufen!</span>
+      </div>
+    </div>
+  </div>
+  <p class="s-body" style="text-align:center;margin-top:16px;color:var(--ctw-500)">Das passiert nicht mit Absicht. Das Gehirn macht das einfach so.</p>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Erklärung vertiefen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Wissenschaftlicher Hintergrund</h4>
+      <p>ADHS ist eine neurobiologische Besonderheit. Das Gehirn produziert weniger von bestimmten Botenstoffen (Dopamin, Noradrenalin), die für Aufmerksamkeit und Impulskontrolle wichtig sind.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Für Kinder greifbar machen</h4>
+      <p>Fragen Sie: „Habt ihr schon mal versucht, Hausaufgaben zu machen, wenn nebenan Musik läuft? Wie fühlt sich das an?" — Das gibt einen kleinen Einblick in das tägliche Erleben.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Wichtig zu betonen</h4>
+      <p>Das ADHS-Gehirn ist nicht kaputt — es ist anders verdrahtet. Bei interessanten Themen können Kinder mit ADHS sich oft sehr gut konzentrieren (Hyperfokus).</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 6 — WIE VIELE?
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="6" data-s="info">
+<div class="slide-inner">
+  <div class="slide-section">Was ist ADHS?</div>
+  <h2 class="s-title">Wie <em>viele</em> Kinder haben ADHS?</h2>
+  <div class="grid-2" style="margin-top:12px;align-items:center">
+    <div>
+      <div class="big-stat">
+        <span class="num">1–2</span>
+        <span class="lbl">von 25 Kindern in deiner Klasse</span>
+      </div>
+      <p class="s-body" style="text-align:center;margin-top:12px">Du kennst wahrscheinlich jemanden mit ADHS. Du weißt es nur noch nicht.</p>
+    </div>
+    <div class="glass">
+      <p style="font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--ctw-500);margin-bottom:10px">Eine Klasse mit 25 Kindern:</p>
+      <div class="dot-grid" id="dot-grid"></div>
+      <p style="font-size:.78rem;color:var(--ctw-500);margin-top:10px">🔵 = Kinder mit ADHS &nbsp; ⚪ = alle anderen</p>
+    </div>
+  </div>
+  <div class="glass" style="margin-top:14px;padding:16px 24px;display:flex;align-items:center;gap:16px">
+    <span style="font-size:1.5rem">🌍</span>
+    <p class="s-body">Auf der ganzen Welt haben ungefähr 5 von 100 Schulkindern ADHS. In jedem Land. Überall.</p>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Statistiken einordnen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Zahlen für Deutschland</h4>
+      <p>Etwa 4–8 % der Kinder und Jugendlichen in Deutschland haben ADHS. Das sind ca. 500.000 Kinder. ADHS ist die häufigste neurobiologische Entwicklungsstörung im Kindesalter.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Mädchen oft unsichtbar</h4>
+      <p>Mädchen mit ADHS zeigen oft weniger Hyperaktivität und mehr Träumerei — sie werden daher seltener erkannt und diagnostiziert. Wichtig zu erwähnen, falls Fragen kommen.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Diskussion-Impuls</h4>
+      <p>„Wenn in jeder Klasse 1–2 Kinder ADHS haben — was bedeutet das für unsere Klasse?" — Ruhig lassen, die Kinder denken kurz nach. Keine Antworten erzwingen.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 7 — WAS ADHS NICHT IST
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="7" data-s="info">
+<div class="slide-inner">
+  <div class="slide-section">Was ist ADHS?</div>
+  <h2 class="s-title">Was ADHS <em>nicht</em> ist</h2>
+  <p class="s-sub">Manche Leute sagen das. Aber es stimmt nicht.</p>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+    <div class="mf-pair">
+      <div class="mf-myth"><span class="mf-tag">❌ Falsch</span><span class="mf-text">„Kinder mit ADHS sind einfach faul."</span></div>
+      <div class="mf-fact"><span class="mf-tag">✓ Richtig</span><span class="mf-text">Sie müssen oft viel <em>mehr</em> arbeiten als andere. Für das gleiche Ergebnis.</span></div>
+    </div>
+    <div class="mf-pair">
+      <div class="mf-myth"><span class="mf-tag">❌ Falsch</span><span class="mf-text">„Die könnten sich konzentrieren, wenn sie wollten."</span></div>
+      <div class="mf-fact"><span class="mf-tag">✓ Richtig</span><span class="mf-text">Das Gehirn hilft nicht immer. Auch wenn man es wirklich will.</span></div>
+    </div>
+    <div class="mf-pair">
+      <div class="mf-myth"><span class="mf-tag">❌ Falsch</span><span class="mf-text">„Das haben sich Ärzte nur ausgedacht."</span></div>
+      <div class="mf-fact"><span class="mf-tag">✓ Richtig</span><span class="mf-text">Viele Ärzte und Forscher haben ADHS untersucht. Es ist sehr gut erforscht.</span></div>
+    </div>
+    <div class="mf-pair">
+      <div class="mf-myth"><span class="mf-tag">❌ Falsch</span><span class="mf-text">„Kinder mit ADHS sind nicht so klug."</span></div>
+      <div class="mf-fact"><span class="mf-tag">✓ Richtig</span><span class="mf-text">ADHS hat <em>nichts</em> mit Klugheit zu tun. Viele sehr kluge Menschen haben ADHS.</span></div>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Vorurteile abbauen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Warm-up nutzen</h4>
+      <p>Greifen Sie Antworten aus dem Warm-up (Folie 2) auf: „Jemand hat vorhin gesagt, ADHS sei... Schauen wir, ob das stimmt." — Das macht die Stunde lebendig und persönlich.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Umfeld-Mythos ansprechen</h4>
+      <p>Kinder hören Vorurteile von Erwachsenen. Normalisieren Sie: „Früher haben das viele Erwachsene gedacht — heute wissen wir es besser." Keine Beschuldigung der Eltern.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 8 — EIN SCHULTAG MIT ADHS
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="8" data-s="empathy">
+<div class="slide-inner">
+  <div class="slide-section">Wie fühlt sich ADHS an?</div>
+  <h2 class="s-title">Ein <em>Schultag</em> mit ADHS</h2>
+  <div class="glass" style="margin-top:8px">
+    <p class="s-lead">Stell dir vor: Mathe, 3. Stunde. Du willst aufpassen. Wirklich.</p>
+    <div class="story-step">
+      <div class="story-num" style="background:linear-gradient(180deg,oklch(.62 .15 290),oklch(.48 .12 290))">→</div>
+      <div class="story-text">Die Lehrerin erklärt eine Aufgabe. Du schaust zur Tafel.</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num" style="background:linear-gradient(180deg,oklch(.62 .15 290),oklch(.48 .12 290))">→</div>
+      <div class="story-text">Plötzlich: <span style="color:oklch(.42 .14 290);font-weight:700">„Gibt es heute Pommes?"</span> Woher kam das?</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num" style="background:linear-gradient(180deg,oklch(.62 .15 290),oklch(.48 .12 290))">→</div>
+      <div class="story-text">Du versuchst, wieder aufzupassen. Jemand spitzt nebenan seinen Bleistift. Ratatatata. Du schaust hin.</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num" style="background:linear-gradient(180deg,oklch(.62 .15 290),oklch(.48 .12 290))">→</div>
+      <div class="story-text">Die Lehrerin fragt: <em>„Kannst du vorlesen, wo wir waren?"</em> Du hast die Seite verloren. Alle schauen. Du wirst rot.</div>
+    </div>
+    <div class="story-step" style="border-bottom:none">
+      <div class="story-num" style="background:linear-gradient(180deg,oklch(.62 .15 290),oklch(.48 .12 290))">→</div>
+      <div class="story-text">Nach der Stunde sagt jemand: <em>„Du hättest doch einfach aufpassen müssen."</em> Aber du <strong>hast</strong> es versucht.</div>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Empathie aufbauen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Szenario gemeinsam lesen</h4>
+      <p>Lesen Sie das Szenario langsam vor — mit Pausen. Fragen Sie nach jedem Schritt: „Wie fühlt sich das an?" Nicht evaluieren, nur sammeln.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Reflexion</h4>
+      <p>„Hat jemand schon mal eine ähnliche Situation erlebt — nicht konzentriert sein können, obwohl man es wollte?" Verbindung zur eigenen Erfahrung ist der stärkste Empathie-Hebel.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Vorsicht</h4>
+      <p>Kein Kind in der Klasse an ein konkretes Erlebnis erinnern oder fragen. Jede Beteiligung ist freiwillig.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 9 — GEDANKENSTÜRME
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="9" data-s="empathy">
+<div class="slide-inner">
+  <div class="slide-section">Wie fühlt sich ADHS an?</div>
+  <h2 class="s-title"><em>Gedankenstürme</em></h2>
+  <p class="s-sub">Diese Gedanken kommen einfach. Man kann nichts dafür.</p>
+  <div class="thought-row" style="margin-bottom:6px">
+    <span class="thought-bubble" style="font-size:1.05rem">Ob es heute Pommes gibt? 🍟</span>
+    <span class="thought-bubble" style="font-size:.85rem">Ich muss aufs Klo...</span>
+    <span class="thought-bubble" style="font-size:1.3rem;font-weight:600">Die Wolke da draußen sieht aus wie ein Drache! 🐉</span>
+  </div>
+  <div class="thought-row">
+    <span class="thought-bubble" style="font-size:.8rem">Hab ich mein Pausenbrot eingepackt?</span>
+    <span class="thought-bubble" style="font-size:1.15rem">Warum gibt es keine lila Tiere? 🟣</span>
+    <span class="thought-bubble" style="font-size:.9rem">Der Stuhl wackelt! 🪑</span>
+    <span class="thought-bubble" style="font-size:1.4rem;font-weight:700">ICH MUSS MEINER MAMA WAS SAGEN!!</span>
+  </div>
+  <div class="glass" style="margin-top:16px;padding:16px 24px">
+    <p class="s-body">Stell dir vor: Das passiert dir jeden Tag. In jeder Stunde. Immer wieder. <strong>Auch wenn du es nicht willst.</strong> Das macht sehr müde. Das ist ADHS.</p>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Gedankensturm erleben lassen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Aktivität (3 Min)</h4>
+      <p>Bitten Sie alle Kinder, 60 Sekunden lang ALLE Gedanken, die ihnen kommen, auf einem Zettel aufzuschreiben — ohne zu zensieren. Danach: Wie viele Gedanken habt ihr gehabt? 5? 10? 20? Bei ADHS läuft dieser Strom ununterbrochen.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Überleitung zum Simulator</h4>
+      <p>„Diese Gedankenblasen werden euch gleich beim Simulator begegnen — dann könnt ihr kurz selbst erleben, wie sich das anfühlt." Spannung aufbauen für die Aktivität auf Folie 11.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 10 — SUPERKRÄFTE
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="10" data-s="empathy">
+<div class="slide-inner">
+  <div class="slide-section">Wie fühlt sich ADHS an?</div>
+  <h2 class="s-title">Die <em>Superkräfte</em> von ADHS</h2>
+  <p class="s-sub">ADHS macht manches schwer. Aber es bringt auch echte Stärken.</p>
+  <div class="grid-auto">
+    <div class="fact-card amber">
+      <span class="fi">🎨</span>
+      <strong>Kreativität</strong>
+      <p>Kinder mit ADHS haben oft tolle Ideen. Ideen, auf die andere nicht kommen.</p>
+    </div>
+    <div class="fact-card amber">
+      <span class="fi">⚡</span>
+      <strong>Energie &amp; Begeisterung</strong>
+      <p>Wenn etwas spannend ist, sind sie voll dabei. Mit ganz viel Energie.</p>
+    </div>
+    <div class="fact-card amber">
+      <span class="fi">🔍</span>
+      <strong>Entdeckerblick</strong>
+      <p>Sie sehen Dinge, die andere nicht sehen. Das ist eine besondere Stärke.</p>
+    </div>
+    <div class="fact-card amber">
+      <span class="fi">❤️</span>
+      <strong>Einfühlvermögen</strong>
+      <p>Sie spüren gut, wie andere sich fühlen. Und sie helfen gern.</p>
+    </div>
+    <div class="fact-card amber">
+      <span class="fi">💡</span>
+      <strong>Gute Ideen</strong>
+      <p>Sie denken anders. Und finden so Lösungen, die andere nicht sehen.</p>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Stärken stärken</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Warum diese Folie wichtig ist</h4>
+      <p>Kinder mit ADHS hören sehr oft, was nicht funktioniert. Diese Folie dreht das um. Sie sendet auch das Signal: Diese Stunde ist kein Mitleids-Programm, sondern Anerkennung.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Aktivierung</h4>
+      <p>Fragen Sie: „Kennt ihr jemanden, der besonders kreativ ist oder immer gute Ideen hat?" — ohne nach ADHS zu fragen. Oft nennen Kinder spontan Menschen mit ADHS.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Hyperfokus erklären</h4>
+      <p>Erwähnen Sie Hyperfokus: Bei Dingen, die Kinder mit ADHS wirklich interessieren, können sie sich manchmal stundenlang konzentrieren — intensiver als andere. Das ist ein unterschätztes Geschenk.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 11 — SIMULATION
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="11" data-s="activity">
+<div class="slide-inner" style="text-align:center;align-items:center">
+  <div class="slide-section">Aktivität</div>
+  <span class="slide-icon">🖥</span>
+  <h2 class="s-title">Jetzt seid <em>ihr dran</em></h2>
+  <p class="s-sub">12 Minuten. Du erlebst, wie es sich anfühlt.</p>
+  <div class="glass" style="max-width:600px;text-align:left;margin:0 auto">
+    <div class="story-step">
+      <div class="story-num">1</div>
+      <div class="story-text"><strong>Öffnet den Simulator:</strong>
+        <a href="adhs-simulator-kinder.html?ref=praesentation" target="_blank" class="sim-start-btn">🎒 Simulator starten →</a>
+      </div>
+    </div>
+    <div class="story-step">
+      <div class="story-num">2</div>
+      <div class="story-text"><strong>Wählt Geräusche und Stufe.</strong> Fängt mit „Mittel" an.</div>
+    </div>
+    <div class="story-step">
+      <div class="story-num">3</div>
+      <div class="story-text"><strong>Macht die Aufgaben</strong> — Mathe, Lesen, Schreiben, Merken. Gebt euer Bestes.</div>
+    </div>
+    <div class="story-step" style="border-bottom:none">
+      <div class="story-num">4</div>
+      <div class="story-text"><strong>Merkt euch, wie ihr euch fühlt.</strong> Was lenkt euch am meisten ab?</div>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Simulation begleiten</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Varianten</h4>
+      <ul>
+        <li><strong>Beamer-Variante:</strong> Simulator gemeinsam projiziert. Ein Kind bedient, alle sehen zu. Lauter machen.</li>
+        <li><strong>Einzelvariante:</strong> Jedes Kind am eigenen Gerät. Kopfhörer empfohlen. Stiller, persönlicher.</li>
+        <li><strong>Stations-Variante:</strong> 3–4 Kinder teilen sich ein Gerät.</li>
+      </ul>
+    </div>
+    <div class="tn-col">
+      <h4>Während der Simulation</h4>
+      <p>Unterbrechen Sie nicht. Die Simulation lebt von der Erfahrung, nicht von der Erklärung. Beobachten Sie die Reaktionen der Kinder — das gibt wertvolles Material für die Nachbesprechung.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Medikamenten-Modus</h4>
+      <p>Der Simulator hat einen optionalen „Medikament"-Modus. Sie können nach der ersten Runde fragen: „Sollen wir testen, was ein Medikament verändern würde?" — dann zweite Runde mit aktiviertem Schalter.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 12 — NACHBESPRECHUNG
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="12" data-s="activity">
+<div class="slide-inner">
+  <div class="slide-section">Aktivität — Auswertung</div>
+  <h2 class="s-title">Wie war <em>das</em>?</h2>
+  <p class="s-sub">Nehmt euch einen Moment. Dann reden wir.</p>
+  <div class="grid-2" style="margin-top:10px">
+    <div class="fact-card">
+      <span class="fi">😤</span>
+      <strong>Wie habt ihr euch gefühlt?</strong>
+      <p>Genervt? Überfordert? Gestresst? Amüsiert? Alles ist okay.</p>
+    </div>
+    <div class="fact-card">
+      <span class="fi">🔔</span>
+      <strong>Was hat euch abgelenkt?</strong>
+      <p>Welche Gedanken kamen? Welche Geräusche? Was war am schwersten?</p>
+    </div>
+    <div class="fact-card">
+      <span class="fi">🤔</span>
+      <strong>Stellt euch vor: jeden Tag.</strong>
+      <p>Was wäre, wenn das nicht 12 Minuten wäre? Wenn das jeden Tag so wäre — in jeder Stunde?</p>
+    </div>
+    <div class="fact-card">
+      <span class="fi">💡</span>
+      <strong>Was würde euch helfen?</strong>
+      <p>Wenn du so einen Schultag hättest — was würdest du dir wünschen?</p>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Nachbesprechung leiten</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Gesprächsführung</h4>
+      <p>Lassen Sie alle vier Fragen nacheinander besprechen. Schreiben Sie Antworten an die Tafel — besonders die Antwort auf „Was würdet ihr euch wünschen?" ist der direkte Weg zu Folie 13.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Wenn Kinder lachen</h4>
+      <p>Viele Kinder lachen zuerst über die Situation. Das ist normal und ein Schutzmechanismus. Sagen Sie: „Es ist okay zu lachen — und gleichzeitig können wir verstehen, dass das für echte Kinder gar nicht lustig ist."</p>
+    </div>
+    <div class="tn-col">
+      <h4>Wenn ein Kind erzählt, es habe ADHS</h4>
+      <p>Nehmen Sie es ernst und ernst nehmen bedeutet: nicht in den Mittelpunkt stellen. „Danke, dass du das teilst. Wie war die Simulation für dich?" — und dann weiter ohne Fokus.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 13 — WIE KANN ICH HELFEN?
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="13" data-s="action">
+<div class="slide-inner">
+  <div class="slide-section">Was kann ich tun?</div>
+  <h2 class="s-title">Was <em>ich</em> tun kann</h2>
+  <div class="grid-2" style="margin-top:10px">
+    <div>
+      <span class="s-col-label green">Als Mitschüler</span>
+      <div class="fact-card tip" style="margin-bottom:10px">
+        <span class="fi">🤫</span>
+        <strong>Nicht auslachen, wenn jemand vergisst</strong>
+        <p>Vergessen passiert einfach. Das ist keine Absicht. Sag es ruhig — aber nicht vor allen.</p>
+      </div>
+      <div class="fact-card tip" style="margin-bottom:10px">
+        <span class="fi">😊</span>
+        <strong>Geduldig sein</strong>
+        <p>Manchmal braucht jemand mehr Zeit. Das heißt nicht, dass er langsamer ist.</p>
+      </div>
+      <div class="fact-card tip">
+        <span class="fi">💬</span>
+        <strong>Einfach fragen: „Kann ich helfen?"</strong>
+        <p>Manchmal ist Hilfe nötig. Manchmal nur Ruhe. Fragen ist besser.</p>
+      </div>
+    </div>
+    <div>
+      <span class="s-col-label teal">Als Lehrkraft</span>
+      <div class="fact-card" style="margin-bottom:10px">
+        <span class="fi">📍</span>
+        <strong>Guten Sitzplatz wählen</strong>
+        <p>Vorne, weg von Fenster und Tür. Weniger Ablenkung, mehr Fokus.</p>
+      </div>
+      <div class="fact-card" style="margin-bottom:10px">
+        <span class="fi">📋</span>
+        <strong>Aufgaben klar und kurz erklären</strong>
+        <p>Eine Aufgabe auf einmal. Mit Bildern erklären. Wiederholen ist okay.</p>
+      </div>
+      <div class="fact-card">
+        <span class="fi">🌟</span>
+        <strong>Kleine Fortschritte loben</strong>
+        <p>Kinder mit ADHS hören oft, was nicht klappt. Lob hilft sehr viel.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Handlungsorientierung</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Von der Empathie zur Aktion</h4>
+      <p>Diese Folie schließt den Bogen: Wir haben verstanden, wie sich ADHS anfühlt. Jetzt fragen wir: Was tun wir damit? Die Kinder sollen konkrete Ideen mitnehmen, keine abstrakten Werte.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Ergänzungen sammeln</h4>
+      <p>Fragen Sie: „Was würdet ihr noch hinzufügen?" — die Kinder kennen sich gegenseitig am besten und haben oft gute eigene Ideen, die in die Vereinbarung auf Folie 14 einfließen können.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Eigene Rolle als Lehrkraft</h4>
+      <p>Die Lehrkraft-Tipps können Sie auch ansprechen: „Ich versuche, das auch besser zu machen. Ihr könnt mir sagen, wenn ich dabei helfen könnte." — Zeigt Offenheit und Augenhöhe.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 14 — VEREINBARUNG
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="14" data-s="action">
+<div class="slide-inner">
+  <div class="slide-section">Was kann ich tun?</div>
+  <h2 class="s-title">Unsere <em>Vereinbarung</em></h2>
+  <p class="s-sub">Was nehmen wir als Klasse mit?</p>
+  <div class="vereinbarung" style="margin-top:10px">
+    <h3>In unserer Klasse...</h3>
+    <div class="vereinbarung-item"><span class="check">✓</span>...lachen wir nicht über Fehler. Jeder macht sie.</div>
+    <div class="vereinbarung-item"><span class="check">✓</span>...helfen wir uns. Ohne viel Aufhebens.</div>
+    <div class="vereinbarung-item"><span class="check">✓</span>...fragen wir erst, bevor wir urteilen.</div>
+    <div class="vereinbarung-item"><span class="check">✓</span>...stören wir nicht, wenn jemand endlich konzentriert ist.</div>
+    <div class="vereinbarung-item" style="padding:12px 0;border-bottom:none">
+      <span class="check" style="background:linear-gradient(180deg,rgba(13,62,71,.2),rgba(13,62,71,.1));color:var(--ctw-700)">+</span>
+      <span style="color:var(--ctw-400)">Eure eigene Regel: Was schlägt die Klasse vor?</span>
+    </div>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Vereinbarung lebendig machen</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Gemeinsam erstellen</h4>
+      <p>Lassen Sie die Klasse die fünfte Regel selbst formulieren. Nehmen Sie den am häufigsten genannten Vorschlag. Schreiben Sie die fertige Vereinbarung auf Papier — ggf. alle unterschreiben.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Nachhaltigkeit</h4>
+      <p>Hängen Sie die Vereinbarung im Klassenzimmer auf. Beziehen Sie sich in den nächsten Wochen darauf, wenn Situationen entstehen. Eine Vereinbarung, die nie erwähnt wird, verpufft.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Auflösung</h4>
+      <p>Falls ein Kind mit ADHS in der Klasse ist und es das wünscht: Dieser Moment kann ein guter Zeitpunkt sein, wenn es das selbst möchte, sich kurz zu Wort zu melden. Nie erzwingen.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     FOLIE 15 — ZUSAMMENFASSUNG
+════════════════════════════════════════════════════════ -->
+<div class="slide" data-n="15" data-s="close">
+<div class="slide-inner">
+  <div class="slide-section">Zusammenfassung</div>
+  <h2 class="s-title">Das nehme ich <em>mit</em></h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+    <div class="takeaway">
+      <span class="ti">🧠</span>
+      <div><strong>ADHS ist kein Fehler und keine Entscheidung</strong><span>Das Gehirn arbeitet einfach anders. Und anders ist nicht schlechter.</span></div>
+    </div>
+    <div class="takeaway">
+      <span class="ti">👫</span>
+      <div><strong>In jeder Klasse haben 1–2 Kinder ADHS</strong><span>Das geht uns alle an.</span></div>
+    </div>
+    <div class="takeaway">
+      <span class="ti">⚡</span>
+      <div><strong>ADHS bringt echte Stärken</strong><span>Kreativität, Energie, Einfühlvermögen — das sind echte Stärken.</span></div>
+    </div>
+    <div class="takeaway">
+      <span class="ti">🤝</span>
+      <div><strong>Du kannst helfen</strong><span>Nicht auslachen. Geduldig sein. Fragen, ob du helfen kannst. Kleine Dinge — große Wirkung.</span></div>
+    </div>
+  </div>
+  <div class="glass" style="margin-top:16px;padding:14px 24px;text-align:center">
+    <p style="font-size:1.15rem;font-weight:700;color:var(--ctw-700)">„Mit ADHS ist man anders — aber nicht weniger wert."</p>
+  </div>
+</div>
+<div class="t-notes">
+  <div class="tn-head">🍎 Abschluss &amp; Ausblick</div>
+  <div class="tn-body">
+    <div class="tn-col">
+      <h4>Abschlussrunde</h4>
+      <p>„Was nehmt ihr heute mit?" — eine kurze Runde durch die Klasse. Jedes Kind sagt einen Satz oder ein Wort. Kein Druck. Endet die Stunde mit einem positiven Momentum.</p>
+    </div>
+    <div class="tn-col">
+      <h4>Folge-Aktivitäten</h4>
+      <ul>
+        <li>Brief an ein Kind mit ADHS schreiben (imaginär)</li>
+        <li>Stärken-Karte für die Klasse gestalten</li>
+        <li>Klassenwahl: Welche Regel gilt ab heute?</li>
+        <li>Mini-Referat: „Berühmte Menschen mit ADHS"</li>
+      </ul>
+    </div>
+    <div class="tn-col">
+      <h4>Für Eltern</h4>
+      <p>Informieren Sie Eltern via Newsletter: „Wir hatten heute eine Stunde zu ADHS. Ihr Kind hat gelernt: [Kernpunkte]." Gibt den Eltern die Möglichkeit, das Gespräch zuhause weiterzuführen.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+</div><!-- #deck -->
+
+<!-- ── OVERVIEW ───────────────────────────────────────── -->
+<div id="overview">
+  <div id="ov-head">
+    <span id="ov-head-lbl">Folienübersicht</span>
+    <button class="ov-close-btn" onclick="closeOverview()">✕ Schließen</button>
+  </div>
+  <div class="ov-grid" id="ov-grid"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     UNTERRICHTSPLAN OVERLAY
+════════════════════════════════════════════════════════ -->
+<div id="plan-overlay">
+<div id="plan-card">
+  <h2>Unterrichtsplan <em>ADHS verstehen</em></h2>
+  <p class="plan-sub">Klasse 3/4 · 60–90 Minuten · empfohlen ab Ende Kl. 3</p>
+
+  <div class="plan-section">Lernziele</div>
+  <p style="font-size:.9rem;color:var(--text);line-height:1.65;margin-bottom:12px">Die Schülerinnen und Schüler … kennen die Grundmerkmale von ADHS in kindgerechter Sprache · können Empathie für betroffene Mitschüler entwickeln · kennen konkrete Handlungsoptionen im Schulalltag · erleben durch den Simulator ansatzweise, wie sich ADHS anfühlt.</p>
+
+  <div class="plan-section">Phasenübersicht</div>
+  <div class="plan-phase">
+    <div class="ph-time">0–5 Min — Einstieg</div>
+    <div class="ph-title">Warm-up: Was wisst ihr schon?</div>
+    <div class="ph-text">Freies Sammeln an der Tafel. Folie 1–2. Keine Bewertung.</div>
+  </div>
+  <div class="plan-phase">
+    <div class="ph-time">5–10 Min — Orientierung</div>
+    <div class="ph-title">Regeln &amp; Einleitung</div>
+    <div class="ph-text">Folie 3. Klare Spielregeln vereinbaren. Besonders wichtig, wenn ein Kind mit ADHS in der Klasse ist.</div>
+  </div>
+  <div class="plan-phase">
+    <div class="ph-time">10–30 Min — Erarbeitung I</div>
+    <div class="ph-title">Was ist ADHS?</div>
+    <div class="ph-text">Folien 4–7. ADHS-Akronym, Gehirnmetapher, Statistik, Mythen. Interaktiv: Kinder kommentieren die Mythen-Karten.</div>
+  </div>
+  <div class="plan-phase">
+    <div class="ph-time">30–45 Min — Erarbeitung II</div>
+    <div class="ph-title">Wie fühlt sich ADHS an?</div>
+    <div class="ph-text">Folien 8–10. Szenario, Gedankensturm-Aktivität, Superkräfte. Verbindung zur eigenen Erfahrung herstellen.</div>
+  </div>
+  <div class="plan-phase" style="border-left-color:var(--amber-acc)">
+    <div class="ph-time">45–65 Min — Aktivität</div>
+    <div class="ph-title">🖥 ADHS-Simulator</div>
+    <div class="ph-text">Folie 11. 12 Minuten Simulator. Gemeinsam am Beamer oder einzeln. Keine Unterbrechungen.</div>
+  </div>
+  <div class="plan-phase">
+    <div class="ph-time">65–80 Min — Sicherung</div>
+    <div class="ph-title">Nachbesprechung &amp; Handlungsplan</div>
+    <div class="ph-text">Folien 12–13. Was habt ihr erlebt? Was tun wir damit? Ergebnisse an der Tafel.</div>
+  </div>
+  <div class="plan-phase">
+    <div class="ph-time">80–90 Min — Transfer</div>
+    <div class="ph-title">Klassenvereinbarung &amp; Abschluss</div>
+    <div class="ph-text">Folien 14–15. Vereinbarung gemeinsam formulieren, aufhängen. Abschlussrunde.</div>
+  </div>
+
+  <div class="plan-section">Differenzierung</div>
+  <p style="font-size:.88rem;color:var(--text);line-height:1.65;margin-bottom:12px">
+    <strong>Leistungsschwächere SuS:</strong> Simulator auf „Leicht" stellen. Szenario (Folie 8) gemeinsam vorlesen.<br>
+    <strong>Leistungsstärkere SuS:</strong> Intensiv-Modus im Simulator. Rechercheauftrag: „Welche berühmten Menschen haben ADHS?"<br>
+    <strong>Kind mit ADHS in der Klasse:</strong> Vorab informieren, Eltern einbeziehen, keine Vorführung.
+  </p>
+
+  <div class="plan-section">Weiterführung</div>
+  <p style="font-size:.88rem;color:var(--text);line-height:1.65">
+    Brief an ein fiktives Kind mit ADHS schreiben · Stärken-Portfolio erstellen · Klassenbuch „Wir halten zusammen" · Mini-Referate zu Vorbildern · Lektüre: altersg. Bücher zum Thema ADHS
+  </p>
+
+  <div style="text-align:center;margin-top:8px">
+    <button class="plan-close" onclick="togglePlan()">Schließen</button>
+  </div>
+</div>
+</div>
+
+<script>
+'use strict';
+
+const slides = document.querySelectorAll('.slide');
+const total  = slides.length;
+let cur      = 0;
+let notesOn  = false;
+
+// ── NAVIGATION ────────────────────────────────────────
+function go(n){
+  if(n<0||n>=total)return;
+  slides[cur].classList.remove('active');
+  cur=n;
+  slides[cur].classList.add('active');
+  document.getElementById('slide-num').textContent=`${cur+1} / ${total}`;
+  document.getElementById('prog-bar').style.width=`${((cur+1)/total)*100}%`;
+  document.getElementById('btn-prev').disabled=cur===0;
+  document.getElementById('btn-next').disabled=cur===total-1;
+  // sync overview highlight
+  document.querySelectorAll('.ov-thumb').forEach((t,i)=>t.classList.toggle('cur',i===cur));
+}
+
+// Keyboard
+document.addEventListener('keydown',e=>{
+  if(e.target.matches('input,textarea'))return;
+  switch(e.key){
+    case'ArrowRight':case'ArrowDown':case'PageDown': e.preventDefault();go(cur+1);break;
+    case'ArrowLeft': case'ArrowUp':  case'PageUp':   e.preventDefault();go(cur-1);break;
+    case' ':  e.preventDefault();go(cur+1);break;
+    case'f':case'F': toggleFS();break;
+    case'n':case'N': toggleNotes();break;
+    case'o':case'O': toggleOverview();break;
+    case'l':case'L': toggleLaser();break;
+    case'Escape': closePlan();closeOverview();break;
+  }
+});
+
+// Touch/swipe
+let tx=0;
+document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>60){dx<0?go(cur+1):go(cur-1);}
+},{passive:true});
+
+// ── NOTES ─────────────────────────────────────────────
+function toggleNotes(){
+  notesOn=!notesOn;
+  document.body.classList.toggle('notes-on',notesOn);
+  document.getElementById('btn-notes').classList.toggle('active',notesOn);
+  document.getElementById('btn-notes').textContent=notesOn?'📝 Notizen aus':'📝 Notizen';
+}
+
+// ── PLAN OVERLAY ──────────────────────────────────────
+function togglePlan(){
+  document.getElementById('plan-overlay').classList.toggle('show');
+}
+function closePlan(){
+  document.getElementById('plan-overlay').classList.remove('show');
+}
+document.getElementById('plan-overlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('plan-overlay'))closePlan();
+});
+
+// ── FULLSCREEN ────────────────────────────────────────
+function toggleFS(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.();
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  document.getElementById('btn-fs').textContent=
+    document.fullscreenElement?'⊡ Vollbild':'⛶ Vollbild';
+});
+
+// ── TIMER ─────────────────────────────────────────────
+let timerSecs=0, timerRunning=false, timerInterval=null;
+const timerEl=document.getElementById('timer');
+function updateTimer(){
+  const m=String(Math.floor(timerSecs/60)).padStart(2,'0');
+  const s=String(timerSecs%60).padStart(2,'0');
+  timerEl.textContent=`${m}:${s}`;
+  timerEl.classList.toggle('running',timerRunning);
+  timerEl.classList.toggle('warn',timerSecs>=5400);
+}
+function toggleTimer(){
+  timerRunning=!timerRunning;
+  if(timerRunning){timerInterval=setInterval(()=>{timerSecs++;updateTimer();},1000);}
+  else{clearInterval(timerInterval);}
+  updateTimer();
+}
+function resetTimer(){
+  clearInterval(timerInterval);timerRunning=false;timerSecs=0;updateTimer();
+}
+timerEl.addEventListener('click',toggleTimer);
+timerEl.addEventListener('dblclick',e=>{e.stopPropagation();resetTimer();});
+
+// ── OVERVIEW ──────────────────────────────────────────
+let ovBuilt=false;
+function buildOverview(){
+  if(ovBuilt)return;
+  ovBuilt=true;
+  const grid=document.getElementById('ov-grid');
+  slides.forEach((slide,i)=>{
+    const sec=slide.querySelector('.slide-section')?.textContent?.trim()||'';
+    const ttl=slide.querySelector('.s-title')?.textContent?.trim().replace(/\s+/g,' ').slice(0,55)||`Folie ${i+1}`;
+    const th=document.createElement('div');
+    th.className='ov-thumb'+(i===cur?' cur':'');
+    th.innerHTML=`<div class="ov-num">Folie ${i+1}</div><span class="ov-sec">${sec}</span><div class="ov-ttl">${ttl}</div>`;
+    th.onclick=()=>{closeOverview();go(i);};
+    grid.appendChild(th);
+  });
+}
+function openOverview(){
+  buildOverview();
+  document.querySelectorAll('.ov-thumb').forEach((t,i)=>t.classList.toggle('cur',i===cur));
+  document.getElementById('overview').classList.add('show');
+  document.getElementById('btn-ov').classList.add('active');
+}
+function closeOverview(){
+  document.getElementById('overview').classList.remove('show');
+  document.getElementById('btn-ov').classList.remove('active');
+}
+function toggleOverview(){
+  document.getElementById('overview').classList.contains('show')?closeOverview():openOverview();
+}
+document.getElementById('overview').addEventListener('click',e=>{
+  if(e.target===document.getElementById('overview'))closeOverview();
+});
+
+// ── LASER POINTER ─────────────────────────────────────
+let laserOn=false;
+const laserDot=document.getElementById('laser');
+function toggleLaser(){
+  laserOn=!laserOn;
+  document.body.classList.toggle('laser-on',laserOn);
+  document.getElementById('btn-laser').classList.toggle('active',laserOn);
+}
+document.addEventListener('mousemove',e=>{
+  if(!laserOn)return;
+  laserDot.style.left=e.clientX+'px';
+  laserDot.style.top=e.clientY+'px';
+});
+
+// ── DOT GRID (Folie 6) ────────────────────────────────
+(function buildDots(){
+  const grid=document.getElementById('dot-grid');
+  if(!grid)return;
+  for(let i=0;i<25;i++){
+    const d=document.createElement('div');
+    d.className='dot'+(i<2?' highlight':'');
+    grid.appendChild(d);
+  }
+})();
+
+// ── INIT ──────────────────────────────────────────────
+(function(){
+  const h = parseInt(location.hash.slice(1));
+  go(!isNaN(h) && h >= 1 ? h - 1 : 0);
+})();
+
+// ── OPENDYSLEXIC ──────────────────────────────────────
+(function(){
+  let on=false;try{on=localStorage.getItem('adhs_dyslexic')==='1';}catch{}
+  function apply(){
+    document.body.classList.toggle('dyslexic',on);
+    if(on&&!document.getElementById('od-font')){
+      var l=document.createElement('link');l.id='od-font';l.rel='stylesheet';
+      l.href='https://fonts.cdnfonts.com/css/opendyslexic';document.head.appendChild(l);}
+    var b=document.getElementById('btn-dy');
+    if(b)b.classList.toggle('active',on);
+  }
+  window.toggleDyslexia=function(){on=!on;try{localStorage.setItem('adhs_dyslexic',on?'1':'0');}catch{}apply();};
+  if(on)apply();
+})();
+</script>
+</body>
+</html>

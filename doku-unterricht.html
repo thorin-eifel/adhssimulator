@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Unterrichtsvorbereitung für den ADHS-Simulator: Stundenplanung, Einsatzszenarien, Reflexionsfragen und didaktische Hinweise für Lehrkräfte.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧑‍🏫</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<title>Dokumentation — Unterrichtsvorbereitung</title>
+<link rel="stylesheet" href="doku.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <span class="topbar-label">🧑‍🏫 Unterrichtsvorbereitung</span>
+    <div class="topbar-right">
+    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+    <a href="dokumentation.html" class="topbar-back">← Dokumentation</a>
+  </div>
+</nav>
+<script src="doku.js"></script>
+
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-icon">🧑‍🏫</div>
+    <h1>Unterrichts&shy;vorbereitung</h1>
+    <p>Stundenplanung, Einsatzszenarien, Reflexionsfragen und didaktische Hinweise für den Einsatz des ADHS-Simulators im Unterricht und bei Fortbildungen.</p>
+  </div>
+
+  <div class="toc">
+    <h2>Inhalt</h2>
+    <ol>
+      <li><a href="#szenarien"><span class="toc-num">1</span> Einsatzszenarien</a></li>
+      <li><a href="#stundenplan"><span class="toc-num">2</span> Stundenplanung (45 Min.)</a></li>
+      <li><a href="#einstellungen"><span class="toc-num">3</span> Empfohlene Einstellungen</a></li>
+      <li><a href="#reflexion"><span class="toc-num">4</span> Reflexionsfragen</a></li>
+      <li><a href="#hinweise"><span class="toc-num">5</span> Didaktische Hinweise</a></li>
+      <li><a href="#klasse"><span class="toc-num">6</span> Kinder mit ADHS in der Klasse</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section id="szenarien">
+    <div class="section-header"><span class="section-num">1</span><h2>Einsatzszenarien</h2></div>
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>🖥 Beamer-Demo</h3>
+        <p>Die Lehrkraft steuert die Simulation an der Tafel oder am Beamer. Die Klasse schaut gemeinsam zu und kommentiert — ideal als Einstieg, wenn keine Geräte für alle verfügbar sind.</p>
+        <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Dauer 8 Min. · Schwierigkeit Mittel · Klassen-Auswertung deaktivieren</div>
+      </div>
+
+      <div class="card">
+        <h3>💻 Einzelarbeit</h3>
+        <p>Jedes Kind führt die Simulation auf dem eigenen Gerät (Tablet, Laptop) durch. Anschließend können individuelle Ergebnisse verglichen werden — mit optionalem Klassen-Code für die aggregierte Auswertung.</p>
+        <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Dauer 12 Min. · Schwierigkeit Leicht bis Mittel · Kopfhörer falls vorhanden</div>
+      </div>
+
+      <div class="card">
+        <h3>👨‍👩‍👧 Elternabend</h3>
+        <p>Die Simulation eignet sich als kurzer Einstieg im Plenum — Eltern erleben live, womit Kinder mit ADHS im Schulalltag umgehen. Anschließend Raum für Fragen und Austausch.</p>
+        <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Dauer 8 Min. · Beamer-Demo · 15 Min. Diskussion einplanen</div>
+      </div>
+
+      <div class="card">
+        <h3>🎓 Fortbildung</h3>
+        <p>Für Lehrkräfte, Sozialpädagoginnen und Schulberatung. Die ausführlichere Erwachsenen-Version (<a href="doku-erwachsene.html">ADHD Simulator</a>) kann parallel eingesetzt werden. Anschließend Reflexion über konkrete Unterrichtsanpassungen.</p>
+        <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Beide Simulatoren ausprobieren · 45 Min. für Austausch reservieren</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section id="stundenplan">
+    <div class="section-header"><span class="section-num">2</span><h2>Stundenplanung (45 Min.)</h2></div>
+    <p>Ein bewährter Ablauf für eine Unterrichtsstunde in Klasse 3 oder 4:</p>
+
+    <div class="card" style="margin-top:16px">
+      <div class="step-row">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Einführung <span style="color:var(--muted);font-weight:400">— 5 Min.</span></strong>
+          <span>„Was ist ADHS?" — kurze offene Frage an die Klasse. Keine Definitionen, nur sammeln, was die Kinder bereits wissen oder gehört haben. Hinweis: Heute macht ihr eine kurze Erfahrung, wie sich das anfühlen kann.</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Simulation <span style="color:var(--muted);font-weight:400">— 12–16 Min. je nach Dauer-Wahl</span></strong>
+          <span>Kinder spielen den Simulator (Einzel- oder Beamer-Demo). Kopfhörer empfohlen, aber nicht zwingend. Ruhe halten — kein Kommentieren während der Simulation.</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Kurze Stille <span style="color:var(--muted);font-weight:400">— 2 Min.</span></strong>
+          <span>Direkt nach der Simulation: kurz innehalten. Kinder lassen das Erlebte sacken. Keine sofortigen Fragen — erst Luft holen.</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Auswertung im Simulator <span style="color:var(--muted);font-weight:400">— 5 Min.</span></strong>
+          <span>Kinder lesen oder hören die Debrief-Auswertung im Simulator. Bei Beamer-Demo liest die Lehrkraft die Ergebnisse vor und fragt: „Was davon habt ihr erkannt?"</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <strong>Klassengespräch <span style="color:var(--muted);font-weight:400">— 15 Min.</span></strong>
+          <span>Reflexionsfragen (siehe Abschnitt 4). Ziel: Empathie aufbauen, keine Diagnosen stellen.</span>
+        </div>
+      </div>
+      <div class="step-row" style="border-bottom:0;padding-bottom:0">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <strong>Abschluss <span style="color:var(--muted);font-weight:400">— 5 Min.</span></strong>
+          <span>Sichernde Frage: „Was nehmt ihr mit?" Hinweis auf die <a href="doku-info.html">Anlaufstellen-Seite</a>, falls Kinder mehr wissen möchten oder betroffen sind.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="einstellungen">
+    <div class="section-header"><span class="section-num">3</span><h2>Empfohlene Einstellungen</h2></div>
+    <div class="card">
+      <div class="setting-row" style="padding-top:0"><div class="setting-icon">⏱</div><div class="setting-body">
+        <strong>Dauer</strong>
+        <span><strong>8 Min.</strong> für Beamer-Demo und Elternabend. <strong>12 Min.</strong> für Einzelarbeit in der Klasse. 16 Min. für Fortbildungen, wenn Zeit vorhanden.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">🎚</div><div class="setting-body">
+        <strong>Schwierigkeit</strong>
+        <span><strong>Leicht</strong> für Klasse 3 und jüngere Klasse 4. <strong>Mittel</strong> für reifere Gruppen und Elternabend. <strong>Intensiv</strong> nur für Fortbildungen.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body">
+        <strong>Geräuschkulisse</strong>
+        <span><strong>„Klasse"</strong> empfohlen — erzeugt den passenden Kontext. Bei Beamer-Demo Lautsprecher nutzen. Bei Einzelarbeit Kopfhörer, falls vorhanden; sonst stumm.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">☀️</div><div class="setting-body">
+        <strong>Tagesform</strong>
+        <span>Für die Demo auf <strong>„schlecht"</strong> stellen — dann ist die Erfahrung intensiver und eindrücklicher.</span>
+      </div></div>
+      <div class="setting-row" style="padding-bottom:0;border-bottom:0"><div class="setting-icon">📊</div><div class="setting-body">
+        <strong>Klassen-Auswertung</strong>
+        <span>Bei Einzelarbeit: Klassen-Code notieren und am Ende die aggregierte Auswertung gemeinsam ansehen. Bei Beamer-Demo nicht notwendig.</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="reflexion">
+    <div class="section-header"><span class="section-num">4</span><h2>Reflexionsfragen</h2></div>
+    <p>Gesprächseinstieg nach der Simulation — offen formuliert, kein richtiges oder falsches Antworten:</p>
+
+    <div class="card" style="margin-top:16px">
+      <h3 style="margin-bottom:12px;color:var(--ctw-700)">Erleben</h3>
+      <ul style="padding-left:20px;line-height:2">
+        <li>Wie hat sich das angefühlt? Was war am unangenehmsten?</li>
+        <li>Wann war es am schwersten, bei der Aufgabe zu bleiben?</li>
+        <li>Was hat geholfen, wenn auch nur kurz?</li>
+        <li>Was hast du dir dabei gedacht, wenn dich etwas abgelenkt hat?</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 style="margin-bottom:12px;color:var(--ctw-700)">Übertragen</h3>
+      <ul style="padding-left:20px;line-height:2">
+        <li>Stell dir vor, das wäre <em>jeden Tag</em> so. Was würde das für dich bedeuten?</li>
+        <li>Wie würde es dir gehen, wenn deine Lehrerin immer denkt, du bist unaufmerksam?</li>
+        <li>Was würde dir helfen, wenn du in dieser Situation wärst?</li>
+        <li>Was könnten wir als Klasse füreinander tun?</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 style="margin-bottom:12px;color:var(--ctw-700)">Für Fortbildungen: Lehrkraft-Perspektive</h3>
+      <ul style="padding-left:20px;line-height:2">
+        <li>Was verändert dieses Erleben an meinem Blick auf Schüler·innen mit ADHS?</li>
+        <li>Welche Momente erkenne ich aus meinem eigenen Unterricht wieder?</li>
+        <li>Welche kleinen Anpassungen könnte ich ausprobieren?</li>
+        <li>Was brauche ich, um diese Kinder besser zu unterstützen?</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="hinweise">
+    <div class="section-header"><span class="section-num">5</span><h2>Didaktische Hinweise</h2></div>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>🎯 Ziel klar formulieren</h3>
+        <p>Die Simulation zielt auf <strong>Empathie</strong>, nicht auf Wissen über ADHS. Den Kindern vorab sagen: „Ihr müsst nicht perfekt abschneiden — das ist der Punkt."</p>
+      </div>
+      <div class="card">
+        <h3>⏸ Pause ermöglichen</h3>
+        <p>Kinder können die Simulation jederzeit pausieren. Das ist kein Versagen — im Simulator gibt es einen Coping-Knopf, der zeigt, wie Strategien helfen können.</p>
+      </div>
+      <div class="card">
+        <h3>🤫 Keine Vergleiche</h3>
+        <p>Ergebnisse nicht öffentlich vergleichen. Die aggregierte Auswertung zeigt Durchschnitte — keine Namen. Individuelle Ergebnisse gehören dem Kind.</p>
+      </div>
+      <div class="card">
+        <h3>🔒 Freiwillig</h3>
+        <p>Teilnahme an der Simulation und am Gespräch danach ist freiwillig. Kein Kind muss erklären, warum es nicht mitmacht oder nicht antworten möchte.</p>
+      </div>
+      <div class="card">
+        <h3>📱 Ablenkungen minimieren</h3>
+        <p>Für Einzelarbeit: andere Browser-Tabs schließen, Benachrichtigungen aus. Die Simulation baut bewusst Ablenkungen auf — keine zusätzlichen von außen nötig.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Zeitpuffer einplanen</h3>
+        <p>Debrief und Klassengespräch dauern länger als erwartet. Mindestens 10–15 Min. nach der Simulation reservieren, bevor die Stunde endet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="klasse">
+    <div class="section-header"><span class="section-num">6</span><h2>Kinder mit ADHS in der Klasse</h2></div>
+    <div class="note"><strong>Wichtig:</strong> Wenn Kinder mit ADHS-Diagnose in der Klasse sind, empfiehlt sich ein kurzes Gespräch mit den Betroffenen (und ggf. den Eltern) vorab.</div>
+
+    <div class="card" style="margin-top:16px">
+      <h3 style="margin-bottom:12px">Was vorab klären</h3>
+      <ul style="padding-left:20px;line-height:2">
+        <li>Möchte das Kind, dass die Klasse weiß, dass es ADHS hat? Wenn nein: Schweigepflicht respektieren.</li>
+        <li>Möchte das Kind bei der Simulation mitmachen? Kein Druck — es kann auch nur zuschauen oder den Raum verlassen.</li>
+        <li>Soll das Kind nach der Simulation etwas aus seiner Erfahrung erzählen dürfen, wenn es möchte? Nur mit ausdrücklichem Einverständnis.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 style="margin-bottom:12px">Während der Simulation</h3>
+      <ul style="padding-left:20px;line-height:2">
+        <li>Kinder mit ADHS erleben die Simulation oft sehr intensiv — das ist normal und wertvoll, aber kann auch aufwühlend sein.</li>
+        <li>Einen kurzen Rückzugsort anbieten (Flur, Nebenraum), falls das Kind eine Pause braucht.</li>
+        <li>Nicht bloßstellen: kein Kommentieren, wenn ein Kind schlechter abschneidet oder abbricht.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 style="margin-bottom:12px">Im Klassengespräch</h3>
+      <ul style="padding-left:20px;line-height:2">
+        <li>Den Fokus auf das eigene Erleben legen, nicht auf „wie ist das bei anderen".</li>
+        <li>Aussagen wie „ich habe das erkannt" oder „das kenne ich von mir" zulassen, ohne nachzubohren.</li>
+        <li>Wenn ein Kind freiwillig aus seiner ADHS-Erfahrung berichtet, dankbar annehmen — und nicht das Gespräch darum zentrieren.</li>
+      </ul>
+    </div>
+
+    <div class="tip">Weiterführende Beratung für Lehrkräfte und Eltern findest du im Bereich <a href="doku-info.html"><strong>Information &amp; Anlaufstellen</strong></a>.</div>
+  </section>
+
+  <hr>
+  <footer>
+    ADHS-Simulator · Pädagogisches Werkzeug zur Empathiebildung · Keine Haftung für medizinische Aussagen
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Interaktive Simulation für Klasse 3/4: Wie fühlt sich ADHS im Unterricht an? Mit Aufgaben, Ablenkungen und Auswertung für das Klassengespräch.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<title>ADHS verstehen — Klasse 3/4</title>
+<link rel="stylesheet" href="adhs-simulator-kinder.css">
+</head>
+<body>
+
+<!-- ══ WELCOME ════════════════════════════════════════════ -->
+<div id="welcome" class="screen active">
+
+
+
+  <div class="theme-bar">
+    <div class="tb-group">
+      <span class="tb-label" id="ui-theme-label">Farbe</span>
+      <button class="theme-swatch active" data-theme="default" style="background:oklch(.42 .055 210)" title="Teal" onclick="setTheme('default')"></button>
+      <button class="theme-swatch" data-theme="forest"  style="background:oklch(.45 .14 145)"  title="Forest"  onclick="setTheme('forest')"></button>
+      <button class="theme-swatch" data-theme="violet"  style="background:oklch(.42 .18 290)"  title="Violet"  onclick="setTheme('violet')"></button>
+      <button class="theme-swatch" data-theme="rose"    style="background:oklch(.47 .17 15)"   title="Rose"    onclick="setTheme('rose')"></button>
+      <button class="theme-swatch" data-theme="midnight"style="background:oklch(.25 .04 250)"  title="Midnight"onclick="setTheme('midnight')"></button>
+    </div>
+  </div>
+
+  <div class="hero-icon">🧠</div>
+
+  <div class="hero">
+    <h1 id="ui-title">Wie fühlt sich <em>ADHS</em> an?</h1>
+    <p id="ui-sub">Eine Stunde als Schüler·in mit ADHS</p>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature"><em id="ui-f1i">🎯</em><strong id="ui-f1t">Echte Aufgaben</strong><span id="ui-f1d">Du lernst wie alle anderen — Mathe, Lesen, Schreiben.</span></div>
+    <div class="feature"><em id="ui-f2i">💭</em><strong id="ui-f2t">Gedanken kommen einfach</strong><span id="ui-f2d">Ob du willst oder nicht — dein Kopf springt ständig.</span></div>
+    <div class="feature"><em id="ui-f3i">🔔</em><strong id="ui-f3t">Ablenkungen überall</strong><span id="ui-f3d">Das Klassenzimmer ist voller Dinge, die die Aufmerksamkeit stehlen.</span></div>
+    <div class="feature"><em id="ui-f4i">💡</em><strong id="ui-f4t">Zum Nachdenken</strong><span id="ui-f4d">Am Ende gibt es Fragen, die ihr gemeinsam besprechen könnt.</span></div>
+  </div>
+
+  <div class="note" id="ui-note">⚠️ Hinweis: Diese Simulation zeigt einen kleinen Ausschnitt davon, wie ADHS sich anfühlen kann — aber ADHS ist bei jedem Menschen anders. Vielleicht sitzt gerade jemand mit ADHS neben dir. Begegnet euch respektvoll.</div>
+
+  <details class="teacher-intro-box">
+    <summary id="ui-teacher-summary">📋 Für Lehrkräfte</summary>
+    <p id="ui-teacher-text" style="margin-bottom:8px"><strong>Wie ihr diese Simulation einsetzen könnt:</strong></p>
+    <ul id="ui-teacher-list">
+      <li>Simulation gemeinsam auf dem Beamer zeigen oder jedes Kind einzeln erkunden lassen</li>
+      <li>Dauer: ca. 12 Minuten Simulation + 15–20 Min. Auswertung</li>
+      <li>Jederzeit pausieren mit dem ⏸-Button in der Simulation</li>
+      <li>Die Auswertung enthält Diskussionsfragen für das Klassengespräch</li>
+      <li>Achtung: Kinder mit ADHS in der Klasse sollten das Thema nicht als „Vorführung" erleben</li>
+      <li>Empfehlung: Vor dem Start kurz erklären, dass heute alle das gleiche ausprobieren</li>
+    </ul>
+  </details>
+
+  <div class="opt-group">
+    <div class="opt-lbl" id="ui-diff-lbl">Intensität</div>
+    <div class="opt-btns">
+      <button class="opt-btn" data-val="leicht"  onclick="setDiff('leicht')"  id="diff-leicht"></button>
+      <button class="opt-btn active" data-val="mittel" onclick="setDiff('mittel')"  id="diff-mittel"></button>
+      <button class="opt-btn" data-val="intensiv" onclick="setDiff('intensiv')" id="diff-intensiv"></button>
+    </div>
+  </div>
+
+  <div class="opt-group">
+    <div class="opt-lbl" id="ui-dur-lbl">⏱ Simulationsdauer</div>
+    <div class="dur-btns">
+      <button class="dur-btn" data-dur="480" onclick="setDuration(480)" id="dur-5">8 Min</button>
+      <button class="dur-btn sel" data-dur="720" onclick="setDuration(720)" id="dur-8">12 Min</button>
+      <button class="dur-btn" data-dur="960" onclick="setDuration(960)" id="dur-12">16 Min</button>
+    </div>
+  </div>
+
+  <details class="settings-disclosure">
+    <summary id="ui-settings-summary">⚙️ Weitere Einstellungen</summary>
+
+    <div class="sc-label" id="ui-sc-label">Klangkulisse wählen</div>
+    <div class="sc-pick">
+      <button class="sc-btn sel" data-sc="klasse"   onclick="selectSc(this)" id="sc-klasse"></button>
+      <button class="sc-btn"     data-sc="schulhof"  onclick="selectSc(this)" id="sc-schulhof"></button>
+      <button class="sc-btn"     data-sc="regen"     onclick="selectSc(this)" id="sc-regen"></button>
+      <button class="sc-btn"     data-sc="bibliothek"onclick="selectSc(this)" id="sc-bibliothek"></button>
+      <button class="sc-btn"     data-sc="lautlos"   onclick="selectSc(this)" id="sc-lautlos"></button>
+    </div>
+
+    <div class="opt-group">
+      <div class="opt-lbl" id="ui-day-lbl">Tagesform</div>
+      <div class="opt-btns">
+        <button class="opt-btn" id="day-gut"      onclick="setDay('gut')"></button>
+        <button class="opt-btn active" id="day-normal"   onclick="setDay('normal')"></button>
+        <button class="opt-btn" id="day-schlecht" onclick="setDay('schlecht')"></button>
+      </div>
+    </div>
+
+    <button class="dyslexia-btn" id="dyslexia-btn" onclick="toggleDyslexia()">🔤 OpenDyslexic-Schrift</button>
+
+    <button class="med-toggle" id="med-btn" onclick="toggleMed()">
+      <div class="med-dot" id="med-dot"></div>
+      <span id="med-label">Ohne Medikament simulieren</span>
+    </button>
+
+    <label class="baseline-toggle-row">
+      <input type="checkbox" id="baseline-toggle" checked onchange="baselineEnabled=this.checked">
+      <span id="ui-baseline-lbl">⏱ Vorher: 90 Sek. normales Lernen (Vergleich)</span>
+    </label>
+
+  </details>
+
+  <button class="btn" onclick="startSim()" id="ui-start-btn">Simulation starten →</button>
+
+</div><!-- #welcome -->
+
+<!-- ══ SIMULATION ═════════════════════════════════════════ -->
+<div id="simulation" class="screen">
+
+  <div class="topbar">
+    <span class="topbar-label" id="ui-sim-label">ADHS-Simulation</span>
+    <div class="topbar-right">
+      <span id="baseline-badge">🟢 Normal</span>
+      <span id="hyperfocus-badge">⚡ Hyperfokus</span>
+      <span id="med-badge">💊</span>
+      <button id="teacher-view-btn" class="topbar-btn" onclick="toggleTeacherView()" title="Lehrkraft-Ansicht">📋</button>
+      <button id="mute-btn" class="topbar-btn" onclick="toggleMute()" title="Ton">🔊</button>
+      <span class="topbar-timer" id="sim-timer">12:00</span>
+      <button id="pause-btn" class="topbar-btn" onclick="togglePause()">⏸</button>
+    </div>
+  </div>
+
+  <div id="vignette"></div>
+  <div class="sim-body">
+
+    <!-- Fortschritts-Punkte: überspannen beide Spalten -->
+    <div class="tp-dots" id="tp-dots"></div>
+
+    <!-- Linke Spalte: Aufgaben -->
+    <div class="sim-main">
+      <div class="task-wrapper">
+        <div id="task-display"></div>
+        <button class="answer-btn" id="task-sub" onclick="TM.submit()" style="display:none"></button>
+      </div>
+    </div>
+
+    <!-- Rechte Spalte / auf Mobile: fixierter Boden-Strip -->
+    <aside class="sim-panel">
+      <div id="meter">
+        <span class="m-label" id="ui-focus-label">Konzentration</span>
+        <div class="vu-track">
+          <div id="m-bar"></div>
+          <div class="vu-segs"></div>
+        </div>
+        <div class="m-val-row">
+          <span class="m-val" id="m-val-txt">100%</span>
+        </div>
+        <div class="m-mood" id="m-mood"></div>
+      </div>
+    </aside>
+
+  </div><!-- .sim-body -->
+
+  <div class="notif-tray" id="notifs"></div>
+  <div id="thoughts"></div>
+
+  <div id="fidget" onclick="fidgetClick()">🖊️</div>
+
+  <!-- Lehrer-Popup -->
+  <div id="lehrer">
+    <div class="lh-header">
+      <span class="lh-avatar">🍎</span>
+      <div>
+        <div class="lh-name" id="lh-name">Frau Schmidt</div>
+        <div class="lh-role" id="lh-role">Lehrerin</div>
+      </div>
+    </div>
+    <p class="lh-msg" id="lh-msg">Kannst du vorlesen, wo wir waren?</p>
+    <div class="lh-actions">
+      <button class="lh-btn" onclick="lehrerAns(false)" id="lh-btn-lost">Ich hab's verloren 😔</button>
+      <button class="lh-btn" onclick="lehrerAns(true)"  id="lh-btn-ok">Ich weiß es! 📖</button>
+    </div>
+  </div>
+
+  <!-- Teacher view panel -->
+  <div id="teacher-view">
+    <div class="tv-eyebrow" id="tv-title">📋 Lehrkraft-Ansicht</div>
+    <div class="tv-row"><span class="tv-lbl" id="tv-lbl-0">Phase</span><span class="tv-val" id="tv-phase">—</span></div>
+    <div class="tv-row"><span class="tv-lbl" id="tv-lbl-1">Konzentration</span><span class="tv-val" id="tv-focus">—</span></div>
+    <div class="tv-row"><span class="tv-lbl" id="tv-lbl-2">Gedanken</span><span class="tv-val" id="tv-thoughts">0</span></div>
+    <div class="tv-row"><span class="tv-lbl" id="tv-lbl-3">Ablenkungen</span><span class="tv-val" id="tv-notifs">0</span></div>
+    <div class="tv-row"><span class="tv-lbl" id="tv-lbl-4">Hyperfokus</span><span class="tv-val" id="tv-hyper">—</span></div>
+  </div>
+
+  <!-- Med wearoff banner -->
+  <div id="med-wearoff"></div>
+
+  <!-- Pause overlay -->
+  <div id="pause-overlay">
+    <div class="pause-card">
+      <div class="pause-icon">⏸</div>
+      <div class="pause-lbl" id="ui-pause-lbl">Pause</div>
+      <p class="pause-cost" id="ui-pause-note">Gut so — manchmal braucht man eine Pause.</p>
+      <button class="btn" onclick="togglePause()" id="ui-resume-btn">Weiter →</button>
+    </div>
+  </div>
+
+</div><!-- #simulation -->
+
+<!-- ══ DEBRIEF ═════════════════════════════════════════════ -->
+<div id="debrief" class="screen">
+
+  <div class="db-head">
+    <h2 id="ui-db-title">Gut gemacht! <em>Was du erlebt hast</em></h2>
+    <p id="ui-db-sub">So sieht ein Schultag mit ADHS aus – jeden Tag.</p>
+    <p class="db-warm" id="ui-db-warm">Das war anstrengend. Für Kinder mit ADHS fühlt sich jeder einzelne Schultag so an — ohne Pause, ohne Ausschalten.</p>
+  </div>
+
+  <div id="reflect-section"></div>
+
+  <div class="stats" id="stats"></div>
+
+  <h2 class="db-section-title" id="ui-sym-title">Was du <em>gespürt</em> hast</h2>
+  <div class="sym-grid" id="sym-grid"></div>
+
+  <h2 class="db-section-title" id="ui-super-title">Die <em>Superkräfte</em> von ADHS</h2>
+  <div class="super-grid" id="super-grid"></div>
+
+  <h2 class="db-section-title" id="ui-anec-title">Was Kinder mit ADHS erzählen</h2>
+  <div class="anec-grid" id="anec-grid"></div>
+
+  <h2 class="db-section-title" id="ui-help-title">Wie ich <em>helfen</em> kann</h2>
+  <div class="help-box" id="help-grid"></div>
+
+  <div class="teacher-guide-db" id="teacher-guide-db">
+    <div class="tg-eyebrow" id="tg-eyebrow">📋 Für Lehrkräfte — Unterrichtsgespräch</div>
+    <h3 id="tg-disc-title">Diskussionsfragen für die Klasse</h3>
+    <div id="tg-questions"></div>
+    <h3 id="tg-msg-title">Wichtige Botschaften</h3>
+    <div id="tg-messages"></div>
+    <h3 id="tg-next-title">Was ich als Lehrkraft tun kann</h3>
+    <div id="tg-tips"></div>
+  </div>
+
+  <div class="db-foot">
+    <p id="ui-db-foot">ADHS ist keine Entscheidung. Es ist einfach anders.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <button class="btn" onclick="restart()" id="ui-restart-btn">Nochmal starten</button>
+      <a class="btn" href="adhs-praesentation.html#12" id="ui-back-praes-btn" style="display:none;background:linear-gradient(180deg,oklch(.48 .1 160),oklch(.38 .09 155));text-decoration:none">🧑‍🏫 Zurück zur Präsentation</a>
+      <button class="btn" onclick="openResultCard()" id="ui-rc-btn" style="background:linear-gradient(180deg,oklch(.5 .06 210),oklch(.4 .05 210))">🖼 Ergebnis-Karte</button>
+      <button class="btn" onclick="copyResultCode()" id="ui-agg-btn" style="background:linear-gradient(180deg,oklch(.48 .08 240),oklch(.38 .07 240))">📋 Ergebnis-Code</button>
+      <button class="btn" onclick="openAggregate()" id="ui-class-btn" style="background:linear-gradient(180deg,oklch(.48 .08 260),oklch(.38 .07 260))">📊 Klassen-Ansicht</button>
+      <button class="btn" onclick="window.print()" id="ui-print-btn" style="background:linear-gradient(180deg,oklch(.55 .03 215),oklch(.42 .04 215))">🖨️ Drucken / PDF</button>
+    </div>
+  </div>
+
+</div><!-- #debrief -->
+
+<!-- Countdown overlay -->
+<div id="countdown-overlay">
+  <div class="cdo-card">
+    <p class="cdo-msg" id="cdo-msg">Gleich beginnt die Stunde …</p>
+    <div class="cdo-num" id="cdo-num">3</div>
+    <p class="cdo-sub" id="cdo-sub">Heute bist du Schüler·in in Klasse 3.</p>
+  </div>
+</div>
+
+<!-- Sim-end transition overlay -->
+<div id="sim-end-overlay">
+  <p id="sim-end-msg">Die Stunde ist vorbei.</p>
+</div>
+
+<!-- ══ AGGREGATE SCREEN ══════════════════════════════════════ -->
+<div id="aggregate" class="screen">
+  <div class="agg-head">
+    <h2 id="ui-agg-title">Klassen-Übersicht</h2>
+    <p id="ui-agg-sub">Ergebnis-Codes hier einfügen</p>
+  </div>
+  <div class="agg-input-card">
+    <div class="agg-input-lbl" id="ui-agg-input-lbl">Codes einfügen</div>
+    <textarea class="agg-textarea" id="agg-codes" placeholder="Codes hier einfügen …" oninput="parseAggCodes()"></textarea>
+    <div class="agg-link-row">
+      <button class="btn" style="font-size:.8rem;padding:9px 18px" onclick="copyAggLink()" id="agg-link-btn">🔗 Klassen-Link kopieren</button>
+    </div>
+  </div>
+  <div id="agg-results">
+    <p class="agg-empty" id="ui-agg-empty">Noch keine Ergebnisse.</p>
+  </div>
+  <button class="btn" style="margin-top:24px;background:rgba(255,255,255,.2)" onclick="show('debrief')" id="agg-back-btn">← Zurück</button>
+</div>
+
+<!-- Result card overlay -->
+<div id="result-card-overlay">
+  <div class="rc-wrap">
+    <div id="result-card">
+      <div class="rc-eyebrow" id="rc-eyebrow">ADHS-Simulator · Klasse 3/4</div>
+      <input class="rc-name" id="rc-name" placeholder="Name (optional)" maxlength="40">
+      <div class="rc-stats" id="rc-stats"></div>
+      <p class="rc-quote" id="rc-quote"></p>
+      <p class="rc-footer" id="rc-footer"></p>
+    </div>
+    <div class="rc-actions">
+      <p class="rc-tip" id="rc-tip"></p>
+      <div class="rc-btns">
+        <button class="btn rc-close-btn" onclick="closeResultCard()" id="rc-close-btn">Schließen</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mood check-in (between sim-end and debrief) -->
+<div id="mood-overlay">
+  <div class="mood-card">
+    <p class="mood-prompt" id="mood-prompt">Wie fühlst du dich — direkt jetzt?</p>
+    <div class="mood-emojis">
+      <button class="mood-btn" data-v="overwhelmed" onclick="selectMood(this)">😤</button>
+      <button class="mood-btn" data-v="stressed"    onclick="selectMood(this)">😰</button>
+      <button class="mood-btn" data-v="neutral"     onclick="selectMood(this)">😐</button>
+      <button class="mood-btn" data-v="calm"        onclick="selectMood(this)">😌</button>
+      <button class="mood-btn" data-v="good"        onclick="selectMood(this)">😊</button>
+    </div>
+    <span class="mood-skip" id="mood-skip" onclick="skipMood()">Überspringen →</span>
+  </div>
+</div>
+
+<!-- Coping strategy prompt -->
+<div id="coping-prompt">
+  <div class="cp-body">
+    <span class="cp-icon">💡</span>
+    <div class="cp-text">
+      <p class="cp-title" id="cp-title">Strategie: Gedanken aufschreiben</p>
+      <p class="cp-sub" id="cp-sub">Schreib den ablenkenden Gedanken auf — dann kannst du loslassen.</p>
+    </div>
+    <button class="cp-btn" id="cp-btn" onclick="useCoping()">✓ Aufgeschrieben!</button>
+    <button class="cp-close" onclick="dismissCoping()">×</button>
+  </div>
+  <p class="cp-feedback" id="cp-feedback">Gut! Fokus erholt sich …</p>
+</div>
+
+<!-- ADHD phase start overlay (after baseline) -->
+<div id="adhd-start-overlay">
+  <div class="aso-label" id="aso-label">Jetzt beginnt</div>
+  <p class="aso-msg" id="adhd-start-msg">Jetzt beginnt die ADHS-Simulation — dieselben Aufgaben, aber jetzt mit ADHS.</p>
+</div>
+
+<script defer src="js/00-state.js"></script>
+<script defer src="js/01-translations.js"></script>
+<script defer src="js/02-pool.js"></script>
+<script defer src="js/03-sfx.js"></script>
+<script defer src="js/04-tm.js"></script>
+<script defer src="js/05-render-task.js"></script>
+<script defer src="js/06-render-merken.js"></script>
+<script defer src="js/07-check-mc.js"></script>
+<script defer src="js/08-check-writing.js"></script>
+<script defer src="js/09-update-cd.js"></script>
+<script defer src="js/10-update-dots.js"></script>
+<script defer src="js/11-update-meter.js"></script>
+<script defer src="js/12-drain-focus.js"></script>
+<script defer src="js/13-show-coping-prompt.js"></script>
+<script defer src="js/14-use-coping.js"></script>
+<script defer src="js/15-dismiss-coping.js"></script>
+<script defer src="js/16-later.js"></script>
+<script defer src="js/17-spawn-thought.js"></script>
+<script defer src="js/18-spawn-notif.js"></script>
+<script defer src="js/19-show-lehrer.js"></script>
+<script defer src="js/20-lehrer-ans.js"></script>
+<script defer src="js/21-schedule-lehrer.js"></script>
+<script defer src="js/22-trap-focus.js"></script>
+<script defer src="js/23-release-focus.js"></script>
+<script defer src="js/24-start-hyperfocus.js"></script>
+<script defer src="js/25-end-hyperfocus.js"></script>
+<script defer src="js/26-spawn-day-note.js"></script>
+<script defer src="js/27-set-day.js"></script>
+<script defer src="js/28-teacher-view.js"></script>
+<script defer src="js/29-toggle-pause.js"></script>
+<script defer src="js/30-toggle-mute.js"></script>
+<script defer src="js/31-start-sim.js"></script>
+<script defer src="js/32-show-countdown.js"></script>
+<script defer src="js/33-show-adhd-transition.js"></script>
+<script defer src="js/34-launch-sim.js"></script>
+<script defer src="js/35-tick.js"></script>
+<script defer src="js/36-end-sim.js"></script>
+<script defer src="js/37-show-mood-check.js"></script>
+<script defer src="js/38-select-mood.js"></script>
+<script defer src="js/39-skip-mood.js"></script>
+<script defer src="js/40-build-debrief.js"></script>
+<script defer src="js/41-reflect-select.js"></script>
+<script defer src="js/42-reveal-next-block.js"></script>
+<script defer src="js/43-restart.js"></script>
+<script defer src="js/44-set-duration.js"></script>
+<script defer src="js/45-encode-result.js"></script>
+<script defer src="js/46-decode-result.js"></script>
+<script defer src="js/47-copy-result-code.js"></script>
+<script defer src="js/48-open-result-card.js"></script>
+<script defer src="js/49-close-result-card.js"></script>
+<script defer src="js/50-open-aggregate.js"></script>
+<script defer src="js/51-copy-agg-link.js"></script>
+<script defer src="js/52-parse-agg-codes.js"></script>
+<script defer src="js/53-ui-helpers.js"></script>
+<script defer src="js/54-set-lang.js"></script>
+<script defer src="js/55-init.js"></script>
+<script defer src="js/56-dyslexia.js"></script>
+<script defer src="js/57-back-praes.js"></script>
+</body>
+</html>

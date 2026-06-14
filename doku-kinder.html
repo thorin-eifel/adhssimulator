@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Vollständige Anleitung zum ADHS-Simulator für Klasse 3/4: Phasen, Aufgabentypen, Einstellungen, Konzentrations-Meter und Auswertung.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎒</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<title>Dokumentation — Kinder-Simulator (Klasse 3/4)</title>
+<link rel="stylesheet" href="doku.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <span class="topbar-label">🎒 Kinder-Simulator</span>
+    <div class="topbar-right">
+    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+    <a href="dokumentation.html" class="topbar-back">← Dokumentation</a>
+  </div>
+</nav>
+<script src="doku.js"></script>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-icon">🎒</div>
+    <h1>Kinder-Simulator<br><em>Klasse 3 / 4</em></h1>
+    <p>Vollständige Dokumentation zur interaktiven Simulation für Grundschulkinder.</p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <h2>Inhalt</h2>
+    <ol>
+      <li><a href="#was-ist"><span class="toc-num">1</span> Was ist diese App?</a></li>
+      <li><a href="#start"><span class="toc-num">2</span> Simulation starten</a></li>
+      <li><a href="#phasen"><span class="toc-num">3</span> Die Simulationsphasen</a></li>
+      <li><a href="#aufgaben"><span class="toc-num">4</span> Aufgabentypen</a></li>
+      <li><a href="#einstellungen"><span class="toc-num">5</span> Einstellungen</a></li>
+      <li><a href="#konzentration"><span class="toc-num">6</span> Konzentrations-Meter</a></li>
+      <li><a href="#steuerung"><span class="toc-num">7</span> Lehrkraft-Ansicht & Steuerung</a></li>
+      <li><a href="#ergebnisse"><span class="toc-num">8</span> Ergebnisse & Auswertung</a></li>
+      <li><a href="#technik"><span class="toc-num">9</span> Technische Details</a></li>
+      <li><a href="#faq"><span class="toc-num">10</span> Häufige Fragen</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. WAS IST DIESE APP -->
+  <section id="was-ist">
+    <div class="section-header"><span class="section-num">1</span><h2>Was ist diese App?</h2></div>
+    <div class="card">
+      <p>Der <strong>ADHS-Simulator für Klasse 3/4</strong> ist ein pädagogisches Werkzeug, das Schülerinnen und Schülern, Lehrkräften und Eltern ermöglicht, aus der Innenperspektive zu erleben, wie sich der Schulalltag mit ADHS anfühlt.</p>
+      <p>Die App ist kein medizinisches Diagnosewerkzeug und ersetzt keine professionelle Beratung. Sie dient der <strong>Empathiebildung und Sensibilisierung</strong> — ein erlebnisorientierter Einstieg in das Thema Aufmerksamkeit, Ablenkung und exekutive Funktionen.</p>
+    </div>
+    <div class="card-grid">
+      <div class="card">
+        <h3>🎯 Zielgruppe</h3>
+        <p>Grundschule Klasse 3 und 4 (ca. 8–10 Jahre). Geeignet für Einzel- und Gruppennutzung, Klassenprojekte und Elternabende.</p>
+      </div>
+      <div class="card">
+        <h3>🌐 Sprache</h3>
+        <p>Vollständig auf <strong>Deutsch</strong>, in einfacher, kindgerechter Sprache.</p>
+      </div>
+      <div class="card">
+        <h3>💻 Technik</h3>
+        <p>Läuft vollständig im Browser — kein Download, keine Installation, keine Anmeldung. Funktioniert auf Desktop, Tablet und Beamer.</p>
+      </div>
+      <div class="card">
+        <h3>🔒 Datenschutz</h3>
+        <p>Es werden keinerlei persönliche Daten gespeichert oder übertragen. Alles läuft lokal im Browser. (Nur das gewählte Farbthema wird lokal gemerkt.)</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SIMULATION STARTEN -->
+  <section id="start">
+    <div class="section-header"><span class="section-num">2</span><h2>Simulation starten</h2></div>
+    <div class="card">
+      <div class="steps">
+        <div class="step"><span class="step-num">1</span><div class="step-body">
+          <strong>Farbthema wählen (optional)</strong>
+          <span>Fünf Farbthemen stehen zur Auswahl: Teal (Standard), Grün, Violet, Rose und Midnight.</span>
+        </div></div>
+        <div class="step"><span class="step-num">2</span><div class="step-body">
+          <strong>Schwierigkeit einstellen</strong>
+          <span><em>Leicht</em> für jüngere oder sensible Kinder, <em>Mittel</em> für den regulären Unterrichtseinsatz, <em>Intensiv</em> für ältere Klassen oder Lehrkräftefortbildungen.</span>
+        </div></div>
+        <div class="step"><span class="step-num">3</span><div class="step-body">
+          <strong>Dauer festlegen</strong>
+          <span>8 Minuten (16 Aufgaben), 12 Minuten (24 Aufgaben) oder 16 Minuten (32 Aufgaben).</span>
+        </div></div>
+        <div class="step"><span class="step-num">4</span><div class="step-body">
+          <strong>Geräuschkulisse wählen</strong>
+          <span>Klassenzimmer, Schulhof, Regen, Bibliothek oder Lautlos. Beeinflusst die akustische Atmosphäre während der Simulation. (In „Weitere Einstellungen".)</span>
+        </div></div>
+        <div class="step"><span class="step-num">5</span><div class="step-body">
+          <strong>Tagesform und Medi-Modus (optional)</strong>
+          <span>Die Tagesform beeinflusst, wie stark die ADHS-Symptome ausgeprägt sind. Der Medikamenten-Modus simuliert, wie sich ein ruhigerer, strukturierterer Lerntag anfühlt.</span>
+        </div></div>
+        <div class="step"><span class="step-num">6</span><div class="step-body">
+          <strong>„Simulation starten" klicken</strong>
+          <span>Ein kurzer Countdown erscheint, danach beginnt die Baseline-Phase (90 Sek. normales Lernen zum Vergleich), sofern diese nicht deaktiviert wurde.</span>
+        </div></div>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Hinweis für den Klasseneinsatz:</strong> Empfehlung, die Simulation zunächst selbst durchzuführen, bevor sie mit der Klasse eingesetzt wird. Die Baseline-Phase (normales Lernen) ermöglicht einen direkten Vorher-Nachher-Vergleich. → Ausführliche Planung in der <a href="doku-unterricht.html">Unterrichtsvorbereitung</a>.
+    </div>
+  </section>
+
+  <!-- 3. PHASEN -->
+  <section id="phasen">
+    <div class="section-header"><span class="section-num">3</span><h2>Die Simulationsphasen</h2></div>
+    <p>Die Simulation durchläuft mehrere klar definierte Phasen. Der Hintergrund wechselt dabei subtil die Farbe, um die aktuelle Phase visuell zu signalisieren.</p>
+    <div class="phase-grid" style="margin-bottom:16px;margin-top:16px;">
+      <div class="phase-card phase-baseline"><h3><span class="phase-dot"></span>Baseline (90 Sek.)</h3><p>Normales Lernen ohne Ablenkungen. Dient als Vergleichsreferenz. Grüner Hintergrund, ruhige Geräuschkulisse. Kann in den Einstellungen deaktiviert werden.</p></div>
+      <div class="phase-card phase-calm"><h3><span class="phase-dot"></span>Ruhig</h3><p>Der ADHS-Alltag beginnt. Noch weitgehend konzentriert, gelegentliche Gedankensprünge. Leichte Ablenkungsreize.</p></div>
+      <div class="phase-card phase-mild"><h3><span class="phase-dot"></span>Leicht</h3><p>Erste spürbare Ablenkungen. Gedanken wandern häufiger ab. Gelegentliche Einblendungen und visuelle Störungen.</p></div>
+      <div class="phase-card phase-moderate"><h3><span class="phase-dot"></span>Mittel</h3><p>Deutlich erhöhte Ablenkbarkeit. Hintergrundgeräusche nehmen zu, Gedanken unterbrechen häufiger. Konzentration sinkt merklich.</p></div>
+      <div class="phase-card phase-intense"><h3><span class="phase-dot"></span>Intensiv</h3><p>Starke Reizüberflutung. Viele Ablenkungen gleichzeitig, Stimmen und Geräusche, visuelle Verzerrungen. Der Bildschirmfilter verstärkt sich.</p></div>
+      <div class="phase-card phase-hyper"><h3><span class="phase-dot"></span>Hyperfokus</h3><p>Gegenpol zur Ablenkung: vollständige Versunkenheit in eine Aufgabe. Alles andere tritt in den Hintergrund. Tritt einmalig zufällig auf.</p></div>
+    </div>
+    <div class="phase-grid" style="margin-bottom:0;">
+      <div class="phase-card phase-med" style="grid-column:1/-1;"><h3><span class="phase-dot"></span>Medikamentiert (optional)</h3><p>Wenn der Medi-Modus aktiviert ist, sind alle Phasen gedämpfter. Weniger Gedankensprünge, ruhigere Geräuschkulisse, grüne Hintergrundtönung. Gegen Ende der Simulation lässt die Wirkung nach (<em>„Ausklang"</em>).</p></div>
+    </div>
+  </section>
+
+  <!-- 4. AUFGABEN -->
+  <section id="aufgaben">
+    <div class="section-header"><span class="section-num">4</span><h2>Aufgabentypen</h2></div>
+    <p>Der Aufgabenpool umfasst <strong>64 Aufgaben</strong> aus vier Aufgabentypen. Pro Simulation werden je nach Dauer 16, 24 oder 32 zufällig ausgewählt und gemischt. Die Aufgaben der Baseline-Phase werden nicht wiederholt.</p>
+    <table style="margin:16px 0;">
+      <thead><tr><th>Typ</th><th>Inhalt</th><th>Format</th><th>Zeit</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge-mathe">🔢 Mathe</span></td><td>Kopfrechnen & Geometrie</td><td>Multiple Choice (4 Optionen)</td><td>80 Sek.</td></tr>
+        <tr><td><span class="badge badge-lesen">📖 Lesen</span></td><td>Sachtexte aus Deutsch, Sachkunde, Natur, Ethik</td><td>Kurztext + Multiple Choice</td><td>100 Sek.</td></tr>
+        <tr><td><span class="badge badge-schreiben">✏️ Schreiben</span></td><td>Freie Textantworten</td><td>Freitext (mind. 15 Zeichen)</td><td>120 Sek.</td></tr>
+        <tr><td><span class="badge badge-merken">🧩 Merken</span></td><td>Gedächtnis</td><td>Wörter einprägen → Multiple Choice</td><td>5 Sek. + 60 Sek.</td></tr>
+      </tbody>
+    </table>
+    <div class="card">
+      <h3>Verteilung im Pool</h3>
+      <div class="setting-opts" style="margin-top:4px;">
+        <span class="chip">🔢 Mathe · 18 Aufgaben</span>
+        <span class="chip">📖 Lesen · 36 Aufgaben</span>
+        <span class="chip">🧩 Merken · 7 Aufgaben</span>
+        <span class="chip">✏️ Schreiben · 3 Aufgaben</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>Taktung:</strong> Nach jeder beantworteten Aufgabe wartet die App 5 Sekunden, bevor die nächste erscheint — unabhängig davon, wie schnell geantwortet wurde. So wird ein realistisches Lerntempo erzwungen.
+    </div>
+  </section>
+
+  <!-- 5. EINSTELLUNGEN -->
+  <section id="einstellungen">
+    <div class="section-header"><span class="section-num">5</span><h2>Einstellungen</h2></div>
+    <div class="card">
+      <div class="setting-row"><div class="setting-icon">⚡</div><div class="setting-body">
+        <strong>Schwierigkeit</strong>
+        <span>Bestimmt, wie häufig und intensiv Ablenkungen auftreten, wie schnell die Konzentration sinkt und wann die Phasen wechseln.</span>
+        <div class="setting-opts"><span class="chip">🟢 Leicht — weniger Störungen</span><span class="chip">🟡 Mittel — realistisch, Standard</span><span class="chip">🔴 Intensiv — starke Reize, frühe Phasenwechsel</span></div>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">⏱</div><div class="setting-body">
+        <strong>Simulationsdauer</strong>
+        <span>Legt fest, wie lange die ADHS-Phase (nach der Baseline) dauert und wie viele Aufgaben gezeigt werden.</span>
+        <div class="setting-opts"><span class="chip">8 Min → 16 Aufgaben</span><span class="chip">12 Min → 24 Aufgaben</span><span class="chip">16 Min → 32 Aufgaben</span></div>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body">
+        <strong>Geräuschkulisse</strong>
+        <span>Akustische Umgebung. Bei intensiven Phasen wechselt die Kulisse automatisch zu einer lauteren Chaos-Version.</span>
+        <div class="setting-opts"><span class="chip">🏫 Klassenzimmer</span><span class="chip">🏃 Schulhof</span><span class="chip">🌧 Regen</span><span class="chip">📚 Bibliothek</span><span class="chip">🔇 Lautlos</span></div>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">😊</div><div class="setting-body">
+        <strong>Tagesform</strong>
+        <span>Simuliert, wie unterschiedlich sich ADHS je nach Schlaf, Stress und allgemeinem Befinden auswirkt.</span>
+        <div class="setting-opts"><span class="chip">😴 Gut geschlafen — abgeschwächt</span><span class="chip">😐 Normal — Standard</span><span class="chip">😫 Schlecht geschlafen — verstärkt</span></div>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">💊</div><div class="setting-body">
+        <strong>Medikamenten-Modus</strong>
+        <span>Wenn aktiviert, werden alle ADHS-Effekte gedämpft. Gegen Ende erscheint eine Meldung, dass die Wirkung nachlässt.</span>
+      </div></div>
+      <div class="setting-row"><div class="setting-icon">⏱</div><div class="setting-body">
+        <strong>Baseline (90 Sek.)</strong>
+        <span>Wenn aktiviert, startet die Simulation mit 90 Sekunden normalem Lernen ohne Ablenkungen. Dient als Vergleich und kann deaktiviert werden.</span>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 6. KONZENTRATIONS-METER -->
+  <section id="konzentration">
+    <div class="section-header"><span class="section-num">6</span><h2>Konzentrations-Meter</h2></div>
+    <div class="card-grid">
+      <div class="card">
+        <p>Das vertikale Balken-Meter rechts neben den Aufgaben zeigt jederzeit den aktuellen Konzentrationslevel (0–100 %). Der Farbverlauf reicht von <strong style="color:oklch(.55 .2 25)">Rot (unten, niedrig)</strong> bis <strong style="color:oklch(.50 .23 145)">Grün (oben, hoch)</strong>.</p>
+        <p>Auf Mobilgeräten erscheint das Meter als horizontaler Balken unter der Aufgabe.</p>
+        <h3>Was beeinflusst den Level?</h3>
+        <p><strong>Sinkt durch:</strong> falsche Antworten, abgelaufene Zeit, intensivere Phasen, Ablenkungsreize.<br><strong>Steigt durch:</strong> richtige Antworten, ruhige Phasen, Hyperfokus, Medikamenten-Modus, sowie die Bewältigungs-Strategie (Coping).</p>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+        <div class="meter-demo"><div class="meter-bar"></div><div class="meter-bar"></div><div class="meter-bar"></div><div class="meter-bar"></div><div class="meter-bar"></div></div>
+        <p style="font-size:.78rem;color:var(--ctw-400);text-align:center;font-style:italic;">Schematische Darstellung eines abfallenden Konzentrationsverlaufs</p>
+      </div>
+    </div>
+    <div class="tip">
+      <strong>Coping-Hilfe:</strong> Sinkt die Konzentration unter 55 %, erscheint einmalig ein Strategie-Tipp („Gedanken aufschreiben"). Wird er angenommen, erholt sich der Fokus über 20 Sekunden — ein Modell dafür, dass Strategien helfen.
+    </div>
+  </section>
+
+  <!-- 7. STEUERUNG -->
+  <section id="steuerung">
+    <div class="section-header"><span class="section-num">7</span><h2>Lehrkraft-Ansicht & Steuerung</h2></div>
+    <h3>Lehrkraft-Ansicht</h3>
+    <div class="card">
+      <p>Während der Simulation gibt es eine <strong>Lehrkraft-Ansicht</strong> (📋-Button in der Kopfzeile). Sie zeigt:</p>
+      <ul>
+        <li>Aktuelle Simulationsphase (Baseline / Ruhig / Leicht / Mittel / Intensiv)</li>
+        <li>Konzentrationslevel in Prozent</li>
+        <li>Anzahl abgelenkter Gedanken und Benachrichtigungen</li>
+        <li>Ob gerade Hyperfokus aktiv ist</li>
+      </ul>
+    </div>
+    <h3>Steuerung während der Simulation</h3>
+    <div class="card">
+      <div class="setting-row" style="padding-top:0;"><div class="setting-icon">⏸</div><div class="setting-body"><strong>Pause</strong><span>Stoppt die gesamte Simulation, alle Timer, Geräusche und Ablenkungen — für Zwischengespräche.</span></div></div>
+      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body"><strong>Ton ein/aus</strong><span>Schaltet alle Hintergrundgeräusche stumm, ohne die Simulation zu stoppen.</span></div></div>
+      <div class="setting-row"><div class="setting-icon">⌨️</div><div class="setting-body"><strong>Tastatur</strong><span>Die Tasten 1–4 wählen die Antwortmöglichkeiten bei Multiple-Choice-Aufgaben.</span></div></div>
+    </div>
+    <div class="tip">
+      Didaktische Einsatzszenarien, Stundenplanung und Reflexionsfragen findest du in der <a href="doku-unterricht.html"><strong>Unterrichtsvorbereitung</strong></a>.
+    </div>
+  </section>
+
+  <!-- 8. ERGEBNISSE -->
+  <section id="ergebnisse">
+    <div class="section-header"><span class="section-num">8</span><h2>Ergebnisse &amp; Auswertung</h2></div>
+    <div class="card">
+      <p>Nach der Simulation folgt eine kurze <strong>Stimmungsabfrage</strong> (Emoji-Skala) und dann die <strong>Auswertungsseite</strong> mit:</p>
+      <ul>
+        <li><strong>Statistik</strong> — geschaffte Aufgaben, abgelenkte Gedanken, Ablenkungen und End-Konzentration, jeweils mit Vergleichswerten</li>
+        <li><strong>Reflexionsfragen</strong> — werden nacheinander eingeblendet, zum gemeinsamen Besprechen</li>
+        <li><strong>Symptome & Stärken</strong> — was ADHS schwer macht und welche Stärken damit einhergehen</li>
+        <li><strong>Ergebnis-Karte</strong> — visuell teilbarer Ergebnisblock (mit optionalem Namen)</li>
+        <li><strong>Ergebnis-Code & Klassen-Ansicht</strong> — kompakter Code, mit dem mehrere Ergebnisse zu einer Klassenübersicht zusammengeführt werden können</li>
+      </ul>
+    </div>
+    <div class="note">
+      <strong>Klassen-Ansicht:</strong> Über <code>#aggregate</code> am Ende der Adresse (oder den Link-Button) öffnet sich eine Ansicht, in die mehrere Ergebnis-Codes eingefügt werden — sie zeigt Durchschnitt und Verteilung der ganzen Klasse. Es werden keine Daten übertragen; alles bleibt lokal.
+    </div>
+  </section>
+
+  <!-- 9. TECHNIK -->
+  <section id="technik">
+    <div class="section-header"><span class="section-num">9</span><h2>Technische Details</h2></div>
+    <div class="card">
+      <table>
+        <thead><tr><th>Merkmal</th><th>Detail</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Aufbau</strong></td><td><code>adhs-simulator-kinder.html</code> + <code>adhs-simulator-kinder.css</code> + Ordner <code>js/</code> mit 56 einzelnen Funktionsdateien</td></tr>
+          <tr><td><strong>Schriften</strong></td><td>Google Fonts (Merriweather, Nunito Sans) — Internetzugang beim ersten Laden nötig</td></tr>
+          <tr><td><strong>Audio</strong></td><td>5 MP3-Dateien im gleichen Ordner: <code>bg-classroom.mp3</code>, <code>bg-classroom-chaos.mp3</code>, <code>bg-schoolyard.mp3</code>, <code>bg-rain.mp3</code>, <code>bg-library.mp3</code></td></tr>
+          <tr><td><strong>Browser</strong></td><td>Chrome, Edge, Firefox, Safari — aktuell. Kein Internet Explorer.</td></tr>
+          <tr><td><strong>Datenspeicherung</strong></td><td>Keine Server-Verbindung. Nur das Farbthema wird im LocalStorage gemerkt.</td></tr>
+          <tr><td><strong>Farben</strong></td><td>OKLCH-Farbraum für konsistente Farbverläufe</td></tr>
+          <tr><td><strong>Audio-Engine</strong></td><td>Web Audio API für Effekte, <code>&lt;Audio&gt;</code>-Elemente für MP3-Loops</td></tr>
+          <tr><td><strong>Sprache</strong></td><td>Vanilla JavaScript, kein Framework</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Benötigte Dateien</h3>
+    <div class="card">
+      <p>Alle Dateien müssen im gleichen Ordner liegen (der Ordner <code>js/</code> als Unterordner):</p>
+      <div class="filetree">
+        📁 ADHS/<br>
+        &nbsp;&nbsp;├── adhs-simulator-kinder.html<br>
+        &nbsp;&nbsp;├── adhs-simulator-kinder.css<br>
+        &nbsp;&nbsp;├── 📁 js/  <span style="color:var(--ctw-400)">(56 Dateien)</span><br>
+        &nbsp;&nbsp;├── bg-classroom.mp3<br>
+        &nbsp;&nbsp;├── bg-classroom-chaos.mp3<br>
+        &nbsp;&nbsp;├── bg-schoolyard.mp3<br>
+        &nbsp;&nbsp;├── bg-rain.mp3<br>
+        &nbsp;&nbsp;└── bg-library.mp3
+      </div>
+    </div>
+    <h3>Offline-Betrieb</h3>
+    <div class="card">
+      <p>Die App funktioniert vollständig offline, wenn die Schriftarten zuvor einmal geladen wurden (Browser-Cache). Die MP3-Dateien müssen lokal vorhanden sein. Für garantierten Offline-Betrieb (z. B. Schulnetz ohne Internet): Schriftarten lokal einbinden oder durch systemnahe Fallbacks ersetzen.</p>
+    </div>
+  </section>
+
+  <!-- 10. FAQ -->
+  <section id="faq">
+    <div class="section-header"><span class="section-num">10</span><h2>Häufige Fragen</h2></div>
+    <div class="card"><h3>Ist die App eine medizinische Diagnose?</h3><p>Nein. Die App simuliert subjektiv erlebte Phänomene, die Menschen mit ADHS beschreiben. Sie ist kein Diagnosewerkzeug und ersetzt keine ärztliche oder psychologische Beurteilung.</p></div>
+    <div class="card"><h3>Können die Aufgaben angepasst werden?</h3><p>Ja — die Aufgaben stehen in der Datei <code>js/02-pool.js</code> im Array <code>POOL</code> und können direkt bearbeitet werden. Jede Aufgabe hat einen Typ (<code>mathe</code>, <code>lesen</code>, <code>schreiben</code>, <code>merken</code>), ihren Inhalt und die korrekte Antwort.</p></div>
+    <div class="card"><h3>Warum sind die Bilder so unscharf / flimmern?</h3><p>Das ist gewollt: In der Intensiv-Phase simulieren visuelle Filter (Unschärfe, Kontrastrauschen) das erdrückende Gefühl einer Reizüberflutung. Die Simulation kann jederzeit pausiert werden.</p></div>
+    <div class="card"><h3>Kein Ton trotz aktivierter Geräuschkulisse?</h3><p>Browser blockieren automatisch abgespieltes Audio, bis der Benutzer mit der Seite interagiert. Ein Klick auf „Simulation starten" zählt als Interaktion. Prüfen Sie außerdem, ob der Tab oder das Gerät stummgeschaltet ist.</p></div>
+    <div class="card"><h3>Wie lange dauert eine Simulation insgesamt?</h3><p>Baseline (90 Sek.) + gewählte Dauer (8 / 12 / 16 Min.) + Auswertung (ca. 5 Min.). Ein Vorschlag für die Schulstunde steht in der <a href="doku-unterricht.html">Unterrichtsvorbereitung</a>.</p></div>
+    <div class="card"><h3>Kann die Simulation für Kinder mit ADHS belastend sein?</h3><p>Möglicherweise ja. Empfehlung: vor dem Einsatz ansprechen, Teilnahme freistellen und eine ruhige Alternative anbieten. Die App ist als Empathie-Übung für alle konzipiert, nicht als konfrontative Erfahrung für Betroffene.</p></div>
+  </section>
+
+  <hr>
+  <footer>
+    ADHS-Simulator Klasse 3/4 · Pädagogisches Werkzeug zur Empathiebildung · Keine Haftung für medizinische Aussagen
+  </footer>
+
+</div>
+</body>
+</html>
