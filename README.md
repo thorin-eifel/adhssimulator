@@ -1,86 +1,86 @@
 # ADHS Simulator
 
-An interactive empathy tool that lets pupils, parents, and teachers experience what a school day feels like with ADHD. Runs entirely in the browser — no server, no build step, no dependencies.
+Ein interaktives Empathie-Werkzeug, das Schüler:innen, Eltern und Lehrkräften erfahrbar macht, wie sich ein Schultag mit ADHS anfühlt. Läuft vollständig im Browser — kein Server, kein Build-Schritt, keine Abhängigkeiten.
 
 ---
 
-## Pages
+## Seiten
 
-| Page | File | Description |
+| Seite | Datei | Beschreibung |
 |---|---|---|
-| Landing | `index.html` | Overview and entry point |
-| Kinder-Simulator | `adhs-simulator-kinder.html` | 12-minute classroom simulation for ages 8–10 |
-| Adult Simulator | `adhd-simulator.html` | Extended workplace simulation for teenagers and adults |
-| Lehrer-Präsentation | `adhs-praesentation.html` | Slide deck for classroom use (DE) |
-| Dokumentation | `dokumentation.html` | Documentation hub |
-| Doku — Kinder | `doku-kinder.html` | Guide to the children's simulator |
-| Doku — Erwachsene | `doku-erwachsene.html` | Guide to the adult simulator |
-| Doku — Unterricht | `doku-unterricht.html` | Lesson planning and teaching notes |
-| Doku — Info | `doku-info.html` | ADHD background info and DACH support organisations |
+| Startseite | `index.html` | Übersicht und Einstieg |
+| Kinder-Simulator | `adhs-simulator-kinder.html` | 12-minütige Schulstunden-Simulation für Klasse 3/4 |
+| Erwachsenen-Simulator | `adhd-simulator.html` | Ausführliche Arbeitsplatz-Simulation für Jugendliche und Erwachsene |
+| Lehrer-Präsentation | `adhs-praesentation.html` | Fertige Unterrichtspräsentation (15 Folien) |
+| Dokumentation | `dokumentation.html` | Dokumentations-Übersicht |
+| Doku — Kinder | `doku-kinder.html` | Anleitung zum Kinder-Simulator |
+| Doku — Erwachsene | `doku-erwachsene.html` | Anleitung zum Erwachsenen-Simulator |
+| Doku — Unterricht | `doku-unterricht.html` | Stundenplanung und didaktische Hinweise |
+| Doku — Info | `doku-info.html` | ADHS-Grundwissen und Anlaufstellen im DACH-Raum |
 
 ---
 
-## Features
+## Funktionen
 
 **Kinder-Simulator**
-- Simulated school tasks: maths, reading, writing, memory
-- Four ADHD phases: calm → mild → moderate → intense, plus hyperfocus
-- Intrusive random thoughts and notifications that interrupt focus
-- Teacher interruptions with mandatory responses
-- Concentration meter that drains in real time
-- Medication mode (reduces drain and distraction frequency)
-- Day-form setting (well-rested / normal / tired)
-- Adjustable difficulty (Leicht / Mittel / Intensiv) and duration (8 / 12 / 16 min)
-- Five soundscapes (classroom, schoolyard, rain, library, silent)
-- Structured debrief with reflection prompts and class discussion questions
-- Result card and shareable result code for class aggregation
-- OpenDyslexic font toggle (persists via `localStorage`)
-- "Back to presentation" button when launched from the teacher slide deck
+- Schulaufgaben zum Mitmachen: Rechnen, Lesen, Schreiben, Merken
+- Vier ADHS-Phasen: ruhig → leicht → mittel → intensiv, plus Hyperfokus
+- Zufällige Gedanken und Benachrichtigungen, die die Konzentration unterbrechen
+- Lehrerunterbrechungen mit Pflichtantworten
+- Konzentrationsanzeige, die in Echtzeit sinkt
+- Medikamenten-Modus (reduziert Abfall und Ablenkungshäufigkeit)
+- Tagesform-Einstellung (gut geschlafen / normal / schlecht geschlafen)
+- Einstellbare Intensität (Leicht / Mittel / Intensiv) und Dauer (8 / 12 / 16 Min.)
+- Fünf Klangkulissen (Klassenzimmer, Schulhof, Regen, Bibliothek, Lautlos)
+- Strukturierte Auswertung mit Reflexionsfragen und Diskussionsimpulsen
+- Ergebnis-Karte und teilbarer Ergebnis-Code für die Klassen-Gesamtauswertung
+- OpenDyslexic-Schriftumschalter (wird über `localStorage` gespeichert)
+- „Zurück zur Präsentation"-Button, wenn die Simulation aus der Lehrerpräsentation gestartet wird
 
-**Adult Simulator**
-- Workplace context (open-plan office)
-- Themes, language selector, calibration mode
-- Same OpenDyslexic toggle, shared `localStorage` key
+**Erwachsenen-Simulator**
+- Büroarbeitsplatz-Kontext (Großraumbüro)
+- Farbthemen, Sprachauswahl, Kalibrierungsmodus
+- Gleicher OpenDyslexic-Schalter, gemeinsamer `localStorage`-Schlüssel
 
-**Teacher Presentation**
-- 15 slides covering ADHD basics, the simulation walkthrough, and debrief
-- Keyboard navigation (← →) and laser pointer mode
-- Direct link to the kinder simulator with `?ref=praesentation` parameter
+**Lehrer-Präsentation**
+- 15 Folien zu ADHS-Grundlagen, Simulationsdurchführung und Auswertung
+- Tastaturnavigation (← →) und Laserpointer-Modus
+- Direktlink zum Kinder-Simulator mit `?ref=praesentation`-Parameter
 
 ---
 
-## Usage
+## Verwendung
 
-Open `index.html` in any modern browser. No installation required.
+`index.html` in einem modernen Browser öffnen. Keine Installation erforderlich.
 
 ```bash
-# macOS quick-start
+# macOS
 open index.html
 
-# or serve locally to avoid audio autoplay restrictions
+# Lokal servieren (empfohlen, um Audio-Autoplay-Einschränkungen zu umgehen)
 npx serve .
 python3 -m http.server 8080
 ```
 
-> Audio autoplay is blocked by most browsers on `file://` URLs. A local server (any will do) resolves this.
+> Audio-Autoplay wird von den meisten Browsern bei `file://`-URLs blockiert. Ein lokaler Server löst das Problem.
 
 ---
 
-## Accessibility
+## Barrierefreiheit
 
-- **OpenDyslexic** font toggle on every page, persisted in `localStorage` under the key `adhs_dyslexic`
-- All interactive elements are keyboard-accessible
-- OKLCH colour space used throughout for perceptually uniform contrast
-- Reduced-motion: animations are subtle and non-essential
-
----
-
-## Disclaimer
-
-This simulation illustrates *one possible* experience of ADHD. ADHD manifests differently in every person. It is not a diagnostic tool and makes no medical claims. Use it to build empathy, not to draw conclusions.
+- **OpenDyslexic**-Schriftumschalter auf jeder Seite, gespeichert in `localStorage` unter dem Schlüssel `adhs_dyslexic`
+- Alle interaktiven Elemente sind per Tastatur bedienbar
+- OKLCH-Farbraum durchgehend für wahrnehmungsuniformen Kontrast
+- Animationen sind dezent und nicht inhaltsentscheidend
 
 ---
 
-## Licence
+## Hinweis
 
-MIT — free to use, adapt, and share with attribution.
+Diese Simulation zeigt *eine mögliche* Erfahrung mit ADHS. ADHS äußert sich bei jedem Menschen anders. Das Tool ist kein Diagnoseinstrument und erhebt keinen medizinischen Anspruch. Es soll Empathie fördern — keine Schlussfolgerungen liefern.
+
+---
+
+## Lizenz
+
+MIT — kostenlos nutzbar, anpassbar und weitergabe mit Namensnennung.
