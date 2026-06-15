@@ -16,6 +16,7 @@
     "productName": "ADHS Simulator",
     "asar": true,
     "asarUnpack": ["**/*.mp3"],
+    "publish": null,
     "files": [
       "**/*",
       "!{.git,.gitignore,README.md,TECHNICAL.md}",
