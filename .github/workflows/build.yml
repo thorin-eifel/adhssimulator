@@ -22,7 +22,7 @@ jobs:
       - run: npm ci
 
       - name: Build macOS DMGs
-        run: npm run build:mac
+        run: npx electron-builder --mac --publish never
 
       - uses: actions/upload-artifact@v4
         with:
@@ -41,7 +41,7 @@ jobs:
       - run: npm ci
 
       - name: Build Windows installer
-        run: npm run build:win
+        run: npx electron-builder --win --publish never
 
       - uses: actions/upload-artifact@v4
         with:
