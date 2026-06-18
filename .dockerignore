@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.git/
+.github/
+.claude/
+*.md
+*_old.html
+*_0.mp3
+main.js
+package.json
+package-lock.json
