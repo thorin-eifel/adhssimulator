@@ -51,6 +51,8 @@ Ein interaktives Empathie-Werkzeug, das Schüler:innen, Eltern und Lehrkräften 
 
 ## Verwendung
 
+### Direkt im Browser
+
 `index.html` in einem modernen Browser öffnen. Keine Installation erforderlich.
 
 ```bash
@@ -63,6 +65,42 @@ python3 -m http.server 8080
 ```
 
 > Audio-Autoplay wird von den meisten Browsern bei `file://`-URLs blockiert. Ein lokaler Server löst das Problem.
+
+### Desktop-App (macOS / Windows)
+
+Fertige Installationspakete stehen unter [Releases](https://github.com/thorin-eifel/adhssimulator/releases) bereit:
+
+- **macOS Apple Silicon** → `ADHS Simulator-*-arm64.dmg`
+- **macOS Intel** → `ADHS Simulator-*.dmg`
+- **Windows** → `ADHS Simulator Setup *.exe`
+
+> Da die App nicht mit einem Apple-Entwicklerzertifikat signiert ist, erscheint beim ersten Start unter macOS eine Sicherheitswarnung. Rechtsklick → „Öffnen" umgeht diese Einschränkung.
+
+### Docker
+
+Das offizielle Image wird bei jedem Push automatisch auf GitHub Container Registry veröffentlicht.
+
+```bash
+docker run -p 8080:80 ghcr.io/thorin-eifel/adhssimulator:latest
+```
+
+Danach im Browser öffnen: `http://localhost:8080`
+
+**Verfügbare Tags:**
+
+| Tag | Beschreibung |
+|---|---|
+| `latest` | Aktueller Stand von `main` |
+| `1.0.1`, `1.0` | Versionierte Releases |
+
+**Selbst bauen:**
+
+```bash
+git clone https://github.com/thorin-eifel/adhssimulator.git
+cd adhssimulator
+docker build -t adhs-simulator .
+docker run -p 8080:80 adhs-simulator
+```
 
 ---
 
