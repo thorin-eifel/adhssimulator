@@ -1,6 +1,6 @@
 {
   "name": "adhs-simulator",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Interaktives Empathie-Werkzeug — ADHS im Schulalltag erleben",
   "main": "main.js",
   "author": "thorin-eifel",
