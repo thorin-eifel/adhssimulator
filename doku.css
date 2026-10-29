@@ -2,19 +2,6 @@
    Gemeinsames Stylesheet für alle Dokumentations-Seiten
    (Kinder · Erwachsene · Unterricht · Info · Übersicht)
    ════════════════════════════════════════════════════════════════ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --r-sm:12px;--r-md:20px;--r-lg:28px;--r-xl:36px;--r-pill:999px;
-  --bg:oklch(0.97 0.008 215);--text:oklch(0.28 0.04 215);--muted:oklch(0.52 0.04 210);
-  --ctw-900:oklch(0.30 0.045 210);--ctw-700:oklch(0.42 0.055 210);--ctw-500:oklch(0.52 0.04 210);
-  --ctw-400:oklch(0.58 0.035 210);--ctw-300:oklch(0.72 0.03 210);--ctw-100:oklch(0.91 0.02 210);--ctw-50:oklch(0.965 0.012 210);
-  --blush:oklch(0.94 0.025 35);--warm:oklch(0.98 0.008 80);
-  --orb-a:oklch(.78 .08 210);--orb-b:oklch(.85 .06 35);
-  --green:oklch(0.55 0.16 145);--amber:oklch(0.78 0.16 75);--red:oklch(0.55 0.2 25);
-  --shadow-glass:0 1px 0 0 rgba(255,255,255,.7) inset,0 -1px 0 0 rgba(13,62,71,.04) inset,0 20px 40px -20px rgba(13,62,71,.25),0 8px 24px -12px rgba(13,62,71,.18);
-  --shadow-glass-lifted:0 1px 0 0 rgba(255,255,255,.85) inset,0 -1px 0 0 rgba(13,62,71,.05) inset,0 30px 60px -20px rgba(13,62,71,.32),0 12px 30px -10px rgba(13,62,71,.22);
-  --shadow-aqua:0 1px 0 0 rgba(255,255,255,.6) inset,0 -8px 16px -8px rgba(0,0,0,.18) inset,0 10px 24px -8px rgba(13,62,71,.35),0 2px 4px -1px rgba(13,62,71,.2);
-}
 
 body{
   font-family:'Nunito Sans','Avenir Next','Avenir',sans-serif;
@@ -249,5 +236,3 @@ a{color:var(--ctw-700);}
 code{font-family:'SFMono-Regular',monospace;font-size:.82em;background:rgba(13,62,71,.07);padding:2px 6px;border-radius:6px;color:var(--ctw-900);}
 .filetree{background:rgba(13,62,71,.05);border-radius:var(--r-md);padding:16px 20px;font-family:'SFMono-Regular',monospace;font-size:.82rem;line-height:2;color:var(--ctw-700);margin-top:8px;}
 
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-::selection{background:#bfe3e8;color:#0d3e47}

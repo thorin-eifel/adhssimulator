@@ -1,7 +1,7 @@
 'use strict';
 // ── SOUND ENGINE ──────────────────────────────────────────────────
-const _BG_MP3={klasse:'./bg-classroom.mp3',schulhof:'./bg-schoolyard.mp3',regen:'./bg-rain.mp3',bibliothek:'./bg-library.mp3'};
-const _CHAOS_MP3='./bg-classroom-chaos.mp3';
+const _BG_MP3={klasse:'./assets/audio/bg-classroom.mp3',schulhof:'./assets/audio/bg-schoolyard.mp3',regen:'./assets/audio/bg-rain.mp3',bibliothek:'./assets/audio/bg-library.mp3'};
+const _CHAOS_MP3='./assets/audio/bg-classroom-chaos.mp3';
 
 const SFX={
   ctx:null, master:null, muted:false, scType:'klasse', _ids:[], _loop:null,

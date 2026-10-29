@@ -11,7 +11,10 @@ js/00-state.js … js/57-*.js  ← 58 numbered module files (loaded with defer)
 adhd-simulator.html          ← adult simulator (self-contained monolith)
 adhs-praesentation.html      ← presentation (self-contained monolith)
 doku.css / doku.js           ← shared styles/script for all doku pages
-*.mp3                        ← ambient audio assets
+assets/audio/*.mp3            ← ambient audio assets
+assets/base.css              ← shared tokens, reset, focus, icon + dyslexia-button styles
+assets/icons.js              ← inline SVG icon sprite (works over file://)
+assets/fonts/                 ← self-hosted fonts (Merriweather, Nunito Sans, OpenDyslexic)
 ```
 
 ---

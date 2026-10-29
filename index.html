@@ -4,26 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="ADHS verstehen — Unterrichtsmaterial für Klasse 3/4: interaktive Simulation für Kinder, ausführliche Version für Erwachsene und didaktische Dokumentation.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/base.css">
 <title>ADHS verstehen — Übersicht</title>
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:oklch(0.97 0.008 215);
-    --text:oklch(0.28 0.04 215);
-    --muted:oklch(0.52 0.04 210);
-    --ctw-900:oklch(0.30 0.045 210);
-    --ctw-700:oklch(0.42 0.055 210);
-    --ctw-500:oklch(0.52 0.04 210);
-    --orb-a:oklch(.78 .08 210);
-    --orb-b:oklch(.85 .06 35);
-    --r-lg:28px;--r-pill:999px;
-    --shadow-glass:0 1px 0 0 rgba(255,255,255,.7) inset,0 -1px 0 0 rgba(13,62,71,.04) inset,0 20px 40px -20px rgba(13,62,71,.25),0 8px 24px -12px rgba(13,62,71,.18);
-    --shadow-glass-lifted:0 1px 0 0 rgba(255,255,255,.85) inset,0 -1px 0 0 rgba(13,62,71,.05) inset,0 30px 60px -20px rgba(13,62,71,.32),0 12px 30px -10px rgba(13,62,71,.22);
-  }
   body{
     font-family:'Nunito Sans','Avenir Next',sans-serif;color:var(--text);
     min-height:100vh;position:relative;overflow-x:hidden;
@@ -32,10 +16,8 @@
     display:flex;flex-direction:column;align-items:center;
     padding:clamp(28px,6vw,72px) 20px 56px;
   }
-  ::selection{background:oklch(.85 .06 210);color:var(--ctw-900)}
-  @media(prefers-reduced-motion:reduce){.card,.card .go .arrow{transition:none}.card:hover,.card:focus-visible{transform:none}}
+  @media(prefers-reduced-motion:reduce){.card:hover,.card:focus-visible{transform:none}}
   /* Very subtle background orbs */
-  .orb{position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none}
   .orb-1{width:46vw;height:46vw;background:var(--orb-a);opacity:.08;top:-12vw;left:-10vw}
   .orb-2{width:38vw;height:38vw;background:var(--orb-b);opacity:.06;bottom:-14vw;right:-8vw}
 
@@ -76,15 +58,7 @@
   .card:hover .go .arrow,.card:focus-visible .go .arrow{transform:translateX(4px)}
 
   footer{position:relative;z-index:1;margin-top:clamp(36px,7vw,56px);text-align:center;color:var(--muted);font-size:.82rem;max-width:54ch;line-height:1.5}
-  .dy-btn{position:fixed;top:14px;right:16px;z-index:50;
-    background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);
-    border-radius:999px;padding:5px 14px;min-height:40px;
-    display:inline-flex;align-items:center;gap:5px;cursor:pointer;
-    font-size:.78rem;font-family:inherit;font-weight:700;color:var(--ctw-700);
-    box-shadow:0 2px 8px rgba(13,62,71,.12);transition:background-color .15s,border-color .15s;backdrop-filter:blur(8px);}
-  .dy-btn:hover{background:rgba(255,255,255,.8);}
-  .dy-btn:focus-visible{outline:3px solid var(--ctw-700);outline-offset:2px}
-  .dy-btn.active{background:oklch(.88 .04 210/.6);border-color:oklch(.7 .06 210);}
+  .dy-btn{position:fixed;top:14px;right:16px;z-index:50}
   body.dyslexic,body.dyslexic *{font-family:'OpenDyslexic',sans-serif!important;}
 
   .intro{
@@ -105,19 +79,20 @@
 </style>
 </head>
 <body>
+<script src="assets/icons.js"></script>
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
-  <button class="dy-btn" id="dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe" aria-label="OpenDyslexic-Lesehilfe umschalten">🔤 Aa</button>
+  <button class="dy-btn" id="dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe" aria-label="OpenDyslexic-Lesehilfe umschalten"><svg class="ico" aria-hidden="true"><use href="#type"/></svg> Aa</button>
 
   <div class="wrap">
-    <div class="hero-icon">🧠</div>
+    <div class="hero-icon"><svg class="ico" aria-hidden="true"><use href="#brain"/></svg></div>
     <h1>ADHS <em>verstehen</em></h1>
     <p class="sub">Eine Sammlung zum Erleben, Vermitteln und Nachschlagen — wie sich ADHS im Schulalltag anfühlt.</p>
 
 
     <div class="cards">
       <a class="card" href="adhs-simulator-kinder.html">
-        <div class="card-ico">🎒</div>
+        <div class="card-ico"><svg class="ico" aria-hidden="true"><use href="#backpack"/></svg></div>
         <h2>Kinder-Simulator</h2>
         <p>Erlebe eine Schulstunde mit ADHS — mit echten Aufgaben, Ablenkungen, Gedanken und einer Auswertung fürs Klassengespräch.</p>
         <span class="badge">Interaktiv · Klasse 3/4</span>
@@ -125,7 +100,7 @@
       </a>
 
       <a class="card" href="adhd-simulator.html">
-        <div class="card-ico">🧑‍💼</div>
+        <div class="card-ico"><svg class="ico" aria-hidden="true"><use href="#briefcase"/></svg></div>
         <h2>ADHD Simulator</h2>
         <p>Die ausführliche Version für Jugendliche und Erwachsene — eine intensivere, umfassendere Erfahrung.</p>
         <span class="badge">Für Erwachsene</span>
@@ -133,7 +108,7 @@
       </a>
 
       <a class="card" href="adhs-praesentation.html">
-        <div class="card-ico">🧑‍🏫</div>
+        <div class="card-ico"><svg class="ico" aria-hidden="true"><use href="#presentation"/></svg></div>
         <h2>Lehrer-Präsentation</h2>
         <p>Fertiges Unterrichtsmaterial für Klasse 3/4 — zum gemeinsamen Durchgehen an der Tafel oder am Beamer.</p>
         <span class="badge">Für den Unterricht</span>
@@ -141,7 +116,7 @@
       </a>
 
       <a class="card" href="dokumentation.html">
-        <div class="card-ico">📖</div>
+        <div class="card-ico"><svg class="ico" aria-hidden="true"><use href="#book-open"/></svg></div>
         <h2>Dokumentation</h2>
         <p>Pädagogischer Aufbau, didaktische Hinweise und Hintergründe zur Simulation für Lehrkräfte.</p>
         <span class="badge">Hintergrund</span>
@@ -155,16 +130,16 @@
       <p>Diese Sammlung macht erfahrbar, was sich schwer erklären lässt. Die <strong>Simulatoren</strong> lassen Schülerinnen, Eltern und Lehrkräfte selbst spüren, wie sich eine Schulstunde — oder ein Arbeitstag — mit ADHS-Symptomen anfühlt. Die <strong>Lehrer-Präsentation</strong> bietet fertiges Unterrichtsmaterial für das Klassengespräch. Die <strong>Dokumentation</strong> erklärt den Aufbau, gibt didaktische Hinweise und verweist auf seriöse Anlaufstellen im deutschsprachigen Raum.</p>
       <p>Ziel ist keine Diagnose und keine Vereinfachung — sondern ein Moment des Verstehens. ADHS ist bei jedem Menschen anders. Aber Empathie fängt damit an, es einmal selbst versucht zu haben.</p>
       <div class="intro-pills">
-        <span class="intro-pill">🎒 Für Klasse 3/4</span>
-        <span class="intro-pill">🧑‍💼 Für Erwachsene &amp; Eltern</span>
-        <span class="intro-pill">🧑‍🏫 Für Lehrkräfte</span>
-        <span class="intro-pill">🔒 Läuft komplett im Browser</span>
-        <span class="intro-pill">✅ Kostenlos &amp; ohne Anmeldung</span>
+        <span class="intro-pill"><svg class="ico" aria-hidden="true"><use href="#backpack"/></svg> Für Klasse 3/4</span>
+        <span class="intro-pill"><svg class="ico" aria-hidden="true"><use href="#briefcase"/></svg> Für Erwachsene &amp; Eltern</span>
+        <span class="intro-pill"><svg class="ico" aria-hidden="true"><use href="#presentation"/></svg> Für Lehrkräfte</span>
+        <span class="intro-pill"><svg class="ico" aria-hidden="true"><use href="#lock"/></svg> Läuft komplett im Browser</span>
+        <span class="intro-pill"><svg class="ico" aria-hidden="true"><use href="#circle-check"/></svg> Kostenlos &amp; ohne Anmeldung</span>
       </div>
     </div>
 
     <footer>
-      ⚠️ Die Simulationen zeigen einen kleinen Ausschnitt davon, wie ADHS sich anfühlen kann — ADHS ist bei jedem Menschen anders. Begegnet euch respektvoll.
+      <svg class="ico" aria-hidden="true"><use href="#triangle-alert"/></svg> Die Simulationen zeigen einen kleinen Ausschnitt davon, wie ADHS sich anfühlen kann — ADHS ist bei jedem Menschen anders. Begegnet euch respektvoll.
     </footer>
   </div>
 <script>
@@ -174,7 +149,7 @@
     document.body.classList.toggle('dyslexic',on);
     if(on&&!document.getElementById('od-font')){
       var l=document.createElement('link');l.id='od-font';l.rel='stylesheet';
-      l.href='https://fonts.cdnfonts.com/css/opendyslexic';document.head.appendChild(l);}
+      l.href='assets/fonts/fonts.css';document.head.appendChild(l);}
     var b=document.getElementById('dy-btn');
     if(b){b.classList.toggle('active',on);b.title=on?'Standardschrift':'OpenDyslexic-Lesehilfe';}
   }

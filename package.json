@@ -19,8 +19,10 @@
     "publish": null,
     "files": [
       "**/*",
-      "!{.git,.gitignore,README.md,TECHNICAL.md}",
-      "!node_modules/.cache"
+      "!{.git,.gitignore,README.md,TECHNICAL.md,PRODUCT.md}",
+      "!node_modules/.cache",
+      "!*_old.html",
+      "!**/*_0.mp3"
     ],
     "mac": {
       "category": "public.app-category.education",

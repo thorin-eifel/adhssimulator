@@ -1,6 +1,6 @@
 # ADHS Simulator
 
-Ein interaktives Empathie-Werkzeug, das Schüler:innen, Eltern und Lehrkräften erfahrbar macht, wie sich ein Schultag mit ADHS anfühlt. Läuft vollständig im Browser — kein Server, kein Build-Schritt, keine Abhängigkeiten.
+Ein interaktives Empathie-Werkzeug, das Schüler:innen, Eltern und Lehrkräften erfahrbar macht, wie sich ein Schultag mit ADHS anfühlt. Läuft vollständig im Browser — kein Server, kein Build-Schritt, keine Abhängigkeiten. Schriften, Icons und Audio sind lokal eingebunden (`assets/`), die Seiten funktionieren auch offline.
 
 ---
 

@@ -9,7 +9,7 @@
     if (on && !document.getElementById('od-font')) {
       const l = document.createElement('link');
       l.id = 'od-font'; l.rel = 'stylesheet';
-      l.href = 'https://fonts.cdnfonts.com/css/opendyslexic';
+      l.href = 'assets/fonts/fonts.css';
       document.head.appendChild(l);
     }
     document.querySelectorAll('.topbar-dy-btn').forEach(btn => {

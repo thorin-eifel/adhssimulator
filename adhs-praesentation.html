@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
 <title>ADHS verstehen — Unterrichtsmaterial Klasse 3 / 4</title>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -499,24 +497,27 @@ body.laser-on *{cursor:crosshair!important}
 }
 .sim-start-btn:hover{background:var(--ctw-700);transform:translateY(-2px);}
 
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-
-button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #0d6a78;outline-offset:2px}
-::selection{background:#bfe3e8;color:#0d3e47}
+@media(max-width:760px){
+  .ctrl-btn:not([title="Zur ersten Folie"]){font-size:0}
+  .ctrl-btn{min-width:40px;min-height:36px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center}
+  .ctrl-btn .ico{font-size:1.05rem}
+  #btn-laser,#btn-fs,#timer{display:none}
+}
 </style>
 </head>
 <body>
+<script src="assets/icons.js"></script>
 
 <div id="laser" aria-hidden="true"></div>
 
 <!-- ── CONTROLS ───────────────────────────────────────── -->
 <nav id="ctrl">
   <div class="ctrl-group">
-    <button class="ctrl-btn" id="btn-plan" onclick="togglePlan()">📋 Plan</button>
-    <button class="ctrl-btn" id="btn-notes" onclick="toggleNotes()">📝 Notizen</button>
-    <button class="ctrl-btn" id="btn-ov" onclick="toggleOverview()">☷ Übersicht</button>
-    <button class="ctrl-btn" id="btn-print" onclick="window.print()">🖨</button>
-    <button class="ctrl-btn" id="btn-dy" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+    <button class="ctrl-btn" id="btn-plan" aria-label="Plan" onclick="togglePlan()"><svg class="ico" aria-hidden="true"><use href="#clipboard"/></svg> Plan</button>
+    <button class="ctrl-btn" id="btn-notes" aria-label="Notizen" onclick="toggleNotes()"><svg class="ico" aria-hidden="true"><use href="#file-text"/></svg> Notizen</button>
+    <button class="ctrl-btn" id="btn-ov" aria-label="Übersicht" onclick="toggleOverview()"><svg class="ico" aria-hidden="true"><use href="#grid"/></svg> Übersicht</button>
+    <button class="ctrl-btn" id="btn-print" onclick="window.print()" aria-label="Drucken"><svg class="ico" aria-hidden="true"><use href="#printer"/></svg></button>
+    <button class="ctrl-btn" id="btn-dy" aria-label="Lesehilfe umschalten" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe"><svg class="ico" aria-hidden="true"><use href="#type"/></svg> Aa</button>
   </div>
   <div class="ctrl-nav">
     <button id="btn-prev" onclick="go(cur-1)">‹</button>
@@ -525,8 +526,8 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
   </div>
   <div class="ctrl-group">
     <span id="timer" title="Klick: Start/Stopp · Doppelklick: Reset">00:00</span>
-    <button class="ctrl-btn" id="btn-laser" onclick="toggleLaser()">🔴 Laser</button>
-    <button class="ctrl-btn" id="btn-fs" onclick="toggleFS()">⛶ Vollbild</button>
+    <button class="ctrl-btn" id="btn-laser" aria-label="Laserpointer" onclick="toggleLaser()"><svg class="ico" aria-hidden="true"><use href="#crosshair"/></svg> Laser</button>
+    <button class="ctrl-btn" id="btn-fs" aria-label="Vollbild" onclick="toggleFS()"><svg class="ico" aria-hidden="true"><use href="#maximize"/></svg> Vollbild</button>
     <button class="ctrl-btn" onclick="go(0)" title="Zur ersten Folie">⌂</button>
   </div>
 </nav>
@@ -1364,7 +1365,7 @@ function toggleNotes(){
   notesOn=!notesOn;
   document.body.classList.toggle('notes-on',notesOn);
   document.getElementById('btn-notes').classList.toggle('active',notesOn);
-  document.getElementById('btn-notes').textContent=notesOn?'📝 Notizen aus':'📝 Notizen';
+  document.getElementById('btn-notes').innerHTML='<svg class="ico" aria-hidden="true"><use href="#file-text"/></svg>'+(notesOn?' Notizen aus':' Notizen');
 }
 
 // ── PLAN OVERLAY ──────────────────────────────────────
@@ -1387,8 +1388,7 @@ function toggleFS(){
   }
 }
 document.addEventListener('fullscreenchange',()=>{
-  document.getElementById('btn-fs').textContent=
-    document.fullscreenElement?'⊡ Vollbild':'⛶ Vollbild';
+  document.getElementById('btn-fs').classList.toggle('active',!!document.fullscreenElement);
 });
 
 // ── TIMER ─────────────────────────────────────────────
@@ -1484,7 +1484,7 @@ document.addEventListener('mousemove',e=>{
     document.body.classList.toggle('dyslexic',on);
     if(on&&!document.getElementById('od-font')){
       var l=document.createElement('link');l.id='od-font';l.rel='stylesheet';
-      l.href='https://fonts.cdnfonts.com/css/opendyslexic';document.head.appendChild(l);}
+      l.href='assets/fonts/fonts.css';document.head.appendChild(l);}
     var b=document.getElementById('btn-dy');
     if(b)b.classList.toggle('active',on);
   }

@@ -4,19 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Unterrichtsvorbereitung für den ADHS-Simulator: Stundenplanung, Einsatzszenarien, Reflexionsfragen und didaktische Hinweise für Lehrkräfte.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧑‍🏫</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/base.css">
 <title>Dokumentation — Unterrichtsvorbereitung</title>
 <link rel="stylesheet" href="doku.css">
 </head>
 <body>
+<script src="assets/icons.js"></script>
 
 <nav class="topbar">
-  <span class="topbar-label">🧑‍🏫 Unterrichtsvorbereitung</span>
+  <span class="topbar-label"><svg class="ico" aria-hidden="true"><use href="#presentation"/></svg> Unterrichtsvorbereitung</span>
     <div class="topbar-right">
-    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe"><svg class="ico" aria-hidden="true"><use href="#type"/></svg> Aa</button>
     <a href="dokumentation.html" class="topbar-back">← Dokumentation</a>
   </div>
 </nav>
@@ -25,7 +24,7 @@
 <div class="page">
 
   <div class="hero">
-    <div class="hero-icon">🧑‍🏫</div>
+    <div class="hero-icon"><svg class="ico" aria-hidden="true"><use href="#presentation"/></svg></div>
     <h1>Unterrichts&shy;vorbereitung</h1>
     <p>Stundenplanung, Einsatzszenarien, Reflexionsfragen und didaktische Hinweise für den Einsatz des ADHS-Simulators im Unterricht und bei Fortbildungen.</p>
   </div>
@@ -48,25 +47,25 @@
     <div class="card-grid">
 
       <div class="card">
-        <h3>🖥 Beamer-Demo</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#monitor"/></svg> Beamer-Demo</h3>
         <p>Die Lehrkraft steuert die Simulation an der Tafel oder am Beamer. Die Klasse schaut gemeinsam zu und kommentiert — ideal als Einstieg, wenn keine Geräte für alle verfügbar sind.</p>
         <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Dauer 8 Min. · Schwierigkeit Mittel · Klassen-Auswertung deaktivieren</div>
       </div>
 
       <div class="card">
-        <h3>💻 Einzelarbeit</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#laptop"/></svg> Einzelarbeit</h3>
         <p>Jedes Kind führt die Simulation auf dem eigenen Gerät (Tablet, Laptop) durch. Anschließend können individuelle Ergebnisse verglichen werden — mit optionalem Klassen-Code für die aggregierte Auswertung.</p>
         <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Dauer 12 Min. · Schwierigkeit Leicht bis Mittel · Kopfhörer falls vorhanden</div>
       </div>
 
       <div class="card">
-        <h3>👨‍👩‍👧 Elternabend</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#users"/></svg> Elternabend</h3>
         <p>Die Simulation eignet sich als kurzer Einstieg im Plenum — Eltern erleben live, womit Kinder mit ADHS im Schulalltag umgehen. Anschließend Raum für Fragen und Austausch.</p>
         <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Dauer 8 Min. · Beamer-Demo · 15 Min. Diskussion einplanen</div>
       </div>
 
       <div class="card">
-        <h3>🎓 Fortbildung</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#graduation"/></svg> Fortbildung</h3>
         <p>Für Lehrkräfte, Sozialpädagoginnen und Schulberatung. Die ausführlichere Erwachsenen-Version (<a href="doku-erwachsene.html">ADHD Simulator</a>) kann parallel eingesetzt werden. Anschließend Reflexion über konkrete Unterrichtsanpassungen.</p>
         <div class="tip" style="margin-top:12px"><strong>Empfehlung:</strong> Beide Simulatoren ausprobieren · 45 Min. für Austausch reservieren</div>
       </div>
@@ -133,19 +132,19 @@
         <strong>Dauer</strong>
         <span><strong>8 Min.</strong> für Beamer-Demo und Elternabend. <strong>12 Min.</strong> für Einzelarbeit in der Klasse. 16 Min. für Fortbildungen, wenn Zeit vorhanden.</span>
       </div></div>
-      <div class="setting-row"><div class="setting-icon">🎚</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#sliders"/></svg></div><div class="setting-body">
         <strong>Schwierigkeit</strong>
         <span><strong>Leicht</strong> für Klasse 3 und jüngere Klasse 4. <strong>Mittel</strong> für reifere Gruppen und Elternabend. <strong>Intensiv</strong> nur für Fortbildungen.</span>
       </div></div>
-      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#volume"/></svg></div><div class="setting-body">
         <strong>Geräuschkulisse</strong>
         <span><strong>„Klasse"</strong> empfohlen — erzeugt den passenden Kontext. Bei Beamer-Demo Lautsprecher nutzen. Bei Einzelarbeit Kopfhörer, falls vorhanden; sonst stumm.</span>
       </div></div>
-      <div class="setting-row"><div class="setting-icon">☀️</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#sun"/></svg></div><div class="setting-body">
         <strong>Tagesform</strong>
         <span>Für die Demo auf <strong>„schlecht"</strong> stellen — dann ist die Erfahrung intensiver und eindrücklicher.</span>
       </div></div>
-      <div class="setting-row" style="padding-bottom:0;border-bottom:0"><div class="setting-icon">📊</div><div class="setting-body">
+      <div class="setting-row" style="padding-bottom:0;border-bottom:0"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#chart"/></svg></div><div class="setting-body">
         <strong>Klassen-Auswertung</strong>
         <span>Bei Einzelarbeit: Klassen-Code notieren und am Ende die aggregierte Auswertung gemeinsam ansehen. Bei Beamer-Demo nicht notwendig.</span>
       </div></div>
@@ -194,7 +193,7 @@
 
     <div class="card-grid">
       <div class="card">
-        <h3>🎯 Ziel klar formulieren</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#target"/></svg> Ziel klar formulieren</h3>
         <p>Die Simulation zielt auf <strong>Empathie</strong>, nicht auf Wissen über ADHS. Den Kindern vorab sagen: „Ihr müsst nicht perfekt abschneiden — das ist der Punkt."</p>
       </div>
       <div class="card">
@@ -202,19 +201,19 @@
         <p>Kinder können die Simulation jederzeit pausieren. Das ist kein Versagen — im Simulator gibt es einen Coping-Knopf, der zeigt, wie Strategien helfen können.</p>
       </div>
       <div class="card">
-        <h3>🤫 Keine Vergleiche</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#shield"/></svg> Keine Vergleiche</h3>
         <p>Ergebnisse nicht öffentlich vergleichen. Die aggregierte Auswertung zeigt Durchschnitte — keine Namen. Individuelle Ergebnisse gehören dem Kind.</p>
       </div>
       <div class="card">
-        <h3>🔒 Freiwillig</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#lock"/></svg> Freiwillig</h3>
         <p>Teilnahme an der Simulation und am Gespräch danach ist freiwillig. Kein Kind muss erklären, warum es nicht mitmacht oder nicht antworten möchte.</p>
       </div>
       <div class="card">
-        <h3>📱 Ablenkungen minimieren</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#smartphone"/></svg> Ablenkungen minimieren</h3>
         <p>Für Einzelarbeit: andere Browser-Tabs schließen, Benachrichtigungen aus. Die Simulation baut bewusst Ablenkungen auf — keine zusätzlichen von außen nötig.</p>
       </div>
       <div class="card">
-        <h3>⚡ Zeitpuffer einplanen</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#zap"/></svg> Zeitpuffer einplanen</h3>
         <p>Debrief und Klassengespräch dauern länger als erwartet. Mindestens 10–15 Min. nach der Simulation reservieren, bevor die Stunde endet.</p>
       </div>
     </div>

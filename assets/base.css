@@ -1,0 +1,45 @@
+/* ADHS Simulator: gemeinsame Basis (Tokens, Schriften, Reset, Zugänglichkeit).
+   Seitenspezifische Stylesheets überschreiben bei Bedarf. */
+@import url('fonts/fonts.css');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --r-sm:12px;--r-md:20px;--r-lg:28px;--r-xl:36px;--r-pill:999px;--r:var(--r-md);
+  --bg:oklch(0.97 0.008 215);--card:rgba(255,255,255,.55);--text:oklch(0.28 0.04 215);--muted:oklch(0.52 0.04 210);--border:rgba(255,255,255,.55);
+  --ctw-900:oklch(0.30 0.045 210);--ctw-700:oklch(0.42 0.055 210);--ctw-500:oklch(0.52 0.04 210);--ctw-400:oklch(0.58 0.035 210);--ctw-300:oklch(0.72 0.03 210);--ctw-100:oklch(0.91 0.02 210);--ctw-50:oklch(0.965 0.012 210);
+  --blush:oklch(0.94 0.025 35);--warm:oklch(0.98 0.008 80);--red:oklch(0.55 0.2 25);--green:oklch(0.55 0.16 145);--amber:oklch(0.78 0.16 75);
+  --orb-a:oklch(.78 .08 210);--orb-b:oklch(.85 .06 35);
+  --glass-base-rgb:255,255,255;--glass-text:var(--ctw-900);--glass-strong:rgba(var(--glass-base-rgb),.70);--glass-mid:rgba(var(--glass-base-rgb),.50);--glass-soft:rgba(var(--glass-base-rgb),.35);--glass-border:rgba(var(--glass-base-rgb),.60);
+  --shadow:0 1px 0 0 rgba(255,255,255,.7) inset,0 12px 28px -14px rgba(13,62,71,.22),0 4px 12px -6px rgba(13,62,71,.15);
+  --shadow-glass:0 1px 0 0 rgba(255,255,255,.7) inset,0 -1px 0 0 rgba(13,62,71,.04) inset,0 20px 40px -20px rgba(13,62,71,.25),0 8px 24px -12px rgba(13,62,71,.18);
+  --shadow-glass-lifted:0 1px 0 0 rgba(255,255,255,.85) inset,0 -1px 0 0 rgba(13,62,71,.05) inset,0 30px 60px -20px rgba(13,62,71,.32),0 12px 30px -10px rgba(13,62,71,.22);
+  --shadow-aqua:0 1px 0 0 rgba(255,255,255,.6) inset,0 -8px 16px -8px rgba(0,0,0,.18) inset,0 10px 24px -8px rgba(13,62,71,.35),0 2px 4px -1px rgba(13,62,71,.2);
+  --shadow-aqua-pressed:0 -1px 0 0 rgba(255,255,255,.2) inset,0 8px 16px -4px rgba(0,0,0,.25) inset,0 2px 4px -2px rgba(13,62,71,.2);
+  --shadow-lens:0 0 0 1px rgba(255,255,255,.85) inset,0 0 0 2px rgba(13,62,71,.06),0 12px 32px -10px rgba(13,62,71,.3),0 4px 10px -4px rgba(13,62,71,.2);
+}
+
+body{font-family:'Nunito Sans','Avenir Next','Avenir',sans-serif;color:var(--text);-webkit-font-smoothing:antialiased;
+  background:linear-gradient(160deg,#edf5f7 0%,#fdfbf8 50%,#f3f6f1 100%)}
+::selection{background:oklch(.85 .06 210);color:var(--ctw-900)}
+
+button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--ctw-700);outline-offset:2px}
+
+/* Hintergrund-Orbs: bewusst sehr dezent (Opazität höchstens .10) */
+.orb{position:fixed;border-radius:50%;filter:blur(70px);z-index:0;pointer-events:none}
+
+/* Icons (SVG-Sprite, eingefügt von assets/icons.js) */
+.ico{width:1em;height:1em;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.125em}
+
+/* Lesehilfe-Schalter (OpenDyslexic) */
+.dy-btn{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:5px 14px;border-radius:var(--r-pill);cursor:pointer;
+  font:700 .78rem/1 inherit;font-family:inherit;color:var(--ctw-700);background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.7);
+  box-shadow:0 2px 8px rgba(13,62,71,.12);transition:background-color .15s,border-color .15s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.dy-btn:hover{background:rgba(255,255,255,.8)}
+.dy-btn.active{background:oklch(.88 .04 210/.6);border-color:oklch(.7 .06 210)}
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
+
+.hero-icon,.card-ico,.dc-ico,.setting-icon{color:var(--ctw-700)}
+.hero-icon .ico{width:1em;height:1em;stroke-width:1.4}
+.dot{display:inline-block;width:.7em;height:.7em;border-radius:50%;vertical-align:baseline;margin-right:.15em;background:var(--c,currentColor)}
+.dot-green{--c:var(--green)}.dot-amber{--c:var(--amber)}.dot-red{--c:var(--red)}.dot-blue{--c:oklch(.55 .12 250)}.dot-orange{--c:oklch(.68 .15 55)}

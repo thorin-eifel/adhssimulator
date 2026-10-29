@@ -4,14 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Interaktive Simulation für Klasse 3/4: Wie fühlt sich ADHS im Unterricht an? Mit Aufgaben, Ablenkungen und Auswertung für das Klassengespräch.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/base.css">
 <title>ADHS verstehen — Klasse 3/4</title>
 <link rel="stylesheet" href="adhs-simulator-kinder.css">
 </head>
 <body>
+<script src="assets/icons.js"></script>
 
 <!-- ══ WELCOME ════════════════════════════════════════════ -->
 <div id="welcome" class="screen active">
@@ -29,7 +28,7 @@
     </div>
   </div>
 
-  <div class="hero-icon">🧠</div>
+  <div class="hero-icon"><svg class="ico" aria-hidden="true"><use href="#brain"/></svg></div>
 
   <div class="hero">
     <h1 id="ui-title">Wie fühlt sich <em>ADHS</em> an?</h1>
@@ -203,6 +202,10 @@
       <div class="pause-lbl" id="ui-pause-lbl">Pause</div>
       <p class="pause-cost" id="ui-pause-note">Gut so — manchmal braucht man eine Pause.</p>
       <button class="btn" onclick="togglePause()" id="ui-resume-btn">Weiter →</button>
+      <div class="pause-exit">
+        <button class="btn-quiet" onclick="togglePause();endSim()" id="ui-end-btn">Simulation beenden</button>
+        <button class="btn-quiet" onclick="togglePause();restart()" id="ui-home-btn">Abbrechen, zurück zum Start</button>
+      </div>
     </div>
   </div>
 

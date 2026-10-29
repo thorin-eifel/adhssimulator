@@ -13,7 +13,7 @@ function _applyDyslexia(){
   if(dyslexicMode && !document.getElementById('od-font')){
     const link=document.createElement('link');
     link.id='od-font';link.rel='stylesheet';
-    link.href='https://fonts.cdnfonts.com/css/opendyslexic';
+    link.href='assets/fonts/fonts.css';
     document.head.appendChild(link);
   }
   const btn=document.getElementById('dyslexia-btn');

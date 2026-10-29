@@ -4,19 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Vollständige Anleitung zum ADHS-Simulator für Klasse 3/4: Phasen, Aufgabentypen, Einstellungen, Konzentrations-Meter und Auswertung.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎒</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="assets/base.css">
 <title>Dokumentation — Kinder-Simulator (Klasse 3/4)</title>
 <link rel="stylesheet" href="doku.css">
 </head>
 <body>
+<script src="assets/icons.js"></script>
 
 <nav class="topbar">
-  <span class="topbar-label">🎒 Kinder-Simulator</span>
+  <span class="topbar-label"><svg class="ico" aria-hidden="true"><use href="#backpack"/></svg> Kinder-Simulator</span>
     <div class="topbar-right">
-    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe">🔤 Aa</button>
+    <button class="topbar-dy-btn" onclick="toggleDyslexia()" title="OpenDyslexic-Lesehilfe"><svg class="ico" aria-hidden="true"><use href="#type"/></svg> Aa</button>
     <a href="dokumentation.html" class="topbar-back">← Dokumentation</a>
   </div>
 </nav>
@@ -26,7 +25,7 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-icon">🎒</div>
+    <div class="hero-icon"><svg class="ico" aria-hidden="true"><use href="#backpack"/></svg></div>
     <h1>Kinder-Simulator<br><em>Klasse 3 / 4</em></h1>
     <p>Vollständige Dokumentation zur interaktiven Simulation für Grundschulkinder.</p>
   </div>
@@ -57,19 +56,19 @@
     </div>
     <div class="card-grid">
       <div class="card">
-        <h3>🎯 Zielgruppe</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#target"/></svg> Zielgruppe</h3>
         <p>Grundschule Klasse 3 und 4 (ca. 8–10 Jahre). Geeignet für Einzel- und Gruppennutzung, Klassenprojekte und Elternabende.</p>
       </div>
       <div class="card">
-        <h3>🌐 Sprache</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#globe"/></svg> Sprache</h3>
         <p>Vollständig auf <strong>Deutsch</strong>, in einfacher, kindgerechter Sprache.</p>
       </div>
       <div class="card">
-        <h3>💻 Technik</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#laptop"/></svg> Technik</h3>
         <p>Läuft vollständig im Browser — kein Download, keine Installation, keine Anmeldung. Funktioniert auf Desktop, Tablet und Beamer.</p>
       </div>
       <div class="card">
-        <h3>🔒 Datenschutz</h3>
+        <h3><svg class="ico" aria-hidden="true"><use href="#lock"/></svg> Datenschutz</h3>
         <p>Es werden keinerlei persönliche Daten gespeichert oder übertragen. Alles läuft lokal im Browser. (Nur das gewählte Farbthema wird lokal gemerkt.)</p>
       </div>
     </div>
@@ -135,19 +134,19 @@
     <table style="margin:16px 0;">
       <thead><tr><th>Typ</th><th>Inhalt</th><th>Format</th><th>Zeit</th></tr></thead>
       <tbody>
-        <tr><td><span class="badge badge-mathe">🔢 Mathe</span></td><td>Kopfrechnen & Geometrie</td><td>Multiple Choice (4 Optionen)</td><td>80 Sek.</td></tr>
-        <tr><td><span class="badge badge-lesen">📖 Lesen</span></td><td>Sachtexte aus Deutsch, Sachkunde, Natur, Ethik</td><td>Kurztext + Multiple Choice</td><td>100 Sek.</td></tr>
-        <tr><td><span class="badge badge-schreiben">✏️ Schreiben</span></td><td>Freie Textantworten</td><td>Freitext (mind. 15 Zeichen)</td><td>120 Sek.</td></tr>
-        <tr><td><span class="badge badge-merken">🧩 Merken</span></td><td>Gedächtnis</td><td>Wörter einprägen → Multiple Choice</td><td>5 Sek. + 60 Sek.</td></tr>
+        <tr><td><span class="badge badge-mathe"><svg class="ico" aria-hidden="true"><use href="#hash"/></svg> Mathe</span></td><td>Kopfrechnen & Geometrie</td><td>Multiple Choice (4 Optionen)</td><td>80 Sek.</td></tr>
+        <tr><td><span class="badge badge-lesen"><svg class="ico" aria-hidden="true"><use href="#book-open"/></svg> Lesen</span></td><td>Sachtexte aus Deutsch, Sachkunde, Natur, Ethik</td><td>Kurztext + Multiple Choice</td><td>100 Sek.</td></tr>
+        <tr><td><span class="badge badge-schreiben"><svg class="ico" aria-hidden="true"><use href="#pencil"/></svg> Schreiben</span></td><td>Freie Textantworten</td><td>Freitext (mind. 15 Zeichen)</td><td>120 Sek.</td></tr>
+        <tr><td><span class="badge badge-merken"><svg class="ico" aria-hidden="true"><use href="#puzzle"/></svg> Merken</span></td><td>Gedächtnis</td><td>Wörter einprägen → Multiple Choice</td><td>5 Sek. + 60 Sek.</td></tr>
       </tbody>
     </table>
     <div class="card">
       <h3>Verteilung im Pool</h3>
       <div class="setting-opts" style="margin-top:4px;">
-        <span class="chip">🔢 Mathe · 18 Aufgaben</span>
-        <span class="chip">📖 Lesen · 36 Aufgaben</span>
-        <span class="chip">🧩 Merken · 7 Aufgaben</span>
-        <span class="chip">✏️ Schreiben · 3 Aufgaben</span>
+        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#hash"/></svg> Mathe · 18 Aufgaben</span>
+        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#book-open"/></svg> Lesen · 36 Aufgaben</span>
+        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#puzzle"/></svg> Merken · 7 Aufgaben</span>
+        <span class="chip"><svg class="ico" aria-hidden="true"><use href="#pencil"/></svg> Schreiben · 3 Aufgaben</span>
       </div>
     </div>
     <div class="note">
@@ -159,27 +158,27 @@
   <section id="einstellungen">
     <div class="section-header"><span class="section-num">5</span><h2>Einstellungen</h2></div>
     <div class="card">
-      <div class="setting-row"><div class="setting-icon">⚡</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#zap"/></svg></div><div class="setting-body">
         <strong>Schwierigkeit</strong>
         <span>Bestimmt, wie häufig und intensiv Ablenkungen auftreten, wie schnell die Konzentration sinkt und wann die Phasen wechseln.</span>
-        <div class="setting-opts"><span class="chip">🟢 Leicht — weniger Störungen</span><span class="chip">🟡 Mittel — realistisch, Standard</span><span class="chip">🔴 Intensiv — starke Reize, frühe Phasenwechsel</span></div>
+        <div class="setting-opts"><span class="chip"><span class="dot dot-green" aria-hidden="true"></span> Leicht — weniger Störungen</span><span class="chip"><span class="dot dot-amber" aria-hidden="true"></span> Mittel — realistisch, Standard</span><span class="chip"><span class="dot dot-red" aria-hidden="true"></span> Intensiv — starke Reize, frühe Phasenwechsel</span></div>
       </div></div>
       <div class="setting-row"><div class="setting-icon">⏱</div><div class="setting-body">
         <strong>Simulationsdauer</strong>
         <span>Legt fest, wie lange die ADHS-Phase (nach der Baseline) dauert und wie viele Aufgaben gezeigt werden.</span>
         <div class="setting-opts"><span class="chip">8 Min → 16 Aufgaben</span><span class="chip">12 Min → 24 Aufgaben</span><span class="chip">16 Min → 32 Aufgaben</span></div>
       </div></div>
-      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#volume"/></svg></div><div class="setting-body">
         <strong>Geräuschkulisse</strong>
         <span>Akustische Umgebung. Bei intensiven Phasen wechselt die Kulisse automatisch zu einer lauteren Chaos-Version.</span>
-        <div class="setting-opts"><span class="chip">🏫 Klassenzimmer</span><span class="chip">🏃 Schulhof</span><span class="chip">🌧 Regen</span><span class="chip">📚 Bibliothek</span><span class="chip">🔇 Lautlos</span></div>
+        <div class="setting-opts"><span class="chip"><svg class="ico" aria-hidden="true"><use href="#school"/></svg> Klassenzimmer</span><span class="chip"><svg class="ico" aria-hidden="true"><use href="#trees"/></svg> Schulhof</span><span class="chip"><svg class="ico" aria-hidden="true"><use href="#cloud-rain"/></svg> Regen</span><span class="chip"><svg class="ico" aria-hidden="true"><use href="#library"/></svg> Bibliothek</span><span class="chip"><svg class="ico" aria-hidden="true"><use href="#volume-off"/></svg> Lautlos</span></div>
       </div></div>
-      <div class="setting-row"><div class="setting-icon">😊</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#smile"/></svg></div><div class="setting-body">
         <strong>Tagesform</strong>
         <span>Simuliert, wie unterschiedlich sich ADHS je nach Schlaf, Stress und allgemeinem Befinden auswirkt.</span>
         <div class="setting-opts"><span class="chip">😴 Gut geschlafen — abgeschwächt</span><span class="chip">😐 Normal — Standard</span><span class="chip">😫 Schlecht geschlafen — verstärkt</span></div>
       </div></div>
-      <div class="setting-row"><div class="setting-icon">💊</div><div class="setting-body">
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#pill"/></svg></div><div class="setting-body">
         <strong>Medikamenten-Modus</strong>
         <span>Wenn aktiviert, werden alle ADHS-Effekte gedämpft. Gegen Ende erscheint eine Meldung, dass die Wirkung nachlässt.</span>
       </div></div>
@@ -215,7 +214,7 @@
     <div class="section-header"><span class="section-num">7</span><h2>Lehrkraft-Ansicht & Steuerung</h2></div>
     <h3>Lehrkraft-Ansicht</h3>
     <div class="card">
-      <p>Während der Simulation gibt es eine <strong>Lehrkraft-Ansicht</strong> (📋-Button in der Kopfzeile). Sie zeigt:</p>
+      <p>Während der Simulation gibt es eine <strong>Lehrkraft-Ansicht</strong> (<svg class="ico" aria-hidden="true"><use href="#clipboard"/></svg>-Button in der Kopfzeile). Sie zeigt:</p>
       <ul>
         <li>Aktuelle Simulationsphase (Baseline / Ruhig / Leicht / Mittel / Intensiv)</li>
         <li>Konzentrationslevel in Prozent</li>
@@ -226,7 +225,7 @@
     <h3>Steuerung während der Simulation</h3>
     <div class="card">
       <div class="setting-row" style="padding-top:0;"><div class="setting-icon">⏸</div><div class="setting-body"><strong>Pause</strong><span>Stoppt die gesamte Simulation, alle Timer, Geräusche und Ablenkungen — für Zwischengespräche.</span></div></div>
-      <div class="setting-row"><div class="setting-icon">🔊</div><div class="setting-body"><strong>Ton ein/aus</strong><span>Schaltet alle Hintergrundgeräusche stumm, ohne die Simulation zu stoppen.</span></div></div>
+      <div class="setting-row"><div class="setting-icon"><svg class="ico" aria-hidden="true"><use href="#volume"/></svg></div><div class="setting-body"><strong>Ton ein/aus</strong><span>Schaltet alle Hintergrundgeräusche stumm, ohne die Simulation zu stoppen.</span></div></div>
       <div class="setting-row"><div class="setting-icon">⌨️</div><div class="setting-body"><strong>Tastatur</strong><span>Die Tasten 1–4 wählen die Antwortmöglichkeiten bei Multiple-Choice-Aufgaben.</span></div></div>
     </div>
     <div class="tip">
@@ -261,7 +260,7 @@
         <tbody>
           <tr><td><strong>Aufbau</strong></td><td><code>adhs-simulator-kinder.html</code> + <code>adhs-simulator-kinder.css</code> + Ordner <code>js/</code> mit 56 einzelnen Funktionsdateien</td></tr>
           <tr><td><strong>Schriften</strong></td><td>Google Fonts (Merriweather, Nunito Sans) — Internetzugang beim ersten Laden nötig</td></tr>
-          <tr><td><strong>Audio</strong></td><td>5 MP3-Dateien im gleichen Ordner: <code>bg-classroom.mp3</code>, <code>bg-classroom-chaos.mp3</code>, <code>bg-schoolyard.mp3</code>, <code>bg-rain.mp3</code>, <code>bg-library.mp3</code></td></tr>
+          <tr><td><strong>Audio</strong></td><td>5 MP3-Dateien im Ordner <code>assets/audio/</code>: <code>bg-classroom.mp3</code>, <code>bg-classroom-chaos.mp3</code>, <code>bg-schoolyard.mp3</code>, <code>bg-rain.mp3</code>, <code>bg-library.mp3</code></td></tr>
           <tr><td><strong>Browser</strong></td><td>Chrome, Edge, Firefox, Safari — aktuell. Kein Internet Explorer.</td></tr>
           <tr><td><strong>Datenspeicherung</strong></td><td>Keine Server-Verbindung. Nur das Farbthema wird im LocalStorage gemerkt.</td></tr>
           <tr><td><strong>Farben</strong></td><td>OKLCH-Farbraum für konsistente Farbverläufe</td></tr>
@@ -272,17 +271,13 @@
     </div>
     <h3>Benötigte Dateien</h3>
     <div class="card">
-      <p>Alle Dateien müssen im gleichen Ordner liegen (der Ordner <code>js/</code> als Unterordner):</p>
+      <p>Die Ordnerstruktur muss erhalten bleiben (<code>js/</code> und <code>assets/</code> als Unterordner):</p>
       <div class="filetree">
-        📁 ADHS/<br>
+        <svg class="ico" aria-hidden="true"><use href="#folder"/></svg> ADHS/<br>
         &nbsp;&nbsp;├── adhs-simulator-kinder.html<br>
         &nbsp;&nbsp;├── adhs-simulator-kinder.css<br>
-        &nbsp;&nbsp;├── 📁 js/  <span style="color:var(--ctw-400)">(56 Dateien)</span><br>
-        &nbsp;&nbsp;├── bg-classroom.mp3<br>
-        &nbsp;&nbsp;├── bg-classroom-chaos.mp3<br>
-        &nbsp;&nbsp;├── bg-schoolyard.mp3<br>
-        &nbsp;&nbsp;├── bg-rain.mp3<br>
-        &nbsp;&nbsp;└── bg-library.mp3
+        &nbsp;&nbsp;├── <svg class="ico" aria-hidden="true"><use href="#folder"/></svg> js/  <span style="color:var(--ctw-400)">(56 Dateien)</span><br>
+        &nbsp;&nbsp;└── <svg class="ico" aria-hidden="true"><use href="#folder"/></svg> assets/  <span style="color:var(--ctw-400)">(base.css, icons.js, fonts/, audio/)</span>
       </div>
     </div>
     <h3>Offline-Betrieb</h3>

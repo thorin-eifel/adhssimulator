@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/base.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ADHD Simulator</title>
 <style>
@@ -481,13 +479,10 @@ body::after{width:38vw;height:38vw;background:oklch(.85 .06 35);opacity:.06;bott
 .screen,.topbar,#meter,#tasklist,#fact,#fidget,#coworker,.thought,.notif-tray,#calib-end,#shock,#pause-overlay{position:relative;z-index:1}
 
 
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}}
-
-button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #0d6a78;outline-offset:2px}
-::selection{background:#bfe3e8;color:#0d3e47}
 </style>
 </head>
 <body>
+<script src="assets/icons.js"></script>
 
 <div id="welcome" class="screen active">
   <div class="lang-row">
@@ -512,7 +507,7 @@ button:focus-visible,a:focus-visible,[role="button"]:focus-visible,input:focus-v
       <button class="dyslexia-btn" id="dyslexia-btn-welcome" onclick="toggleDyslexia()">Aa</button>
     </div>
   </div>
-  <div class="hero-icon">🧠</div>
+  <div class="hero-icon"><svg class="ico" aria-hidden="true"><use href="#brain"/></svg></div>
   <div class="hero">
     <h1 id="ui-title"></h1>
     <p id="ui-subtitle"></p>
@@ -1385,7 +1380,7 @@ const SFX = {
   init(t){this.type=t;},
   start() {
     if(this.type==='silent') return;
-    this.audio = new Audio(this.type+'.mp3');
+    this.audio = new Audio('assets/audio/'+this.type+'.mp3');
     this.audio.loop = true;
     this.audio.volume = 0;
     this.audio.play().catch(e=>console.warn('Audio:',e));
@@ -2657,7 +2652,7 @@ function toggleDyslexia() {
     const link = document.createElement('link');
     link.id = 'od-font';
     link.rel = 'stylesheet';
-    link.href = 'https://fonts.cdnfonts.com/css/opendyslexic';
+    link.href = 'assets/fonts/fonts.css';
     document.head.appendChild(link);
   }
   _syncDyslexiaBtns();
@@ -2701,7 +2696,7 @@ function _initPrefs() {
     if (!document.getElementById('od-font')) {
       const link = document.createElement('link');
       link.id = 'od-font'; link.rel = 'stylesheet';
-      link.href = 'https://fonts.cdnfonts.com/css/opendyslexic';
+      link.href = 'assets/fonts/fonts.css';
       document.head.appendChild(link);
     }
     document.body.classList.add('dyslexic');
